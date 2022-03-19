@@ -50,6 +50,11 @@
                         </div>
                         <div class="row mt-3">
                             <div class="d-flex justify-content-end">
+                            <?php
+                                if($_SESSION['id'] == $player->getId()){
+                                    echo'<a class="btn btn-primary" href="profileManagement.php?id='.$player->getId().'">revenir en arrière</a>';
+                                }
+                            ?>
                                 <a class="btn btn-primary" href="homePage.php">revenir en arrière</a>
                             </div>
                         </div>
