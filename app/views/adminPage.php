@@ -38,47 +38,135 @@
                 <div class="row mt-1">
                     <div class="col-md-6">
                         <select class="form-select w-25">
-                            <option value="alphabétique" selected>Alphabétique</option>
-                            <option value="nbMatchPlayed">Nb match joué</option>
-                            <option value="nbPlayerOfTheGame">Nb homme du match</option>
+                            <option value="#" selected>Alphabétique</option>
+                            <option value="#">Nb match joué</option>
+                            <option value="#">Nb homme du match</option>
                         </select>
                     </div>
                     <div class="col-md-6 text-md-end">
                         <a href="#" class="btn btn-danger">Gerer les joueurs</a>
                     </div>
                 </div>
-                <!-- Mettre Table -->
+                    <table class="table table-dark text-center w-100 table-striped mt-3">
+                        <thead>
+                            <tr>
+                                <th scope="col">Nom complet</th>
+                                <th scope="col">Rôle</th>
+                                <th scope="col">Poste</th>
+                                <th scope="col">Num maillot</th>
+                                <th scope="col">Num license</th>
+                                <th scope="col">Nb homme match</th>
+                                <th scope="col">Nb match joué</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><a href="#" class="text-danger">Ravaux Nicolas</a></th>
+                                <td>Joueur</td>
+                                <td>Gardien</td>
+                                <td>64</td>
+                                <td>15142845</td>
+                                <td>5</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><a href="#" class="text-danger">Ravaux Nicolas</a></th>
+                                <td>staff</td>
+                                <td>coach</td>
+                                <td>-</td>
+                                <td>15142845</td>
+                                <td>-</td>
+                                <td>20</td>
+                            </tr>
+                        </tbody>
+                    </table>
             </div>
         </section>
         <!-- main event -->
-        <section class="container p-2">
-            <h3 class="text-decoration-underline d-inline p-1 rounded" id="event">Event :</h3>
-            <div class="row mt-1">
-                <div class="col-md-6">
-                    <select class="form-select w-25">
-                        <option value="recentDate" selected>Date</option>
-                        <option value=""></option>
-                        <option value=""></option>
-                    </select>
-                </div>
-                <div class="col-md-6 text-md-end">
-                    <a href="#" class="btn btn-danger">Gerer les joueurs</a>
-                </div>
+        <section class="container mt-4">
+            <!-- title -->
+            <div class="text-center container">
+                <h3 class="text-decoration-underline d-inline p-1 rounded" id="player">Evenement :</h3>
             </div>
-            <!-- Mettre Table -->
+            <div class="container p-2">
+                <label for="sortBy">Trier par :</label>
+                <div class="row mt-1">
+                    <div class="col-md-6">
+                        <select class="form-select w-25">
+                            <option value="#" selected>Date la plus récente</option>
+                            <option value="#">Date la plus ancienne</option>
+                            <option value="#">Nb homme du match</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <a href="#" class="btn btn-danger">Gerer les évènements</a>
+                    </div>
+                </div>
+                    <table class="table table-dark text-center w-100 table-striped mt-3" id="event">
+                        <thead>
+                            <tr>
+                                <th scope="col">Id</th>
+                                <th scope="col">Date</th>
+                                <th scope="col">Heure</th>
+                                <th scope="col">Type</th>
+                                <th scope="col">#</th>
+                                <th scope="col">#</th>
+                                <th scope="col">#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row"><a href="#" class="text-danger">15</a></th>
+                                <td>25-05-22</td>
+                                <td>22h30</td>
+                                <td>Match</td>
+                                <td>#</td>
+                                <td>#</td>
+                                <td>#</td>
+                            </tr>
+                            <tr>
+                                <th scope="row"><a href="#" class="text-danger">14</a></th>
+                                <td>24-04-22</td>
+                                <td>19h30</td>
+                                <td>Autre</td>
+                                <td>#</td>
+                                <td>#</td>
+                                <td>#</td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
         </section>
         <!-- main league -->
-        <section class="container p-2">
-            <h3 class="text-decoration-underline d-inline p-1 rounded" id="event">League :</h3>
-            <div class="row">
-                <div class="col-md-6">
-
-                </div>
-                <div class="col-md-6 text-end">
-                    <a href="#" class="btn btn-danger">Gerer la league</a>
-                </div>
+        <section class="container mt-4">
+            <!-- title -->
+            <div class="text-center container">
+                <h3 class="text-decoration-underline d-inline p-1 rounded" id="player">League :</h3>
             </div>
-            <!-- Mettre Table -->
+            <div class="container p-2">
+                    <div class="col-12 text-md-end">
+                        <a href="#" class="btn btn-danger">Gerer la league</a>
+                    </div>
+                </div>
+                <table class="table table-dark text-center w-100 table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Id</th>
+                            <th scope="col">Nom</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Bulldogs</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Shark</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </section>
     </main> 
     <footer>
