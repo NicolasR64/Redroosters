@@ -17,7 +17,7 @@
 <body class="bg-dark text-light">
     <header>
     <?php
-        include('includes/header.html');
+        include('includes/header.php');
     ?>
     </header>
     <main class="container-fluid">
