@@ -1,12 +1,15 @@
 <?php
 abstract class Model{
 
-    //Connection à la base de données    
+    //Connection à la base de données  
+    /* REMETTRE PRIVATE QUAND TESTS FINI!! */  
     private static function getBdd() {
+        //informations de connection
         $servername = 'localhost';
         $bdname = 'redroosters';
         $username = 'root';
         $password = '';
+        //test connection
         try{
             $dbco = new PDO("mysql:host=$servername;dbname=$bdname;charset=utf8", $username, $password);
             $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
