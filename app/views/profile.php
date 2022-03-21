@@ -36,7 +36,7 @@
                             <div class="col-md-12 mt-1"><label class="labels mb-2 mt-sm-2">Surnom :</label><input type="text" class="form-control" readonly placeholder="Surnom" value="<?php echo $player->getNickname() ?>"></div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12 mt-1"><label class="labels mb-2">Rôle :</label><input type="text" class="form-control" readonly placeholder="Rôle" value="<?php echo $player->getPosition() ?>"></div>
+                            <div class="col-md-12 mt-1"><label class="labels mb-2">Position :</label><input type="text" class="form-control" readonly placeholder="Rôle" value="<?php echo $player->getPosition() ?>"></div>
                             <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Numéro de license :</label><input type="text" class="form-control" readonly placeholder="Numéro de license" value="<?php echo $player->getLicenseNumber() ?>"></div>
                             <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Numéro de maillot :</label><input type="text" class="form-control" readonly placeholder="Numéro de maillot" value="<?php echo $player->getJerseyNumber() ?>"></div>
                             <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Main dominante :</label><input type="text" class="form-control" readonly placeholder="Main dominante" value="<?php echo $player->getHandedness() ?>"></div>
