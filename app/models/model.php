@@ -1,0 +1,32 @@
+<?php
+abstract class Model{
+
+    //Connection à la base de données    
+    private static function getBdd() {
+        $servername = 'localhost';
+        $bdname = 'redroosters';
+        $username = 'root';
+        $password = '';
+        try{
+            $dbco = new PDO("mysql:host=$servername;dbname=$bdname;charset=utf8", $username, $password);
+            $dbco->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+            return $dbco;
+        }catch(PDOException $e){
+            echo 'ERROR : '.$e->getMessage();
+        }
+    }
+
+    //exécute la requête qui lui est passée
+    protected function executeRequest($sql) {
+        //connection BDD
+        $bdd = $this->getBdd();
+        $sth = $bdd->prepare($sql);//préparation requête
+        $sth-> execute();//exécution requête
+        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);//réception données
+
+        //ferme connection BDD
+        $bdd = null;
+        return $resultat;
+    }
+    
+}
