@@ -24,6 +24,7 @@ class profile {
         }
     }
 
+    //FAIRE TEST
     //vérifie si l'utiliseur demande à voir son propre profil
     function isDataUser(){
         if(isset($_GET['id']) && isset($_SESSION['id'])){
