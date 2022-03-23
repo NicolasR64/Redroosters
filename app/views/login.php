@@ -25,6 +25,8 @@
         <label for="inputPassword" class="sr-only">Mot de passe</label>
         <input type="password" id="inputPassword" class="form-control" required="">
         <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit">Se connecter</button>
+        <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/register">S'inscrire</a>
+        <a class="btn btn-lg btn-link btn-block mt-1 mb-2 w-100" href="/forgot-password">Mot de passe oublié</a>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
       </form>
     </div>
