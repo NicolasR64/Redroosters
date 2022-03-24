@@ -25,8 +25,11 @@ class User extends Model{
     
     /* FAIRE TEST */
     function getUserByID($id){
-        $sql = "SELECT * FROM  `user` WHERE id=$id";
-        return $sql;
+        $sql = "SELECT * FROM  `users` WHERE id=$id";
+        $data = $this->executeRequest($sql);
+        $user = new User();
+        $user->fillObject($data[0]);
+        return $user;
     }
 
     // Hydratation
