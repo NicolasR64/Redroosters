@@ -16,15 +16,17 @@ class League extends Model{
     function getCurrentSeason(){
         $sql = 'SELECT * FROM  `season` WHERE `seasonYear`=date("Y")';
         $resultat = $this->executeRequest($sql);
-        return $resultat;
+        $league = $this->fillObject($resultat[0]);
+        return $league;
     }
 
     // FAIRE TEST
     // get data about a specific season
-    function getSeasonByYears($year){
+    function getSeasonByYear($year){
         $sql = "SELECT * FROM  `season` WHERE `seasonYear`=$year";
         $resultat = $this->executeRequest($sql);
-        return $resultat;
+        $league = $this->fillObject($resultat[0]);
+        return $league;
     }
 
     // FAIRE TEST
