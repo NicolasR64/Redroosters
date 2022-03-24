@@ -9,5 +9,4 @@ class User extends Model{
         $sql = "SELECT * FROM  `user` WHERE id=$id";
         return $sql;
     }
-
 }
