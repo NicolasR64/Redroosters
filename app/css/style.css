@@ -45,3 +45,21 @@ input {
 }
 
 /* END - Profile page */
+
+/* BEGIN - league page */
+
+.table > thead{
+  background-color: #DA373A;
+  border-radius: 10px;
+  color: white;
+}
+
+.table > tr {
+  border: 0px;
+}
+
+.list-match-date{
+  font-size: 13px;
+}
+
+/* END - league page */
