@@ -58,6 +58,11 @@ class Staff extends Model{
             }
         }
     }
+
+    public function addStaff(){
+        $sql = "INSERT INTO staff (id,seasonArrived,idFonction) Values ('$this->id','$this->seasonArrived','$this->idFonction')";
+        $this->executeRequest($sql,false);
+    }
 }
 
 ?>
