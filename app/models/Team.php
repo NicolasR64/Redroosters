@@ -72,6 +72,15 @@ class Team extends Model{
             }
         }
     }
+
+    //Récupération d'une entrée
+    public function getTeam($id){
+        $sql = "SELECT * FROM  `team` WHERE id=$id";
+        $data = $this->executeRequest($sql);
+        $team = new Team();
+        $team->fillObject($data[0]);
+        return $team;
+    }
 }
 
 
