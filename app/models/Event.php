@@ -4,6 +4,7 @@ require_once('Model.php');
 class Event extends Model{
 
     private $id;
+    private $method;
     private $rdvDate;
     private $rdvHours;
     private $rdvCity;
@@ -23,7 +24,7 @@ class Event extends Model{
 
    public function fillObject(array $data){
        foreach($data as $key => $value){
-           $exec = 'set'.ucfirst($key);
+           $method = 'set'.ucfirst($key);
            if(method_exists($this,$method)){
             $this->$method($value);
         }else{
@@ -31,6 +32,17 @@ class Event extends Model{
         }
      }
    }
+
+   // A tester //
+
+    public function getEventById($id){
+           $sql = "SELECT * FROM `event` WHERE id=$id";
+           $data = $this->executeRequest($sql);
+           $event = new Event();
+           $event->fillObject($data[0]);
+           return $event;
+}
+
  
     //Getters and setters//
 

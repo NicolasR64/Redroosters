@@ -7,7 +7,7 @@
     $test = new Event();
 
     /*Tests getters et setters */
-    
+
     $test->setId(3);
     $test->setRdvDate(20220328);
     $test->setName("Rdv gare du nord");
@@ -22,4 +22,6 @@
     $test->setHours("10h40");
     $test->setRdvPostalCode(6240);
     $test->setDescription("Ceci est un test des getters et setters");
+
+    print_r($test->getEventById(2));
 ?>
