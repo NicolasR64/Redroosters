@@ -20,12 +20,13 @@ abstract class Model{
     }
 
     //exécute la requête qui lui est passée
-    protected function executeRequest($sql) {
+    protected function executeRequest($sql,$result = true) {
         //connection BDD
         $bdd = $this->getBdd();
         $sth = $bdd->prepare($sql);//préparation requête
         $sth-> execute();//exécution requête
-        $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);//réception données
+        $resultat=null;
+        if($result) $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);//réception données
 
         //ferme connection BDD
         $bdd = null;

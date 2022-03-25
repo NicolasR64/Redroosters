@@ -1,4 +1,5 @@
 <?php
+require_once('Model.php');
 
 class player extends model{
 
@@ -170,6 +171,12 @@ class player extends model{
                 echo 'Nom de champs invalide';
             }
         }
+    }
+
+    public function addPlayer(){
+        $sql = "INSERT INTO player(id,seasonArrived,licenseNumber,jerseyNumber,size,isCarpooling,`weight`,isSick,isBan,handedness,idPosition)
+                Values('$this->id','$this->seasonArrived','$this->licenseNumber','$this->jerseyNumber','$this->size','$this->isCarpooling','$this->weight','$this->isSick','$this->isBan','$this->handedness','$this->idPosition')";
+       $this->executeRequest($sql,false);
     }
 }
 
