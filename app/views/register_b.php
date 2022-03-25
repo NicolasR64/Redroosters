@@ -20,15 +20,19 @@
       <form class="form-signin" data-bitwarden-watching="1">
         <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
         <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
-        <label for="inputFirstName" class="sr-only">Prénom</label>
+        <label for="inputFirstName" class="sr-only">Prénom*</label>
         <input type="text" id="inputFirstName" class="form-control" required="" autofocus="">
-        <label for="inputName" class="sr-only">Nom</label>
-        <input type="text" id="inputName" class="form-control" required="" autofocus="">
-        <label for="inputEmail" class="sr-only">E-Mail</label>
-        <input type="email" id="inputEmail" class="form-control" required="" autofocus="">
-        <label for="inputPassword" class="sr-only">Mot de passe</label>
-        <input type="password" id="inputEmail" class="form-control" required="" autofocus="">
-        <label for="inputPasswordConfirm" class="sr-only">Confirmation</label>
+        <label for="inputName" class="sr-only">Nom*</label>
+        <input type="text" id="inputFirstName" class="form-control" required="">
+        <label for="inputName" class="sr-only">Date de naissance*</label>
+        <input type="date" id="inputFirstName" class="form-control" required="">
+        <label for="inputName" class="sr-only">Numéro de téléphone*</label>
+        <input type="tel" id="inputName" class="form-control" required="">
+        <label for="inputEmail" class="sr-only">E-Mail*</label>
+        <input type="email" id="inputEmail" class="form-control">
+        <label for="inputPassword" class="sr-only">Mot de passe*</label>
+        <input type="password" id="inputEmail" class="form-control" required="">
+        <label for="inputPasswordConfirm" class="sr-only">Confirmation*</label>
         <input type="password" id="inputPasswordConfirm" class="form-control" required="">
         <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit">Se connecter</button>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
