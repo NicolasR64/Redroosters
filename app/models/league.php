@@ -6,24 +6,24 @@ class League extends Model{
     private $id;
     private $seasonYear;
     private $category;
-    private $isCurrentSeason;
-
 
     /* SELECT */
     
     // FAIRE TEST
     // get data about current season
     function getCurrentSeason(){
-        $sql = 'SELECT * FROM  `season` WHERE `seasonYear`=date("Y")';
+        $year=date("Y");
+        $sql = "SELECT * FROM  `league` WHERE `seasonYear`=$year";
         $resultat = $this->executeRequest($sql);
-        $league = $this->fillObject($resultat[0]);
+        $league = new League();
+        $league->fillObject($resultat[0]);
         return $league;
     }
 
     // FAIRE TEST
     // get data about a specific season
     function getSeasonByYear($year){
-        $sql = "SELECT * FROM  `season` WHERE `seasonYear`=$year";
+        $sql = "SELECT * FROM  `league` WHERE `seasonYear`=$year";
         $resultat = $this->executeRequest($sql);
         $league = $this->fillObject($resultat[0]);
         return $league;
@@ -37,6 +37,7 @@ class League extends Model{
             if(method_exists($this,$method)){
                 $this->$method($value);
             }else{
+                echo $key;
                 echo 'Nom de champs invalide';
             }
         }
@@ -49,6 +50,11 @@ class League extends Model{
     {
         return $this->id;
     }
+
+    /**
+     * Set the value of id
+     */ 
+    public function setId(){}
 
     /**
      * Get the value of seasonYear
@@ -81,7 +87,5 @@ class League extends Model{
     public function setCategory($category)
     {
         $this->category = $category;
-
-        return $this;
     }
 }

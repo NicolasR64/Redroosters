@@ -7,7 +7,7 @@
     <title>league - redroosters</title>
     <!-- css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link href="../css/style.css" rel="stylesheet">
+    <link href="app/css/style.css" rel="stylesheet">
     <!-- js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
@@ -17,10 +17,16 @@
         include('includes/header.php');
     ?>
     </header>
+    <?php
+        require_once("../controllers/leagueCont.php");
+        $leaguecont = new LeagueCont();
+        $league = $leaguecont->getCurrentSeason();
+    ?>
     <main>
         <!-- League Header -->
         <div class="mt-4 text-center container-fluid profile-header">
-            <h3 class="mt-2 mb-1">Championnat U19<!-- <?php //echo $leagued->getCategory();?> --></h3>
+            <h3 class="mt-2 mb-1">Catégorie <?php echo $league->getCategory();?></h3>
+            <p>Saison <?php echo ($league->getSeasonYear()-1) .' - '. $league->getSeasonYear()?></p>
         </div>
         <!-- League Main -->
         <div class="container rounded mt-2 mb-5">
@@ -33,7 +39,7 @@
                         </div>
                         <!-- S'affiche quand breakpoint md -->
                         <div class="table-responsive-sm d-none d-md-block">
-                            <table class="table table-hover table-striped test w-100 text-center">
+                            <table class="table table-hover table-striped w-100 text-center">
                                 <thead>
                                     <tr>
                                         <th scope="col">#</th>

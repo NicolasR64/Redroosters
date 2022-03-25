@@ -23,3 +23,5 @@ RewriteRule "login$" "app/views/login.php"
 RewriteRule "register$" "app/views/register.php"
 
 RewriteRule "forgot-password$" "app/views/forgot_password.php"
+
+RewriteRule "league$" "app/views/league.php"
