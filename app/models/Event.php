@@ -31,7 +31,7 @@ class Event extends Model{
         }
      }
    }
-   
+ 
     //Getters and setters//
 
     public function getId()
@@ -49,111 +49,110 @@ class Event extends Model{
 
     public function getRdvDate()
     {
-        return $this->getRdvDate;
+        return $this->rdvDate;
     }
    
   
-    public function setRdvDate($rdvDate)
-    {
+    public function setRdvDate($rdvDate){
         $this->rdvDate = $rdvDate;
    
     }
 
-    public setName($name){
+    public function setName($name){
         $this->name = $name;
     }
 
-    public getName(){
+    public function getName(){
         return $this->name;
     }
 
-    public setDateBegin($dateBegin){
+    public function setDateBegin($dateBegin){
         $this->dateBegin = $dateBegin;
     }
 
-    public getDateBegin(){
+    public function getDateBegin(){
         return $this->dateBegin;
     }
 
-    public setDateEnd($dateEnd){
-        $this->dateBegin = $dateBegin;
+    public function setDateEnd($dateEnd){
+        $this->dateEnd = $dateEnd;
     }
 
-    public getDateEnd(){
+    public function getDateEnd(){
         return $this->dateEnd;
     }
 
-    public setRdvHours($rdvHours){
+    public function setRdvHours($rdvHours){
         $this->rdvHours = $rdvHours;
     }
 
-    public getRdvHours(){
+    public function getRdvHours(){
         return $this->rdvHours;
     }
 
-    public setStreet($street){
+    public function setStreet($street){
         $this->street = $street;
     }
 
-    public getStreet(){
+    public function getStreet(){
         return $this->street;
     }
 
-    public setRdvCity($rdvCity){
+    public function setRdvCity($rdvCity){
         $this->rdvCity = $rdvCity;
     }
 
-    public getRdvCity(){
+    public function getRdvCity(){
         return $this->rdvCity;
     }
 
-    public setCity($city){
+    public function setCity($city){
         $this->city = $city;
     }
 
-    public getCity(){
+    public function getCity(){
         return $this->city;
     }
 
-    public setPostalCode($postalCode){
+    public function setPostalCode($postalCode){
         $this->postalCode = $postalCode;
     }
 
-    public getPostalCode(){
+    public function getPostalCode(){
         return $this->postalCode;
     }
 
-    public setRdvStreet($rdvStreet){
+    public function setRdvStreet($rdvStreet){
         $this->rdvStreet = $rdvStreet;
     }
 
-    public getRdvStreet(){
+    public function getRdvStreet(){
         return $this->rdvStreet;
     }
 
-    public setHours($hours){
+    public function setHours($hours){
         $this->hours = $hours;
     }
 
-    public getHours(){
+    public function getHours(){
         return $this->hours;
     }
 
 
-    public setRdvPostalCode($rdvPostalCode){
+    public function setRdvPostalCode($rdvPostalCode){
         $this->rdvPostalCode = $rdvPostalCode;
     }
 
-    public getRdvPostalCode(){
+    public function getRdvPostalCode(){
         return $this->rdvPostalCode;
     }
 
     
-    public setDescription($description){
+    public function setDescription($description){
         $this->description = $description;
     }
 
-    public getDescription(){
+    public function getDescription(){
         return $this->description;
     }
 }
