@@ -56,7 +56,7 @@
                                                 $user->setPhone($phone);
                                                 $user->setFirstName($firstN);
                                                 $user->setLastName($lastN);
-                                                $user->setFirstName($dateB);
+                                                $user->setDateBirth($dateB);
                                                 $user->setIsPlayer(0); $user->setIsStaff(0); $user->setEmergencyMail("Non Renseignée"); $user->setParentMail("Non renseignée");
                                                 $token = openssl_random_pseudo_bytes(16);
                                                 $token = bin2hex($token);
