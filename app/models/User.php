@@ -32,6 +32,13 @@ class User extends Model{
         return $user;
     }
 
+    /* INSERT */
+    public function addUser(){
+        $sql = "INSERT INTO users(mail,`password`,token,firstName,lastName,nickname,dateBirth,phone,emergencyMail,parentMail,isPlayer,isStaff)
+                VALUES ('$this->mail','$this->password','$this->token','$this->firstName','$this->lastName','$this->nickname','$this->dateBirth','$this->phone','$this->emergencyMail','$this->parentMail','$this->isPlayer','$this->isStaff')";
+        $this->executeRequest($sql,false);
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){

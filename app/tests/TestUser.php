@@ -6,11 +6,25 @@
 */
 
 
-    $test = new User();
+   $test = new User();
 
-    $user = $test->getUserById(2);
+   /* $user = $test->getUserById(2);
 
-    echo $user->getLastName();
+    echo $user->getLastName(); */
 
+    $test->setPassword("testmdp");
+    $test->setMail("test@mail.la");
+    $test->setEmergencyMail("e@a.sport");
+    $test->setParentMail("p@m.parent");
+    $test->setIsPlayer(1);
+    $test->setIsStaff(0);
+    $test->setFirstName("Sky");
+    $test->setLastName("Storm");
+    $test->setNickname("Bobo");
+    $test->setPhone("0245896314");
+    $test->setDateBirth("2001-05-02");
+    $test->setToken("isdufvygzerg");
+
+    $test->addUser();
 
 ?>
