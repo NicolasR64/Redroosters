@@ -53,6 +53,17 @@ class User extends Model{
         return null;
     }
 
+    /* Check l'existence d'un mail*/
+    public function checkMail($email){
+        $sql="SELECT * FROM `users` WHERE mail='$email'";
+        $existe = false;
+        $data = $this->executeRequest($sql);
+        if(!empty($data)){
+            $existe = true;
+        }
+        return $existe;
+    }
+
 
     // Hydratation
     public function fillObject(array $data){
