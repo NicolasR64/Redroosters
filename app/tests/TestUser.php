@@ -12,6 +12,7 @@
 
     echo $user->getLastName(); */
 
+   /*
     $test->setPassword("testmdp");
     $test->setMail("test@mail.la");
     $test->setEmergencyMail("e@a.sport");
@@ -25,6 +26,14 @@
     $test->setDateBirth("2001-05-02");
     $test->setToken("isdufvygzerg");
 
-    $test->addUser();
+    $test->addUser(); */
+
+    $pwd = "wxcVBN123";
+    $email = "Soul@hotmail.fr";
+    
+    $user = $test->userConnexion($email,$pwd);
+
+    echo $user->getLastName();
+
 
 ?>

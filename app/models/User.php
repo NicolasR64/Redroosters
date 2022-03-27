@@ -39,6 +39,18 @@ class User extends Model{
         $this->executeRequest($sql,false);
     }
 
+    /* Connexion */
+    public function userConnexion($email,$pwd){
+        $sql="SELECT * FROM `users` WHERE mail='$email'";
+        $data = $this->executeRequest($sql);
+        $user = new User();
+        $user->fillObject($data[0]);
+        if(password_verify($pwd, $user->password)){
+           return $user; 
+        } else return null;
+        
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){
