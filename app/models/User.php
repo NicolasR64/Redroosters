@@ -43,13 +43,16 @@ class User extends Model{
     public function userConnexion($email,$pwd){
         $sql="SELECT * FROM `users` WHERE mail='$email'";
         $data = $this->executeRequest($sql);
-        $user = new User();
-        $user->fillObject($data[0]);
-        if(password_verify($pwd, $user->password)){
-           return $user; 
-        } else return null;
-        
+        if(!empty($data)){
+            $user = new User();
+            $user->fillObject($data[0]);
+            if(password_verify($pwd, $user->password)){
+            return $user; 
+            }
+        }  
+        return null;
     }
+
 
     // Hydratation
     public function fillObject(array $data){

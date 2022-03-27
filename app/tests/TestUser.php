@@ -35,5 +35,9 @@
 
     echo $user->getLastName();
 
+    $user = $test->userConnexion("non","existence");
+
+    if($user == null)echo "<br>vide";
+
 
 ?>
