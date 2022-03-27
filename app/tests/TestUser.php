@@ -28,7 +28,7 @@
 
     $test->addUser(); */
 
-    /*$pwd = "wxcVBN123";
+    $pwd = "wxcVBN123";
     $email = "Soul@hotmail.fr";
     
     $user = $test->userConnexion($email,$pwd);
@@ -37,7 +37,7 @@
 
     $user = $test->userConnexion("non","existence");
 
-    if($user == null)echo "<br>vide";*/
+    if($user == null)echo "<br>vide";
 
     $existe = $test->checkMail("Soul@hotmai.fr");
 
