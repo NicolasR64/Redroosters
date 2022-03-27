@@ -35,8 +35,9 @@
                 if(isset($_POST["inputDateBirth"]) && !empty($_POST["inputDateBirth"])){
                     if(isset($_POST["inputPhone"]) && !empty($_POST["inputPhone"])){
                         if(isset($_POST["inputEmail"]) && !empty($_POST["inputEmail"])){
+                            $user = new User();
                             $mail = cleanData($_POST["inputEmail"]);
-                            if(filter_var($mail,FILTER_VALIDATE_EMAIL)){
+                            if(filter_var($mail,FILTER_VALIDATE_EMAIL) && !($user->checkMail($mail))){
                                 if(isset($_POST["inputPassword"]) && !empty($_POST["inputPassword"])){
                                     $pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.{8,})/";
                                     $pwd  = cleanData($_POST["inputPassword"]);
@@ -45,7 +46,7 @@
                                             $confPwd = cleanData($_POST["inputPasswordConfirm"]);
                                             if(strcmp($pwd,$confPwd) == 0){
                                                 $step = 3;
-                                                $user = new User();
+                                                
                                                 $phone = cleanData($_POST["inputPhone"]);
                                                 $firstN = cleanData($_POST["inputFirstName"]);
                                                 $lastN = cleanData($_POST["inputLastName"]);
