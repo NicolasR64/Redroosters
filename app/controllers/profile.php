@@ -3,18 +3,21 @@
 class profile {
 
     // FAIRE TEST
-    // récupération des données du joueur par son id
+    // récupération des données de l'utilisateur par son id
     function getUserById(){
         //vérification que l'id est présent
-        if(isset($_GET['id']) && isset($_SESSION['id'])){
+        if(isset($_SESSION['id'])){
 
-            //importation du model
             require_once('../models/User.php');
             $user = new User();
 
             //récupération de l'utilisateur
-            $resultat = $user->getUserByID($_GET['id']);
-            // TODO : regarder si $resultat = $user->getUserByID($_GET['id']); marche aussi.
+            if(isset($_GET['id'])){   
+                $resultat = $user->getUserById($_GET['id']);
+            }else{
+                $resultat = $user->getUserById($_SESSION['id']);
+            }
+            
             return $resultat;
         }else{
             /*
@@ -24,16 +27,15 @@ class profile {
         }
     }
 
-    //FAIRE TEST
-    //vérifie si l'utiliseur demande à voir son propre profil
-    function isDataUser(){
-        if(isset($_GET['id']) && isset($_SESSION['id'])){
-            return 1;
-        }else{
-            /*
-             * Cela signifie qu'il y a une erreur! 
-             */
-            // TODO : regarder la manière dont on renverra l'erreur!
-        }
+    // FAIRE TESt
+    // récupération des données du joueur par son id
+    function getPlayerById($userMail){
+        require_once('../models/Player.php');
+        $user = new User();
+
+        //récupération du joueur
+        $resultat = $player->getPlayerById($userMail);
+            
+        return $resultat;
     }
 }

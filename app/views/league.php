@@ -19,8 +19,8 @@
     </header>
     <?php
         require_once("../controllers/leagueCont.php");
-        $leaguecont = new LeagueCont();
-        $league = $leaguecont->getCurrentSeason();
+        $leagueCont = new LeagueCont();
+        $league = $leagueCont->getCurrentSeason();
     ?>
     <main>
         <!-- League Header -->
@@ -54,9 +54,15 @@
                                     </tr>
                                 </thead>
                                 <tbody class="table-dark">
+                                <?php
+                                $teamList = $leagueCont->getAllTeamSorteByPts();
+                                $i=1;
+                                foreach($teamList as $team){
+                                    $i;
+                                    echo'
                                     <tr>
-                                        <th scope="row">1</th>
-                                        <td class="text-start">Redroosters</td>
+                                        <th scope="row">'.$i.'</th>
+                                        <td class="text-start">'.$team->getName().'</td>
                                         <td>14</td>
                                         <td>12</td>
                                         <td>1</td>
@@ -65,28 +71,10 @@
                                         <td>38</td>
                                         <td>87-28</td>
                                     </tr>
-                                    <tr>
-                                        <th scope="row">2</th>
-                                        <td class="text-start">Chiefs</td>
-                                        <td>12</td>
-                                        <td>10</td>
-                                        <td>1</td>
-                                        <td>0</td>
-                                        <td>1</td>
-                                        <td>32</td>
-                                        <td>54-25</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">3</th>
-                                        <td class="text-start">sharks</td>
-                                        <td>12</td>
-                                        <td>7</td>
-                                        <td>2</td>
-                                        <td>2</td>
-                                        <td>1</td>
-                                        <td>24</td>
-                                        <td>41-05</td>
-                                    </tr>
+                                    ';
+                                    $i++;
+                                }
+                                ?>
                                 </tbody>
                             </table>
                         </div>
