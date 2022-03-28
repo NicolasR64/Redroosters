@@ -33,7 +33,7 @@ class Event extends Model{
      }
    }
 
-   // A tester //
+    // Get event with a specific id //
 
     public function getEventById($id){
            $sql = "SELECT * FROM `event` WHERE id=$id";
