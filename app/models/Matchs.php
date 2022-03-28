@@ -52,7 +52,7 @@ class Matchs extends Model{
      */ 
     public function getHomeScoreTiersTemps1()
     {
-        return $this->homeScoreTiersTemps2;
+        return $this->homeScoreTiersTemps1;
     }
 
     /**
@@ -60,7 +60,7 @@ class Matchs extends Model{
      */ 
     public function setHomeScoreTiersTemps1($homeScoreTiersTemps1)
     {
-        $this->homeScoreTiersTemps2 = $homeScoreTiersTemps1;
+        $this->homeScoreTiersTemps1 = $homeScoreTiersTemps1;
     }
 
     /**
