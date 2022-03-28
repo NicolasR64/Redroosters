@@ -17,7 +17,7 @@ class User extends Model{
     private $parentMail;
     private $isPlayer;
     private $isStaff;
-    private $joueur;
+    private $player;
     private $staff;
 
 
@@ -83,6 +83,7 @@ class User extends Model{
             if(method_exists($this,$method)){
                 $this->$method($value);
             }else{
+                echo $key;
                 echo 'Nom de champs invalide';
             }
         }
@@ -191,16 +192,16 @@ class User extends Model{
     }
 
     /**
-     * Get the value of joueur
+     * Get the value of player
      */ 
-    public function getJoueur()
+    public function getPlayer()
     {
-        return $this->joueur;
+        return $this->player;
     }
 
-    public function setJoueur($joueur)
+    public function SetPlayer($player)
     {
-        $this->joueur = $joueur;
+        $this->player = $player;
     }
 
     /**
