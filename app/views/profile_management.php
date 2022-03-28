@@ -32,10 +32,10 @@
         <input type="tel" id="inputName" class="form-control" required="">
         <label for="inputEmail" class="sr-only">E-Mail*</label>
         <input type="email" id="inputEmail" class="form-control">
-        <input type="checkbox" class="form-check-input" id="layer">
-        <label classeeee="form-check-label" for="exampleCheck1">inputInPlayer</label>
-        <input type="checkbox" class="form-check-input" id="inputIsStaff">
-        <label classeeee="form-check-label" for="inputIsStaff">Staff</label>
+        <input type="checkbox" id="inputIsPlayer">
+        <label class="form-check-label" for="inputIsPlayer">Player</label>
+        <input type="checkbox" id="inputIsStaff">
+        <label class="form-check-label" for="inputIsStaff">Staff</label>
 
         <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit">Enregister</button>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
