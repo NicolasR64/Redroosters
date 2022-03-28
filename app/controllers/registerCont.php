@@ -59,8 +59,11 @@
                                                 $user->setLastName($lastN);
                                                 $user->setDateBirth($dateB);
                                                 $user->setIsPlayer(0); $user->setIsStaff(0); $user->setEmergencyMail("Non Renseignée"); $user->setParentMail("Non renseignée");
-                                                $token = openssl_random_pseudo_bytes(16);
-                                                $token = bin2hex($token);
+                                                do{
+                                                   $token = openssl_random_pseudo_bytes(16);
+                                                   $token = bin2hex($token); 
+                                                } while ($user->checkToken($token));
+                                                
                                                 $user->setToken($token);
                                                 $user->addUser();
                                             }

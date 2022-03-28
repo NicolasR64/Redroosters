@@ -28,7 +28,7 @@
 
     $test->addUser(); */
 
-    $pwd = "wxcVBN123";
+    /*$pwd = "wxcVBN123";
     $email = "Soul@hotmail.fr";
     
     $user = $test->userConnexion($email,$pwd);
@@ -42,7 +42,13 @@
     $existe = $test->checkMail("Soul@hotmai.fr");
 
     if($existe) echo "existe";
-    else echo "inconnu";
+    else echo "inconnu";*/
 
+    $token = "4eaa0a36f3295e0be82156dfbd3d3";
+
+    $existe = $test->checkToken($token);
+
+    if($existe) echo "existe";
+    else echo "nouveau";
 
 ?>

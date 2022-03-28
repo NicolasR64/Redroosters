@@ -64,6 +64,17 @@ class User extends Model{
         return $existe;
     }
 
+    /* Check l'existence d'un token*/
+    public function checkToken($token){
+        $sql="SELECT * FROM `users` WHERE token='$token'";
+        $existe = false;
+        $data = $this->executeRequest($sql);
+        if(!empty($data)){
+            $existe = true;
+        }
+        return $existe;
+    }
+
 
     // Hydratation
     public function fillObject(array $data){
