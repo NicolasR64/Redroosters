@@ -32,6 +32,39 @@ class User extends Model{
         return $user;
     }
 
+    /* INSERT */
+    public function addUser(){
+        $sql = "INSERT INTO users(mail,`password`,token,firstName,lastName,nickname,dateBirth,phone,emergencyMail,parentMail,isPlayer,isStaff)
+                VALUES ('$this->mail','$this->password','$this->token','$this->firstName','$this->lastName','$this->nickname','$this->dateBirth','$this->phone','$this->emergencyMail','$this->parentMail','$this->isPlayer','$this->isStaff')";
+        $this->executeRequest($sql,false);
+    }
+
+    /* Connexion */
+    public function userConnexion($email,$pwd){
+        if($this->checkMail($email)){
+            $sql="SELECT * FROM `users` WHERE mail='$email'";
+            $data = $this->executeRequest($sql);
+            $user = new User();
+            $user->fillObject($data[0]);
+            if(password_verify($pwd, $user->password)){
+                return $user; 
+            }
+        }  
+        return null;
+    }
+
+    /* Check l'existence d'un mail*/
+    public function checkMail($email){
+        $sql="SELECT * FROM `users` WHERE mail='$email'";
+        $existe = false;
+        $data = $this->executeRequest($sql);
+        if(!empty($data)){
+            $existe = true;
+        }
+        return $existe;
+    }
+
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){
