@@ -1,6 +1,7 @@
 <?php
     
     require_once("../models/Event.php");
+    require_once("../controllers/eventManagementCont.php");
 
     /* Liste des tests pour Event */
 
