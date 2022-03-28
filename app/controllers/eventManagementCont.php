@@ -27,6 +27,29 @@
   
         return $ht;  
      }
+ 
+     //The function calculates the total number of hours of the event
+     
+     function calculateTotalTimeEvent($duration1, $duration2){
+
+        $day = $duration1->d;
+
+        //Verification if we have 24h with the time
+
+        if($duration2==24 && $day>0){
+            $duration2=0;
+            $hours = $day * 24 - $duration2;
+        }
+        //Verification if the end hour is less or equals to 12 hours
+        elseif($duration2 > 13){
+            $duration2 = 24 - $duration2; 
+            $hours = $day * 24 - $duration2;
+        }else{
+            $hours = $day * 24 + $duration2;
+        }
+        
+        return $hours;
+    }
 
     function cleanData($data) {
         $data = trim($data);
@@ -65,7 +88,11 @@
                                                      $rdvStreet = cleanData($_POST["inputRdvStreet"]);
                                                      $rdvCity = cleanData($_POST["inputRdvCity"]);
                                                      $rdvPostalCode = cleanData($_POST["inputRdvPostalCode"]);
+                                                     
+                                                     $duration = calculateInterval($beginDate, $endDate);
+                                                     $durationHours = calculateHour($rdvHours, $endHours);
 
+                                                     $totalHours;
 
                                                     }else{
                                                         $error = "Le champs 'Code postal du rendez-vous' n'est pas rempli";
