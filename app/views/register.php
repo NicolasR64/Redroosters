@@ -60,9 +60,16 @@
                     step2;
                     break;
             case 3:echo <<<step3
-                        <p>Inscription Réussie!</p>
-                        <a class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
-                        <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
+                    <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
+                        <form class="form-signin" data-bitwarden-watching="1" method="post">
+                            <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
+                            <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
+                            <h2>Inscription réussie&nbsp;!</h2>
+                            <p>Merci de cliquer sur le lien que tu as reçu par mail.</p>
+                            <a class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
+                            <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
+                        </form>
+                    </div>
                     step3;
                     break;
         } ?>
