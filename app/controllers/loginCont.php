@@ -20,7 +20,7 @@
                 $user = $user->userConnexion($email,$pwd);
                 if($user != null){
                     $_SESSION["user"]=serialize($user);
-                    header("Location: http://redrooster/home");
+                    header("Location: /home");
                 }
             }
         }
