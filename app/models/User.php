@@ -24,7 +24,7 @@ class User extends Model{
     /* SELECT */
     
     /* FAIRE TEST */
-    function getUserByID($id){
+    function getUserById($id){
         $sql = "SELECT * FROM  `users` WHERE id=$id";
         $data = $this->executeRequest($sql);
         $user = new User();

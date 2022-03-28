@@ -25,3 +25,7 @@ RewriteRule "register$" "app/views/register.php"
 RewriteRule "forgot-password$" "app/views/forgot_password.php"
 
 RewriteRule "league$" "app/views/league.php"
+
+RewriteRule "^profile([0-9]+)/$" "app/views/profile.php?id=$1"
+
+RewriteRule "^profile([0-9]+)/edit$" "app/views/profile_management.php?id=$1"

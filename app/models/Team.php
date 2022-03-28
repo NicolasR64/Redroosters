@@ -81,6 +81,12 @@ class Team extends Model{
         $team->fillObject($data[0]);
         return $team;
     }
+
+    public function getAllTeam(){
+        $sql = "SELECT * FROM `team`";
+        $data = $this->executeRequest($sql);
+        return $data;
+    }
 }
 
 
