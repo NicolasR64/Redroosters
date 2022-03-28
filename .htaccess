@@ -26,6 +26,6 @@ RewriteRule "forgot-password$" "app/views/forgot_password.php"
 
 RewriteRule "league$" "app/views/league.php"
 
-RewriteRule "ux$" "app/views/profile.php"
+RewriteRule "^u([0-9]+)/$" "app/views/profile.php?id=$1"
 
-RewriteRule "ux/edit$" "app/views/profile_management.php"
+RewriteRule "^u([0-9]+)/edit$" "app/views/profile_management.php?id=$1"
