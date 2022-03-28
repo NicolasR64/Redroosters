@@ -29,3 +29,8 @@
     echo "<br>";
     $value = calculateInterval("2022-02-02","2022-05-07");
     print_r($value);
+
+    echo "<br>";
+    $heure = calculateHour("10:25","22:35");
+    echo $heure;
+?>

@@ -10,7 +10,24 @@
         $interval = $begin->diff($end);
         return $interval;
     }
-    
+
+    function calculateHour($t1 , $t2){
+         
+        $tab=explode(":", $t1); 
+        $tab2=explode(":", $t2); 
+        
+        $h=$tab[0]; 
+        $h2=$tab2[0]; 
+       
+        if ($h>=$h2) { 
+        $h2=$h2+24; 
+        } 
+        
+        $ht=$h2-$h; 
+  
+        return $ht;  
+     }
+
     function cleanData($data) {
         $data = trim($data);
         $data = stripslashes($data);
