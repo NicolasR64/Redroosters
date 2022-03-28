@@ -2,6 +2,15 @@
 
     require_once("../models/Event.php");
 
+    function calculateInterval($beginDate, $endDate){
+        
+        $begin = new DateTime($beginDate);
+        $end = new DateTime($endDate);
+
+        $interval = $begin->diff($end);
+        return $interval;
+    }
+    
     function cleanData($data) {
         $data = trim($data);
         $data = stripslashes($data);

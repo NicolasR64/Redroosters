@@ -25,4 +25,7 @@
     $test->setDescription("Ceci est un test des getters et setters");
 
     print_r($test->getEventById(2));
-?>
+
+    echo "<br>";
+    $value = calculateInterval("2022-02-02","2022-05-07");
+    print_r($value);
