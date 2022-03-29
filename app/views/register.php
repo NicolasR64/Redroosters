@@ -15,6 +15,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
+        <script src="../js/checkInputRegister.js" async></script>
+
         <title>Inscription</title>
     </head>
     <body class="text-center text-light">
@@ -36,7 +38,7 @@
                     break;
             case 2:echo <<<step2
                     <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
-                        <form class="form-signin" data-bitwarden-watching="1" method="post">
+                        <form class="form-signin" data-bitwarden-watching="1" method="post" id="insc">
                             <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
                             <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
                                 <label for="inputFirstName" class="sr-only">Prénom*</label>
