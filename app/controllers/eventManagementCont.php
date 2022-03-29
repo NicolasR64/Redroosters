@@ -2,6 +2,14 @@
 
     require_once("../models/Event.php");
 
+
+    function compareDate($dateRdv, $dateBegin){
+        if($dateRdv > $dateBegin){
+            return false;
+        }
+        return true;
+    }
+
     function calculateInterval($beginDate, $endDate){
         
         $begin = new DateTime($beginDate);
@@ -41,6 +49,7 @@
             $hours = $day * 24 - $duration2;
         }
         //Verification if the end hour is less or equals to 12 hours
+
         elseif($duration2 > 13){
             $duration2 = 24 - $duration2; 
             $hours = $day * 24 - $duration2;

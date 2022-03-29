@@ -67,8 +67,8 @@ require_once("../controllers/eventManagementCont.php");
       </form>
     </div>
     <?php
-      if(isset($_SESSION['error'])){
-        echo $_SESSION['error'];
+      if(isset($_SESSION["error"])){
+        echo $_SESSION["error"];
         session_destroy();
       }
     ?>
