@@ -15,6 +15,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
+    <script src="/app/js/checkInputLogin.js" async></script>
+
     <title>Connexion</title>
 </head>
 <body class="text-center text-light">
@@ -27,7 +29,7 @@
         <input type="email" id="inputEmail" name = "inputEmail"class="form-control" required="" autofocus="">
         <label for="inputPassword" class="sr-only">Mot de passe</label>
         <input type="password" id="inputPassword" name ="inputPassword" class="form-control" required="">
-        <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" name="login" value="log">Se connecter</button>
+        <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="logButton"name="login" value="log">Se connecter</button>
         <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/register">S'inscrire</a>
         <a class="btn btn-lg btn-link btn-block mt-1 mb-2 w-100" href="/forgot-password">Mot de passe oublié</a>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
