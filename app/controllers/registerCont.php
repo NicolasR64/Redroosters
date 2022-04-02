@@ -2,6 +2,7 @@
 
     require_once("../models/User.php");
     require_once("../models/Team.php");
+    require_once("../models/Player.php");
 
     $step = 1;
 
@@ -63,7 +64,7 @@
                                                             $user->setFirstName($firstN);
                                                             $user->setLastName($lastN);
                                                             $user->setDateBirth($dateB);
-                                                            $user->setIsPlayer(0); $user->setIsStaff(0); $user->setEmergencyMail("Non Renseignée"); $user->setParentMail("Non renseignée");
+                                                            $user->setIsPlayer(1); $user->setIsStaff(0); $user->setEmergencyMail("Non Renseignée"); $user->setParentMail("Non renseignée");
                                                             do{
                                                             $token = openssl_random_pseudo_bytes(16);
                                                             $token = bin2hex($token); 
@@ -71,6 +72,18 @@
                                                             
                                                             $user->setToken($token);
                                                             $user->addUser();
+
+                                                            $player = new Player();
+                                                            $player->setSeasonArrived(date("Y-m-d"));
+                                                            $player->setId($user->getId());
+                                                            $player->setIsCarpooling(0); $player->setIsSick(0); $player->setIsBan(0);
+                                                            $player->setWeight(60);
+                                                            $player->setSize(170);
+                                                            $player->setHandedness(0);
+                                                            $player->setLicenseNumber(0); $player->setJerseyNumber(0);
+                                                            $player->setIdPosition(1);
+                                                            $player->addPlayer();
+                                                           
                                                         }
                                                     }
                                                 }

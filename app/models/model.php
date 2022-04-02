@@ -27,6 +27,7 @@ abstract class Model{
         $sth-> execute();//exécution requête
         $resultat=null;
         if($result) $resultat = $sth->fetchAll(PDO::FETCH_ASSOC);//réception données
+        else $resultat = $bdd->lastInsertId();
 
         //ferme connection BDD
         $bdd = null;
