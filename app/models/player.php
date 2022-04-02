@@ -1,7 +1,7 @@
 <?php
 require_once('Model.php');
 
-class player extends model{
+class Player extends model{
 
     private $id;
     private $seasonArrived;
@@ -14,8 +14,6 @@ class player extends model{
     private $isBan;
     private $handedness;
     private $idPosition;
-
-    
 
     /**
      * Get the value of id
@@ -173,10 +171,34 @@ class player extends model{
         }
     }
 
+    // ADD
+
+    //ajoute un joueur dans la db
     public function addPlayer(){
         $sql = "INSERT INTO player(id,seasonArrived,licenseNumber,jerseyNumber,size,isCarpooling,`weight`,isSick,isBan,handedness,idPosition)
                 Values('$this->id','$this->seasonArrived','$this->licenseNumber','$this->jerseyNumber','$this->size','$this->isCarpooling','$this->weight','$this->isSick','$this->isBan','$this->handedness','$this->idPosition')";
        $this->executeRequest($sql,false);
+    }
+
+    // SELECT
+
+    //récupère un joueur par son id
+    public function getPlayerById($id){
+        $sql = "SELECT * FROM `player` WHERE id=$id";
+        $data = $this->executeRequest($sql);
+        $player = new Player();
+        $player->fillObject($data[0]);
+        return $player;
+    }
+
+    //récupère la position du joueur
+    public function getPosition($idPosition){
+        require_once('Position.php');
+        $sql = "SELECT * FROM `position` WHERE id='$idPosition'";
+        $data = $this->executeRequest($sql);
+        $position = new Position();
+        $position->fillObject($data[0]);
+        return $position;
     }
 }
 

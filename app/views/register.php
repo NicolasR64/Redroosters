@@ -67,7 +67,7 @@
                             <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
                             <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
                             <h2>Inscription réussie&nbsp;!</h2>
-                            <p>N'oubliez pas d'aller compléter votre profil sur votre page personnelle!</p>
+                            <p>N'oubliez pas d'aller compléter votre profil sur votre page personnelle&nbsp;!</p>
                             <a class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
                             <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
                         </form>
