@@ -5,7 +5,7 @@ class Staff extends Model{
 
     private $id;
     private $seasonArrived;
-    private $idFonction;
+    private $idFunction;
 
 
     /**
@@ -37,14 +37,14 @@ class Staff extends Model{
     /**
      * Get the value of idFonction
      */ 
-    public function getIdFonction()
+    public function getIdFunction()
     {
-        return $this->idFonction;
+        return $this->idFunction;
     }
 
-    public function setIdFonction($idFonction)
+    public function setIdFunction($idFunction)
     {
-        $this->idFonction = $idFonction;
+        $this->idFunction = $idFunction;
     }
 
     // Hydratation
@@ -59,10 +59,32 @@ class Staff extends Model{
         }
     }
 
+    // ADD
+
     public function addStaff(){
         $sql = "INSERT INTO staff (id,seasonArrived,idFonction) Values ('$this->id','$this->seasonArrived','$this->idFonction')";
         $this->executeRequest($sql,false);
     }
+
+    // SELECT
+
+    public function getStaffById($id){
+        $sql = "SELECT * FROM `staff` WHERE id=$id";
+        $data = $this->executeRequest($sql);
+        $staff = new Staff();
+        $staff->fillObject($data[0]);
+        return $staff;
+    }
+
+    public function getFunction($idFunction){
+        $sql = "SELECT * FROM `function` WHERE id=$idFunction";
+        $data = $this->executeRequest($sql);
+        require_once('Functions.php');
+        $function = new Functions();
+        $function->fillObject($data[0]);
+        return $function;
+    }
+
 }
 
 ?>
