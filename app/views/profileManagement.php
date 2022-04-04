@@ -1,5 +1,6 @@
 <?php
 session_start();
+$_SESSION['id'] = '1';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -79,15 +80,16 @@ session_start();
                               } else {
                                 echo '
                                 <div class="col-md-12 mt-1"><label class="labels mb-2">Position :</label><input type="text" class="form-control"  placeholder="Rôle" value="' . $position->getName() . '" id="inputPosition"></div>
-                                <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Numéro de maillot :</label><input type="text" class="form-control"  placeholder="Numéro de maillot" value="' . $player->getJerseyNumber() . '" id="inputJerseyNumber"></div>
+                                <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Numéro de maillot :</label><input type="number" min="01" max="99" class="form-control"  placeholder="Numéro de maillot" value="' . $player->getJerseyNumber() . '" id="inputJerseyNumber"></div>
                                 ';
                                 if($player->getHandedness()){
                                     echo '
-                                    <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Main dominante :</label><input type="text" class="form-control"  placeholder="Main dominante" value="Droitié" id="inputHandedness"></div>
+                                    <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Main dominante :</label><input type="text" class="form-control"  placeholder="Main dominante" value="Droitié"></div>
+                                    <input type="hidden" class="form-control"  placeholder="Main dominante" value="Droitié" id="inputHandedness">
                                     ';
                                 }else{
                                     echo '
-                                    <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Main dominante :</label><input type="text" class="form-control"  placeholder="Main dominante" value="Gauché" id="inputHandedness"></div>
+                                    <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Main dominante :</label><input type="text" class="form-control"  placeholder="Main dominante" value="Gauché" id="inputHandedness">Gauché</div>
                                     ';
                                 }
                                 echo'
@@ -107,10 +109,10 @@ session_start();
                               ';
                               ?>
                               <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Télephone :</label><input type="text" class="form-control"  placeholder="numéro de gsm" value="<?php echo $user->getPhone() ?>" id="inputPhone></div>
-                              <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Date de naissance :</label><input type="text" class="form-control"  placeholder="Date de naissance" value="<?php echo $user->getDateBirth() ?>" id="inputDateBirth"></div>
+                              <div class="col-md-12 mt-1"><label class="labels mb-2 mt-2">Date de naissance :</label><input type="date" class="form-control"  placeholder="Date de naissance" value="<?php echo $user->getDateBirth() ?>" id="inputDateBirth"></div>
                           </div>
                           <div class="row mt-3">
-                              <div class="col-md-12 mt-1 text-end"><button type="submit" class="btn btn-danger" formaction="#" formmethod="POST" value="submit">Envoyer</button>
+                              <div class="col-md-12 mt-1 text-end"><button type="submit" class="btn btn-danger" formaction="<?php isset($_GET['id']) ? print('#?id='.$_GET['id']) : print('#?id='.$_SESSION['id']); ?>" formmethod="POST" value="submit">Envoyer</button>
                           </div>
                         </form>
                         <div class=" d-flex justify-content-end mt-3">
