@@ -7,6 +7,181 @@ body {
 
 /* END - All Pages */
 
+/* Nav - BEGIN */
+nav {
+  background-color: #fff;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  max-height: 65px;
+  position: absolute;
+  text-align: center;
+  display: block;
+  z-index: 999;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  min-height: 60px;
+  margin-left: auto;
+  margin-block-start: initial !important;
+  margin-block-end: initial !important;
+  margin-inline-start: initial !important;
+  margin-inline-end: initial !important;
+  padding-inline-start: initial !important;
+}
+
+nav ul li {
+  width: calc(100% / 5);
+  flex: 1 1 auto;
+  text-align: center;
+  position: relative;
+}
+
+nav a {
+  color: #495057 !important;
+  padding: 18px 4vw;
+  text-decoration: none;
+  display: block;
+}
+
+nav a.active {
+  color: #000 !important;
+}
+
+nav i {
+  font-size: 30px !important;
+}
+
+.nav-safety-margin-top {
+  height: 80px;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: coarse) {
+  nav {
+    background-color: #fff;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 65px;
+    position: fixed;
+    text-align: center;
+    display: block;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    min-height: 60px;
+    margin-left: auto;
+    margin-block-start: initial !important;
+    margin-block-end: initial !important;
+    margin-inline-start: initial !important;
+    margin-inline-end: initial !important;
+    padding-inline-start: initial !important;
+  }
+
+  nav ul li {
+    width: calc(100% / 5);
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  nav a {
+    color: #495057 !important;
+    padding: 18px 4vw;
+    text-decoration: none;
+    display: block;
+  }
+
+  nav a.active {
+    color: #000 !important;
+  }
+
+  nav i {
+    font-size: 30px !important;
+  }
+
+  .nav-safety-margin-top {
+    height: initial;
+    display: initial;
+  }
+
+  .nav-safety-margin-bottom {
+    height: 80px;
+    display: block;
+  }
+
+}
+
+@media (hover: none) and (pointer: coarse) {
+  nav {
+    background-color: #fff;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 65px;
+    position: fixed;
+    text-align: center;
+    display: block;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    min-height: 60px;
+    margin-left: auto;
+    margin-block-start: initial !important;
+    margin-block-end: initial !important;
+    margin-inline-start: initial !important;
+    margin-inline-end: initial !important;
+    padding-inline-start: initial !important;
+  }
+
+  nav ul li {
+    width: calc(100% / 5);
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  nav a {
+    color: #495057 !important;
+    padding: 18px 4vw;
+    text-decoration: none;
+    display: block;
+  }
+
+  nav a.active {
+    color: #000 !important;
+  }
+
+  nav i {
+    font-size: 30px !important;
+  }
+
+  .nav-safety-margin-top {
+    height: initial;
+    display: initial;
+  }
+
+  .nav-safety-margin-bottom {
+    height: 80px;
+    display: block;
+  }
+
+}
+
+/* Nav - END */
+
 /*BEGIN - Signin*/
 
 .form-signin {
@@ -48,17 +223,17 @@ input {
 
 /* BEGIN - league page */
 
-.table > thead{
+.table>thead {
   background-color: #DA373A;
   border-radius: 10px;
   color: white;
 }
 
-.table > tr {
+.table>tr {
   border: 0px;
 }
 
-.list-match-date{
+.list-match-date {
   font-size: 13px;
 }
 
