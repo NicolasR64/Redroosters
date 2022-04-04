@@ -12,7 +12,7 @@
         $data = stripslashes($data);
         $data = htmlspecialchars($data);
         return $data;
-      }
+    }
 
 
     if(isset($_POST["inputCode"]) && !empty($_POST["inputCode"])){
