@@ -36,7 +36,8 @@ class User extends Model{
     public function addUser(){
         $sql = "INSERT INTO users(mail,`password`,token,firstName,lastName,nickname,dateBirth,phone,emergencyMail,parentMail,isPlayer,isStaff)
                 VALUES ('$this->mail','$this->password','$this->token','$this->firstName','$this->lastName','$this->nickname','$this->dateBirth','$this->phone','$this->emergencyMail','$this->parentMail','$this->isPlayer','$this->isStaff')";
-        $this->executeRequest($sql,false);
+        $id=$this->executeRequest($sql,false);
+        $this->id = $id;
     }
 
     /* Connexion */
