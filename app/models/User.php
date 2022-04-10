@@ -65,6 +65,13 @@ class User extends Model{
         return $existe;
     }
 
+    /* récupère le token d'un utilisateur en fonction de son adresse mail*/
+    function getTokenByMail($mail){
+        $sql = "SELECT `token` FROM  `users` WHERE mail='$mail'";
+        $data = $this->executeRequest($sql);
+        return $data[0]["token"];
+    }
+
     /* Check l'existence d'un token*/
     public function checkToken($token){
         $sql="SELECT * FROM `users` WHERE token='$token'";

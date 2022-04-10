@@ -15,17 +15,19 @@ require_once("../controllers/forgotPasswordCont.php");
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
+    <script src="/app/js/checkInputForgotPwd.js" async></script>
+
     <title>Mot de passe oublié</title>
 </head>
 <body class="text-center text-light">
 
     <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
-      <form class="form-signin" data-bitwarden-watching="1" method="post" name="forgot">
+      <form class="form-signin" data-bitwarden-watching="1" method="post" name="forgot" id="forgot">
         <img src="/assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
         <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
         <label for="inputEmail">E-Mail</label>
         <input type="email" id="inputEmail" name="inputEmail" class="form-control" required="" autofocus="">
-        <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit">Continuer</button>
+        <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="mailSend">Continuer</button>
         <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/login">Se connecter</a>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
       </form>
