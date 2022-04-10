@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+require_once("../controllers/forgotPasswordCont.php");
+?>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -17,11 +20,11 @@
 <body class="text-center text-light">
 
     <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
-      <form class="form-signin" data-bitwarden-watching="1">
+      <form class="form-signin" data-bitwarden-watching="1" method="post" name="forgot">
         <img src="/assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
         <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
-        <label for="inputEmail" class="sr-only">E-Mail</label>
-        <input type="email" id="inputEmail" class="form-control" required="" autofocus="">
+        <label for="inputEmail">E-Mail</label>
+        <input type="email" id="inputEmail" name="inputEmail" class="form-control" required="" autofocus="">
         <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit">Continuer</button>
         <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/login">Se connecter</a>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
