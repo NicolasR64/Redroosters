@@ -1,6 +1,7 @@
 let submit = document.querySelector('#forgot');
 let button = document.querySelector('#mailSend');
 
+
 var errors = 0;
 
 function getXhr(){
@@ -53,3 +54,4 @@ submit.addEventListener('submit',handler = function(event){
         xhr.send(null);
       }
 })
+

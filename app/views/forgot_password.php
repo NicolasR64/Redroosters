@@ -16,22 +16,65 @@ require_once("../controllers/forgotPasswordCont.php");
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 
     <script src="/app/js/checkInputForgotPwd.js" async></script>
+    <script src="/app/js/checkInputForgotPwdStep3.js" async></script>
 
     <title>Mot de passe oublié</title>
 </head>
 <body class="text-center text-light">
 
-    <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
-      <form class="form-signin" data-bitwarden-watching="1" method="post" name="forgot" id="forgot">
-        <img src="/assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
-        <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
-        <label for="inputEmail">E-Mail</label>
-        <input type="email" id="inputEmail" name="inputEmail" class="form-control" required="" autofocus="">
-        <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="mailSend">Continuer</button>
-        <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/login">Se connecter</a>
-        <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
-      </form>
-    </div>
+    <?php switch($step){
+            case 1: ?>
+              <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
+                <form class="form-signin" data-bitwarden-watching="1" method="post" name="forgot" id="forgot">
+                  <img src="/assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
+                  <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
+                  <label for="inputEmail">E-Mail</label>
+                  <input type="email" id="inputEmail" name="inputEmail" class="form-control" required="" autofocus="">
+                  <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="mailSend">Continuer</button>
+                  <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/login">Se connecter</a>
+                  <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
+                </form>
+              </div>
+            <?php break; 
+              case 2: 
+            ?>
+              <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
+                <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy" />
+                <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
+                <h2>Mail envoyé&nbsp;!</h2>
+                <p>Pour continuer le processus, allez cliquer sur le lien qui vous a été envoyé&nbsp;!</p>
+                <a class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
+                <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
+              </div>
+            <?php break; 
+              case 3: 
+            ?>
+              <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
+                <form class="form-signin" data-bitwarden-watching="1" method="post" name="newPwd" id="newPwd">
+                  <img src="/assets/img/logos/logo_icon_text.png" height="100px" loading="lazy"/>
+                  <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
+                  <label for="inputPwd">Mot de passe</label>
+                  <input type="password" id="inputPwd" name="inputPwd" class="form-control" required="" autofocus="">
+                  <label for="inputCPwd">Confirmation du mot de passe</label>
+                  <input type="password" id="inputCPwd" name="inputCPwd" class="form-control" required="" autofocus="">
+                  <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="change">Continuer</button>
+                  <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
+                </form>
+              </div>
+            <?php break; 
+              case 4: 
+            ?>
+              <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
+                <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy" />
+                <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
+                <h2>Mot de passe changé avec succès&nbsp;!</h2>
+                <p>Pourquoi ne pas allez vous connecter&nbsp;?</p>
+                <a class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
+                <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
+              </div>
+            <?php
+              break;
+            } ?>
 
 </body>
 </html>

@@ -83,6 +83,11 @@ class User extends Model{
         return $existe;
     }
 
+    /* Change le mot de passe et le token en fonction d'un token*/
+    public function updatePwd($pwd,$oldToken,$newToken){
+        $sql="UPDATE `users` SET `password`='$pwd',`token`='$newToken' WHERE token='$oldToken'";
+        $this->executeRequest($sql,false);
+    }
 
     // Hydratation
     public function fillObject(array $data){
