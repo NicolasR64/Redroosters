@@ -19,6 +19,8 @@ require_once("../controllers/changePasswordCont.php");
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <!-- JUSQU'ICI -->
 
+    <script src="/app/js/checkInputChangePwd.js" async></script>
+
     <title>Changement mot de passe</title>
 
 </head>
