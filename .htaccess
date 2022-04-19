@@ -24,6 +24,8 @@ RewriteRule "register$" "app/views/register.php"
 
 RewriteRule "forgot-password$" "app/views/forgot_password.php"
 
+RewriteRule "change-password$" "app/views/change_password.php"
+
 RewriteRule "home$" "app/views/home.php"
 
 RewriteRule "memberlist$" "app/views/memberlist.php"
