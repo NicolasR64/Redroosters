@@ -2,6 +2,7 @@
 <html lang="fr">
 <head>
     <?php require_once("../views/includes/head.php")?>
+    <script src="/app/js/checkButtonStatus.js" async></script>
     <title>Redroosters</title>
 </head>
 <body>
@@ -24,7 +25,7 @@
         <div class="text-flex-column"> 
             <div class="adresse">Rue de Linux, 6666 TuxCity</div>
              <div class="timeLeft">Dans 7 jours</div><br>
-             <button class="btn btn-danger">Absent</button><br>
+             <button class="btn btn-danger" id="btn">Absent</button><br>
         </div>
     </div>
 </div>
