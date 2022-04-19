@@ -89,6 +89,12 @@ class User extends Model{
         $this->executeRequest($sql,false);
     }
 
+    /* Change le mot de passe en fonction d'un id */
+    public function updatePwd2(){
+        $sql="UPDATE `users` SET `password`='$this->password' WHERE id='$this->id'";
+        $this->executeRequest($sql,false);
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){

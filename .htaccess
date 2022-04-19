@@ -32,8 +32,8 @@ RewriteRule "memberlist$" "app/views/memberlist.php"
 
 RewriteRule "events$" "app/views/event_list.php"
 
-RewriteRule "^profile([0-9]+)/$" "app/views/profile.php?id=$1"
+RewriteRule "^profile/([0-9]+)/$" "app/views/profile.php?id=$1"
 
-RewriteRule "^profile([0-9]+)/edit$" "app/views/profile_management.php?id=$1"
+RewriteRule "^profile/([0-9]+)/edit$" "app/views/profile_management.php?id=$1"
 
 RewriteRule "league$" "app/views/league.php"
