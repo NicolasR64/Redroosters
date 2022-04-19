@@ -11,7 +11,7 @@
       </a>
     </li>
     <li>
-      <a href="/league" class="button">
+      <a href="/chat" class="button">
         <i class="fa-solid fa-comments"></i>
       </a>
     </li>

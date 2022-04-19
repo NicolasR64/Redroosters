@@ -30,6 +30,8 @@ RewriteRule "home$" "app/views/home.php"
 
 RewriteRule "memberlist$" "app/views/memberlist.php"
 
+RewriteRule "chat$" "app/views/chat.php"
+
 RewriteRule "events$" "app/views/event_list.php"
 
 RewriteRule "^profile/([0-9]+)/$" "app/views/profile.php?id=$1"
