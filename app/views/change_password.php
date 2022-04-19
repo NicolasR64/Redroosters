@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-//require_once("../controllers/chgMdpCont.php");
+require_once("../controllers/changePasswordCont.php");
 ?>
 <html lang="fr">
 
