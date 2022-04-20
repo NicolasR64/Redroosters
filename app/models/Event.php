@@ -43,9 +43,11 @@ class Event extends Model{
            return $event;
     }
 
+    // Get all events ordering by asc date //
+
     public function getEventAsc(){
             $tdsDate = date('Y-m-d');
-            $sql = "SELECT * FROM `event` WHERE `dateBegin` >= $tdsDate ORDER BY `dateBegin` ASC";
+            $sql = "SELECT * FROM `event` WHERE `dateBegin` >= '$tdsDate' ORDER BY `dateBegin` ASC";
             $arrayResult = $this->executeRequest($sql,PDO::FETCH_ASSOC);
             $data = array();
 
@@ -56,6 +58,23 @@ class Event extends Model{
             }
 
             return $data;
+    }
+
+    // Get all events ordering by desc date //
+
+    public function getEventDesc(){
+        $tdsDate = date('Y-m-d');
+        $sql = "SELECT * FROM `event` WHERE `dateBegin` <= '$tdsDate' ORDER BY `dateBegin` Desc";
+        $arrayResult = $this->executeRequest($sql,PDO::FETCH_ASSOC);
+        $data = array();
+
+        foreach ($arrayResult as $elem){
+            $event = new Event();
+            $event->fillObject($elem);
+            array_push($data,$event);
+        }
+
+        return $data;
     }
 
     //Insert function//
