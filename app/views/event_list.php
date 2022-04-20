@@ -9,7 +9,7 @@
 
 <?php require_once("../views/includes/header.php");?>
 
-<h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements</h1>
+<h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements à venir</h1>
 
 <div class ="event-block align-middle mx-auto">
     <span class="title">Match de hockey<br></span>
@@ -29,6 +29,8 @@
         </div>
     </div>
 </div>
+<br><br>
+<h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements passés</h1>
 </div>
 <?php require_once("../views/includes/footer.php");?>
 </body>
