@@ -14,7 +14,7 @@
 <h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements à venir</h1>
 
 <?php
-if(!isset($upcomingEvents) || $upcomingEvents == ""){
+if(!isset($upcomingEvents) || $upcomingEvents == "" || $upcomingEvents == Array()){
     echo "<div class='text-center'>Il n'y a pas d'évènements à afficher</div><br>";
 }else{
 foreach($upcomingEvents as $elem){
@@ -47,7 +47,7 @@ foreach($upcomingEvents as $elem){
 <h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements passés</h1>
 
 <?php
-if(!isset($pastEvents) || $pastEvents == ""){
+if(!isset($pastEvents) || $pastEvents == "" || $pastEvents == Array()){
     echo "<div class='text-center'>Il n'y a pas d'évènements à afficher</div><br>";
 }else{
 
