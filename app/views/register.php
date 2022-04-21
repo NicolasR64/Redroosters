@@ -37,6 +37,7 @@ require_once("../controllers/registerCont.php");
                     <label for="inputCode" class="sr-only">Code</label>
                     <input type="password" name="inputCode" id="inputCode" class="form-control" required="" autofocus="">
                     <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" value="envoyer">Continuer</button>
+                    <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
                     <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
                 </form>
             </div>
