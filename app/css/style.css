@@ -269,6 +269,7 @@ input {
   flex-direction: column;
   line-height: 30px;
   margin-right: 10%;
+  margin:auto;
 
   border-spacing:100px;
   border-right-style: solid;
@@ -285,12 +286,14 @@ input {
   flex-direction: column;
   line-height: 30px;
   margin-top:5%;
+  margin: auto;
 }
 
 .text-flex-row{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  margin:auto;
 }
 
 /* END - Event list page */
