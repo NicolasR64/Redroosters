@@ -19,8 +19,7 @@ $_SESSION['id'] = '1';
     require_once("../controllers/ProfileCont.php");
     $contProfile = new ProfileCont();
     $user = $contProfile->getUser();
-    // ($user->getId() != unserialize($_SESSION['user']->getId()) ) && (unserialize($_SESSION['user']->getIsAdmin()) == 0)
-    if(($user->getId() != $_SESSION['id']) && ($_SESSION['admin'] == 0)){
+    if(($user->getId() != unserialize($_SESSION['user']->getId()) ) && (unserialize($_SESSION['user']->getIsAdmin()) == 0)){
       /* si on arrive ici, la personne n'as pas l'autorisation */
       header('profile.php');
     }
@@ -182,6 +181,7 @@ $_SESSION['id'] = '1';
     <footer>
 
     </footer>
+    <?php require_once("../views/includes/footer.php");?>
 </body>
 
 </html>

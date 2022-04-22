@@ -1,40 +1,9 @@
-let submit = document.querySelector('#updtP');
+let submit = document.querySelector('#submitUpdateProfile');
 
 var existe;
 var errors = 0;
 
-function getXhr(){
-  var xhr = null;
-  if(window.XMLHttpRequest || window.ActiveXObject){
-      if(window.ActiveXObject){
-          try{
-              xhr = new ActiveXObject("Msxm12.XMLHTTP");
-          } catch(e){
-              xhr = new ActiveXObject("Microsoft.XMLHTTP");
-          }
-      } else {
-          xhr = new XMLHttpRequest();
-      }
-  }
-  return xhr;
-}
-
-var xhr = getXhr();
-
-xhr.onreadystatechange = function() {
-  if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) ){
-    var data=xhr.responseText.toString();
-    console.log(data);
-    //var jsonResponse = (string) JSON.parse(data);
-    //console.log(jsonResponse);
-    if(data == "false"){
-      submit.removeEventListener('submit',handler);
-      button.click();
-    } else {
-      alert("L'email est déjà utilisée");
-    }
-  }
-}
+alert('work');
 
 submit.addEventListener('submit',handler = function(event){
     let fName = document.forms["updtP"]["inputFirstName"].value;
@@ -48,11 +17,13 @@ submit.addEventListener('submit',handler = function(event){
 
     if(document.forms['updtP']["inputFunction"].value){
         //l'utilisateur est un staff
-        let functionStaff = document.forms['updtP']["inputFunction"].value;
+        let functions = document.forms['updtP']["inputFunction"].value;
         let saStaff = document.forms['updtP']["inputSeasonArrivedStaff"].value;
+        let inputSeasonArrivedStaff = document.forms['updtP']["inputSeasonArrivedStaff"].value;
     } else {
         //l'utilisateur est un player
-        let positionPlayer = document.forms['updtP']["inputPosition"].value;
+        let position = document.forms['updtP']["inputPosition"].value;
+        let seasonArrivedPlayer = document.forms['updtP']["inputSeasonArrivedPlayer"].value;
         let jsPlayer = document.forms['updtP']['inputJerseyNumber'].value;
         let hddPlayer = document.forms['updtP']["inputHandedness"].value;
         let saPlayer = document.forms['updtP']["inputSeasonArrivedPlayer"].value;
@@ -61,32 +32,35 @@ submit.addEventListener('submit',handler = function(event){
         let weight = document.forms['updtP']['inputWeight'].weight;
     }
 
-    errors = 0;
-
+    //FAIRE TEST
     //prénom
     if (fName == "") {
       alert("veuillez renseigner un prénom");
       errors++;
     }
 
+    //FAIRE TEST
     //surnom
     if (nckName == ""){
       alert("veuillez renseigner un surnom");
       errors++;
     }
 
+    //FAIRE TEST
     //nom
     if (lName == ""){
       alert("veuillez renseigner un nom");
       errors++;
     }
 
+    //FAIRE TEST
     //date de naissance
     if (dateBirth == ""){
       alert("veuillez renseigner une date de naissance");
       errors++;
     }
 
+    //FAIRE TEST
     //téléphone
     if (phone == ""){
       alert("veuillez renseigner un numéros de téléphone");
@@ -98,6 +72,7 @@ submit.addEventListener('submit',handler = function(event){
       errors++;
     }
 
+    //FAIRE TEST
     //email
     if (email == ""){
       alert("veuillez renseigner un email");
@@ -126,6 +101,7 @@ submit.addEventListener('submit',handler = function(event){
       errors++;
     }
 
+    //FAIRE TEST
     //parentMail
     if (parentMail == ""){
       alert("veuillez renseigner un email");
@@ -137,9 +113,81 @@ submit.addEventListener('submit',handler = function(event){
       errors++;
     }
 
-      
+    if(document.forms['updtP']["inputFunction"].value){
 
+      //FAIRE TEST
+      //seasonArrived
+      if (seasonArrivedPlayer == ""){
+        alert("veuillez renseigner une date");
+        errors++;
+      }
+
+      //FAIRE TEST
+      //jersey number
+      if (jsPlayer == ""){
+        alert("veuillez renseigner un numéro de maillot");
+        errors++;
+      }
+
+      //FAIRE TEST
+      //position
+      if (position == ""){
+        alert("veuillez renseigner une position");
+        errors++;
+      }
+
+      //FAIRE TEST
+      //license number
+      if (lcNbr == ""){
+        alert("veuillez renseigner un numéro de license");
+        errors++;
+      }
+
+      //FAIRE TEST
+      //license handedness
+      if (hddPlayer == ""){
+        alert("veuillez renseigner une main dominante");
+        errors++;
+      }
+    }
+    else
+    {
+
+    }
 })
 
+
+
+//XHR
+function getXhr(){
+  var xhr = null;
+  if(window.XMLHttpRequest || window.ActiveXObject){
+      if(window.ActiveXObject){
+          try{
+              xhr = new ActiveXObject("Msxm12.XMLHTTP");
+          } catch(e){
+              xhr = new ActiveXObject("Microsoft.XMLHTTP");
+          }
+      } else {
+          xhr = new XMLHttpRequest();
+      }
+  }
+  return xhr;
+}
+var xhr = getXhr();
+xhr.onreadystatechange = function() {
+  if (xhr.readyState == 4 && (xhr.status == 200 || xhr.status == 0) ){
+    var data=xhr.responseText.toString();
+    console.log(data);
+    //var jsonResponse = (string) JSON.parse(data);
+    //console.log(jsonResponse);
+    if(data == "false"){
+      submit.removeEventListener('submit',handler);
+      button.click();
+    } else {
+      alert("L'email est déjà utilisée");
+    }
+  }
+}
 
 

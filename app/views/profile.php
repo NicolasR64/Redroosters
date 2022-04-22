@@ -1,8 +1,7 @@
 <?php
 session_start();
 // à retirer quand test fini
-$_SESSION['id'] = "1";
-$_SESSION['admin'] = "0";
+require_once("../controllers/isConnect.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -37,9 +36,7 @@ $_SESSION['admin'] = "0";
 </head>
 
 <body>
-    <?php
-    include('includes/header.php');
-    ?>
+    <?php require_once("../views/includes/header.php"); ?>
     <main>
         <!-- Profile Header -->
         <div class="mt-4 text-center container-fluid profile-header">
@@ -132,6 +129,7 @@ $_SESSION['admin'] = "0";
     <footer>
 
     </footer>
+    <?php require_once("../views/includes/footer.php");?>
 </body>
 
 </html>

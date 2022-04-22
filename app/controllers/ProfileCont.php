@@ -1,5 +1,5 @@
 <?php
-
+require_once('../models/User.php');
 class ProfileCont {
 
     // FAIRE TEST
@@ -7,15 +7,15 @@ class ProfileCont {
     function getUser(){
         //vérification que l'id est présent
         //mettre quand test fini
-        // unserialize($_SESSION['user']->getId())
-        if(isset($_SESSION['id'])){
+        if(isset($_SESSION['user'])){
             require_once('../models/User.php');
+            $sessionUser = unserialize($_SESSION['user']);
             $user = new User();
             //récupération de l'utilisateur
-            if(isset($_GET['id'])){
+            if(isset($_GET['id']) && !empty($_GET['id'])){
                 $resultat = $user->getUserById($_GET['id']);
             }else{
-                $resultat = $user->getUserById($_SESSION['id']);
+                $resultat = $user->getUserById($sessionUser->getId());
             }
             return $resultat;
         }else{
