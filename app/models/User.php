@@ -82,6 +82,13 @@ class User extends Model{
         return $existe;
     }
 
+    /* récupère le token d'un utilisateur en fonction de son adresse mail*/
+    function getTokenByMail($mail){
+        $sql = "SELECT `token` FROM  `users` WHERE mail='$mail'";
+        $data = $this->executeRequest($sql);
+        return $data[0]["token"];
+    }
+
     /* Check l'existence d'un token*/
     public function checkToken($token){
         $sql="SELECT * FROM `users` WHERE token='$token'";
@@ -93,6 +100,17 @@ class User extends Model{
         return $existe;
     }
 
+    /* Change le mot de passe et le token en fonction d'un token*/
+    public function updatePwd($pwd,$oldToken,$newToken){
+        $sql="UPDATE `users` SET `password`='$pwd',`token`='$newToken' WHERE token='$oldToken'";
+        $this->executeRequest($sql,false);
+    }
+
+    /* Change le mot de passe en fonction d'un id */
+    public function updatePwd2(){
+        $sql="UPDATE `users` SET `password`='$this->password' WHERE id='$this->id'";
+        $this->executeRequest($sql,false);
+    }
 
     // Hydratation
     public function fillObject(array $data){

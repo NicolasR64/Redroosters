@@ -26,8 +26,9 @@
 
     $value = calculateInterval("2022-02-02","2022-02-04");
     $heure = calculateHour("10:25","00:25");
-    $test = calculateTotalTimeEvent($value, $heure);
 
-    $h1 = compareDate("2022-05-03", "2022-02-03");
-    
+    $h1 = compareDate("2022-05-03", "2022-02-03"); 
+    $data = $test->getEventById("12");
+    $data = $test->getEventAsc();
+    $data = $test->getEventDesc();
 ?>

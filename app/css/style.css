@@ -7,6 +7,181 @@ body {
 
 /* END - All Pages */
 
+/* Nav - BEGIN */
+nav {
+  background-color: #fff;
+  top: 0;
+  bottom: auto;
+  left: 0;
+  right: 0;
+  max-height: 65px;
+  position: absolute;
+  text-align: center;
+  display: block;
+  z-index: 999;
+}
+
+nav ul {
+  list-style-type: none;
+  display: flex;
+  min-height: 60px;
+  margin-left: auto;
+  margin-block-start: initial !important;
+  margin-block-end: initial !important;
+  margin-inline-start: initial !important;
+  margin-inline-end: initial !important;
+  padding-inline-start: initial !important;
+}
+
+nav ul li {
+  width: calc(100% / 5);
+  flex: 1 1 auto;
+  text-align: center;
+  position: relative;
+}
+
+nav a {
+  color: #495057 !important;
+  padding: 18px 4vw;
+  text-decoration: none;
+  display: block;
+}
+
+nav a.active {
+  color: #000 !important;
+}
+
+nav i {
+  font-size: 30px !important;
+}
+
+.nav-safety-margin-top {
+  height: 80px;
+  display: block;
+}
+
+@media (hover: hover) and (pointer: coarse) {
+  nav {
+    background-color: #fff;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 65px;
+    position: fixed;
+    text-align: center;
+    display: block;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    min-height: 60px;
+    margin-left: auto;
+    margin-block-start: initial !important;
+    margin-block-end: initial !important;
+    margin-inline-start: initial !important;
+    margin-inline-end: initial !important;
+    padding-inline-start: initial !important;
+  }
+
+  nav ul li {
+    width: calc(100% / 5);
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  nav a {
+    color: #495057 !important;
+    padding: 18px 4vw;
+    text-decoration: none;
+    display: block;
+  }
+
+  nav a.active {
+    color: #000 !important;
+  }
+
+  nav i {
+    font-size: 30px !important;
+  }
+
+  .nav-safety-margin-top {
+    height: initial;
+    display: initial;
+  }
+
+  .nav-safety-margin-bottom {
+    height: 80px;
+    display: block;
+  }
+
+}
+
+@media (hover: none) and (pointer: coarse) {
+  nav {
+    background-color: #fff;
+    top: auto;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    max-height: 65px;
+    position: fixed;
+    text-align: center;
+    display: block;
+    z-index: 999;
+  }
+
+  nav ul {
+    list-style-type: none;
+    display: flex;
+    min-height: 60px;
+    margin-left: auto;
+    margin-block-start: initial !important;
+    margin-block-end: initial !important;
+    margin-inline-start: initial !important;
+    margin-inline-end: initial !important;
+    padding-inline-start: initial !important;
+  }
+
+  nav ul li {
+    width: calc(100% / 5);
+    flex: 1 1 auto;
+    text-align: center;
+    position: relative;
+  }
+
+  nav a {
+    color: #495057 !important;
+    padding: 18px 4vw;
+    text-decoration: none;
+    display: block;
+  }
+
+  nav a.active {
+    color: #000 !important;
+  }
+
+  nav i {
+    font-size: 30px !important;
+  }
+
+  .nav-safety-margin-top {
+    height: initial;
+    display: initial;
+  }
+
+  .nav-safety-margin-bottom {
+    height: 80px;
+    display: block;
+  }
+
+}
+
+/* Nav - END */
+
 /*BEGIN - Signin*/
 
 .form-signin {
@@ -48,18 +223,77 @@ input {
 
 /* BEGIN - league page */
 
-.table > thead{
+.table>thead {
   background-color: #DA373A;
   border-radius: 10px;
   color: white;
 }
 
-.table > tr {
+.table>tr {
   border: 0px;
 }
 
-.list-match-date{
+.list-match-date {
   font-size: 13px;
 }
 
 /* END - league page */
+
+/* BEGIN - Event list page */
+
+.event-block{
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: #384651;
+  border-radius: 10px;
+  text-align: center;
+  width: calc(94%/3);
+  margin-top: 3%;
+  box-shadow: 4px 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%), 0 1px 8px 0 rgb(0 0 0 / 12%);
+
+}
+
+.event-block .title {
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  background: #DA373A;
+  border-radius: 10px 10px 0px 0px;
+  font-size: 2em;
+  line-height: 60px;
+  display: block;
+}
+
+.text-flex-column-first{
+  border-spacing: 10px;
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  margin-right: 10%;
+  margin:auto;
+
+  border-spacing:100px;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #141f25;
+}
+
+.informations{
+  margin-right: 30px;
+}
+
+.text-flex-column{
+  display: flex;
+  flex-direction: column;
+  line-height: 30px;
+  margin-top:5%;
+  margin: auto;
+}
+
+.text-flex-row{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin:auto;
+}
+
+/* END - Event list page */

@@ -24,12 +24,20 @@ RewriteRule "register$" "app/views/register.php"
 
 RewriteRule "forgot-password$" "app/views/forgot_password.php"
 
+RewriteRule "change-password$" "app/views/change_password.php"
+
+RewriteRule "logout$" "app/views/logout.php"
+
 RewriteRule "home$" "app/views/home.php"
 
+RewriteRule "memberlist$" "app/views/memberlist.php"
+
+RewriteRule "chat$" "app/views/chat.php"
+
+RewriteRule "events$" "app/views/event_list.php"
+
+RewriteRule "^profile/([0-9]+)/$" "app/views/profile.php?id=$1"
+
+RewriteRule "^profile/([0-9]+)/edit$" "app/views/profile_management.php?id=$1"
+
 RewriteRule "league$" "app/views/league.php"
-
-RewriteRule "profile$" "app/views/profile.php"
-
-RewriteRule "profileManagement$" "app/views/profileManagement.php"
-
-RewriteRule "profileUpdateCont$" "app/controllers/profileUpdateCont.php"

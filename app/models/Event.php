@@ -36,11 +36,45 @@ class Event extends Model{
     // Get event with a specific id //
 
     public function getEventById($id){
-           $sql = "SELECT * FROM `event` WHERE id=$id";
+           $sql = "SELECT * FROM `event` WHERE `id` = $id";
            $data = $this->executeRequest($sql);
            $event = new Event();
            $event->fillObject($data[0]);
            return $event;
+    }
+
+    // Get all events ordering by asc date //
+
+    public function getEventAsc(){
+            $tdsDate = date('Y-m-d');
+            $sql = "SELECT * FROM `event` WHERE `dateBegin` >= '$tdsDate' ORDER BY `dateBegin` ASC";
+            $arrayResult = $this->executeRequest($sql,PDO::FETCH_ASSOC);
+            $data = array();
+
+            foreach ($arrayResult as $elem){
+                $event = new Event();
+                $event->fillObject($elem);
+                array_push($data,$event);
+            }
+
+            return $data;
+    }
+
+    // Get all events ordering by desc date //
+
+    public function getEventDesc(){
+        $tdsDate = date('Y-m-d');
+        $sql = "SELECT * FROM `event` WHERE `dateBegin` <= '$tdsDate' ORDER BY `dateBegin` Desc";
+        $arrayResult = $this->executeRequest($sql,PDO::FETCH_ASSOC);
+        $data = array();
+
+        foreach ($arrayResult as $elem){
+            $event = new Event();
+            $event->fillObject($elem);
+            array_push($data,$event);
+        }
+
+        return $data;
     }
 
     //Insert function//
@@ -51,7 +85,7 @@ class Event extends Model{
     $this->executeRequest($sql,false);
     }
 
- 
+
     //Getters and setters//
 
     public function getId()
