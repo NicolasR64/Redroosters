@@ -8,6 +8,7 @@ body {
 /* END - All Pages */
 
 /* Nav - BEGIN */
+
 nav {
   background-color: #fff;
   top: 0;
@@ -15,7 +16,7 @@ nav {
   left: 0;
   right: 0;
   max-height: 65px;
-  position: absolute;
+  position: fixed;
   text-align: center;
   display: block;
   z-index: 999;
@@ -241,59 +242,43 @@ input {
 
 /* BEGIN - Event list page */
 
-.event-block{
-  font-family: 'Poppins', sans-serif;
-  color: #fff;
-  background: #384651;
-  border-radius: 10px;
-  text-align: center;
-  width: calc(94%/3);
-  margin-top: 3%;
-  box-shadow: 4px 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%), 0 1px 8px 0 rgb(0 0 0 / 12%);
-
+.event-brick-grid {
+  margin: auto;
+  max-width: 600px;
 }
 
-.event-block .title {
-  font-family: 'Poppins', sans-serif;
+a.event-brick-cell {
   color: #fff;
-  background: #DA373A;
-  border-radius: 10px 10px 0px 0px;
-  font-size: 2em;
-  line-height: 60px;
+  text-align: left;
+  text-decoration: none;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  border-left: 12px solid #084298;
+  margin-bottom: 10px;
+  display: block;
+  min-width: 100%;
+  transition: 0.2s;
+}
+
+a.event-brick-cell:hover {
+  color: #fff;
+  filter: brightness(0.8);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%), 0 1px 8px 0 rgb(0 0 0 / 12%);
+}
+
+a.event-brick-cell .date {
+  font-weight: 600;
   display: block;
 }
 
-.text-flex-column-first{
-  border-spacing: 10px;
-  display: flex;
-  flex-direction: column;
-  line-height: 30px;
-  margin-right: 10%;
-  margin:auto;
-
-  border-spacing:100px;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #141f25;
+a.event-brick-cell .address {
+  font-weight: 600;
+  display: block;
 }
 
-.informations{
-  margin-right: 30px;
-}
-
-.text-flex-column{
-  display: flex;
-  flex-direction: column;
-  line-height: 30px;
-  margin-top:5%;
-  margin: auto;
-}
-
-.text-flex-row{
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  margin:auto;
+a.event-brick-cell .time-left {
+  display: block;
 }
 
 /* END - Event list page */
