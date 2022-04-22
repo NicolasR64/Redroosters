@@ -33,6 +33,14 @@ class Functions extends model{
         $this->name = $name;
     }
 
+    // FAIRE TEST
+    // Récupère l'ensemble des functions existante
+    public function getAllFunction(){
+        $sql = "SELECT name FROM `function`";
+        $data = $this->executeRequest($sql);
+        return $data;
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){

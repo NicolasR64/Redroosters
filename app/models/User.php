@@ -32,12 +32,29 @@ class User extends Model{
         return $user;
     }
 
+    // FAIRE TEST
+    //récupère un email en particulier dans la base de données 
+    function findEmail($email){
+        $sql = "SELECT * FROM `users` WHERE mail='$email'";
+        $data = $this->executeRequest($sql);
+        $user = new User();
+        $user->fillObject($data[0]);
+        return $user;
+    }
+
     /* INSERT */
     public function addUser(){
         $sql = "INSERT INTO users(mail,`password`,token,firstName,lastName,nickname,dateBirth,phone,emergencyMail,parentMail,isPlayer,isStaff)
                 VALUES ('$this->mail','$this->password','$this->token','$this->firstName','$this->lastName','$this->nickname','$this->dateBirth','$this->phone','$this->emergencyMail','$this->parentMail','$this->isPlayer','$this->isStaff')";
         $id=$this->executeRequest($sql,false);
         $this->id = $id;
+    }
+
+    /* UPDATE */
+
+    public function updateUser(){
+        $sql="UPDATE `users` SET `mail`='$this->mail', `firstName`='$this->firstName',`lastName`='$this->lastName',`nickname`='$this->nickname',`dateBirth`='$this->dateBirth',`phone`='$this->phone',`isAdmin`='$this->isAdmin',`emergencyMail`='$this->emergencyMail',`parentMail`='$this->parentMail',`isPlayer`='$this->isPlayer',`isStaff`='$this->isStaff' WHERE id='$this->id' ";
+        $this->executeRequest($sql,false);
     }
 
     /* Connexion */

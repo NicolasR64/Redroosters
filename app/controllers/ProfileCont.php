@@ -17,7 +17,6 @@ class ProfileCont {
             }else{
                 $resultat = $user->getUserById($_SESSION['id']);
             }
-            
             return $resultat;
         }else{
             /*
@@ -67,6 +66,15 @@ class ProfileCont {
         return $resultat;
     }
 
+    // FAIRE TEST
+    // récupère l'ensemble des functions
+    function getAllFunction(){
+        require_once('../models/Functions.php');
+        $Function = new Functions();
+        $resultat = $Function->getAllFunction();
+        return $resultat;
+    }
+
     //FAIRE TEST
     // vérifie si l'utiliateur est en droit d'accéder à la page profileManagement
     function isEligibleToModify(){
@@ -78,4 +86,23 @@ class ProfileCont {
 
         return $can;
     }
+
+    //FAIRE TEST
+    // renvoi l'ensemble des positions existantes
+    function getAllPositions(){
+        require_once('../models/Position.php');
+        $Position = new Position();
+        $resultat = $Position->getAllPosition();
+        return $resultat;
+    }
+
+    //FAIRE TEST
+    // vérifie si un adresse email existe dans la base de donnée
+    function findEmail($email){
+        require_once("../models/User.php");
+        $user = new User();
+        $resultat = $user->findEmail($email);
+        return $resultat->getMail();
+    }
 }
+

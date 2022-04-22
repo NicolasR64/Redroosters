@@ -27,3 +27,9 @@ RewriteRule "forgot-password$" "app/views/forgot_password.php"
 RewriteRule "home$" "app/views/home.php"
 
 RewriteRule "league$" "app/views/league.php"
+
+RewriteRule "profile$" "app/views/profile.php"
+
+RewriteRule "profileManagement$" "app/views/profileManagement.php"
+
+RewriteRule "profileUpdateCont$" "app/controllers/profileUpdateCont.php"
