@@ -1,12 +1,26 @@
+<?php
+if (empty($active)) {
+  $active = "";
+}
+?>
+
 <nav>
   <ul class="mobile">
     <li>
-      <a href="/home" class="button active">
-        <i class="fa-solid fa-house"></i>
+      <a href="/home" class="button
+      <?php if ($active == "home") {
+        echo "active";
+      } ?>
+      ">
+        <i class=" fa-solid fa-house"></i>
       </a>
     </li>
     <li>
-      <a href="/memberlist" class="button">
+      <a href="/memberlist" class="button
+      <?php if ($active == "memberlist") {
+        echo "active";
+      } ?>
+      ">
         <i class="fa-solid fa-users"></i>
       </a>
     </li>

@@ -19,7 +19,12 @@ require_once("../controllers/isConnect.php");
 
 <body class="text-center">
 
-  <?php require_once("../views/includes/header.php"); ?>
+  <?php
+
+  $active = "home";
+  require_once("../views/includes/header.php");
+
+  ?>
 
   <div class="container align-items-center align-middle d-grid mx-auto w-100 vh-100">
 
