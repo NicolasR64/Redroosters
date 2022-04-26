@@ -4,19 +4,18 @@ session_start();
 
 require_once("../controllers/isDisconnect.php");
 
+require_once("../controllers/registerCont.php");
+
 ?>
 
 <!DOCTYPE html>
-<?php
-require_once("../controllers/registerCont.php");
-?>
 <html lang="fr">
 
 <head>
 
-  <?php require_once("../views/includes/head.php"); ?>
+    <?php require_once("../views/includes/head.php"); ?>
 
-  <title>Inscription | Redroosters</title>
+    <title>Inscription | Redroosters</title>
 
 </head>
 
@@ -29,7 +28,7 @@ require_once("../controllers/registerCont.php");
                 <form class="form-signin" data-bitwarden-watching="1" method="post">
                     <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy" />
                     <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
-                    <label for="inputCode" class="sr-only">Code</label>
+                    <label for="inputCode">Code</label>
                     <input type="password" name="inputCode" id="inputCode" class="form-control" required="" autofocus="">
                     <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" value="envoyer">Continuer</button>
                     <a class="btn btn-lg btn-secondary btn-block mt-1 mb-2 w-100" href="/login">Connexion</a>
@@ -44,19 +43,19 @@ require_once("../controllers/registerCont.php");
                 <form name="insc" class="form-signin" data-bitwarden-watching="1" method="post" id="insc">
                     <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy" />
                     <h1 class="h3 mb-3 font-weight-normal">Redroosters</h1>
-                    <label for="inputFirstName" class="sr-only">Prénom*</label>
+                    <label for="inputFirstName">Prénom*</label>
                     <input type="text" id="inputFirstName" name="inputFirstName" class="form-control" required="" autofocus="">
-                    <label for="inputLastName" class="sr-only">Nom*</label>
+                    <label for="inputLastName">Nom*</label>
                     <input type="text" id="inputLastName" name="inputLastName" class="form-control" required="">
-                    <label for="inputDateBirth" class="sr-only">Date de naissance*</label>
+                    <label for="inputDateBirth">Date de naissance*</label>
                     <input type="date" id="inputDateBirth" name="inputDateBirth" class="form-control" required="">
-                    <label for="inputPhone" class="sr-only">Numéro de téléphone*</label>
+                    <label for="inputPhone">Numéro de téléphone*</label>
                     <input type="tel" id="inputPhone" name="inputPhone" class="form-control" required="">
-                    <label for="inputEmail" class="sr-only">E-Mail*</label>
+                    <label for="inputEmail">E-Mail*</label>
                     <input type="email" id="inputEmail" name="inputEmail" class="form-control">
-                    <label for="inputPassword" class="sr-only">Mot de passe*</label>
+                    <label for="inputPassword">Mot de passe*</label>
                     <input type="password" id="inputPassword" name="inputPassword" class="form-control" required="">
-                    <label for="inputPasswordConfirm" class="sr-only">Confirmation*</label>
+                    <label for="inputPasswordConfirm">Confirmation*</label>
                     <input type="password" id="inputPasswordConfirm" name="inputPasswordConfirm" class="form-control" required="">
                     <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" name="confStep2" id="confStep2" value="envoyer">Inscription</button>
                     <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
