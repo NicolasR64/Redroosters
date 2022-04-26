@@ -19,7 +19,12 @@ require_once("../controllers/isConnect.php");
 
 <body class="text-center text-light">
 
-  <?php require_once("../views/includes/header.php"); ?>
+  <?php
+
+  $active = "memberlist";
+  require_once("../views/includes/header.php");
+
+  ?>
 
   <h1>Je suis la page memberlist</h1>
 
