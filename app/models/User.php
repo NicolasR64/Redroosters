@@ -32,6 +32,18 @@ class User extends Model{
         return $user;
     }
 
+    function getAllUsers(){
+        $joueurs = array();
+        $sql = "SELECT * FROM `users`";
+        $data = $this->executeRequest($sql);
+        foreach($data as $elem){
+            $player = new User();
+            $player->fillObject($elem);
+            array_push($joueurs,$player);
+        }
+        return $joueurs;
+    }
+
     // FAIRE TEST
     //récupère un email en particulier dans la base de données 
     function findEmail($email){
