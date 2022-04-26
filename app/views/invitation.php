@@ -6,7 +6,7 @@
 <html lang="fr">
     <head>
         <?php require_once("../views/includes/head.php")?>
-        <script src="../js/checkAllInv.js"></script>
+        <script src="../js/checkAllInv.js" async></script>
         <title>Redroosters</title>
     </head>
     <body class="text-center text-light">
