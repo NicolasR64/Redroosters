@@ -45,6 +45,12 @@ class Participe extends Model{
     {
         $this->idUser = $idUser;
     }
+
+    /* Ajout d'une entrée*/
+    public function addEntry($event,$user){
+        $sql = "INSERT INTO participe (idEvent, idUser, isDispo) VALUES ('$event','$user',0)";
+        $this->executeRequest($sql,false);
+    }
 }
 
 
