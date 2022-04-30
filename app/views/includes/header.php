@@ -30,7 +30,11 @@ if (empty($active)) {
       </a>
     </li>
     <li>
-      <a href="/events" class="button">
+      <a href="/events" class="button
+      <?php if ($active == "events") {
+        echo "active";
+      } ?>
+      ">
         <i class="fa-solid fa-calendar"></i>
       </a>
     </li>
