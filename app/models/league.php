@@ -88,4 +88,15 @@ class League extends Model{
     {
         $this->category = $category;
     }
+
+    /**
+     * add data to the db
+     */
+    public function addLeague()
+    {
+        $sql = "INSERT INTO league (seasonYear, category)
+     VALUES ('$this->seasonYear','$this->category')";
+        $id = $this->executeRequest($sql, false);
+        $this->id = $id;
+    }
 }
