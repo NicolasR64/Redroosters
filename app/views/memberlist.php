@@ -13,7 +13,7 @@ require_once("../controllers/isConnect.php");
 
   <?php require_once("../views/includes/head.php"); ?>
 
-  <title>Home | Redroosters</title>
+  <title>Liste des membres | Redroosters</title>
 
 </head>
 
@@ -26,7 +26,7 @@ require_once("../controllers/isConnect.php");
 
   ?>
 
-  <h1>Je suis la page memberlist</h1>
+  <h1>Liste des membres</h1>
 
   <?php require_once("../views/includes/footer.php"); ?>
 

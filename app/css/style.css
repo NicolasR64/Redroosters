@@ -5,6 +5,24 @@ body {
   background-color: #141f25;
 }
 
+.btn-fixed {
+  background-color: #da373a;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.22),
+    0 3px 1px -2px rgba(0, 0, 0, 0.44), 0 1px 5px 0 rgba(0, 0, 0, 0.22);
+  color: #fff;
+  border-radius: 50px;
+  bottom: 22px;
+  cursor: pointer;
+  display: block;
+  height: 50px;
+  line-height: 50px;
+  position: fixed;
+  right: 22px;
+  text-align: center;
+  width: 50px;
+  z-index: 600;
+}
+
 /* END - All Pages */
 
 /* Nav - BEGIN */
@@ -118,7 +136,6 @@ nav i {
     height: 80px;
     display: block;
   }
-
 }
 
 @media (hover: none) and (pointer: coarse) {
@@ -178,7 +195,6 @@ nav i {
     height: 80px;
     display: block;
   }
-
 }
 
 /* Nav - END */
@@ -224,13 +240,13 @@ input {
 
 /* BEGIN - league page */
 
-.table>thead {
-  background-color: #DA373A;
+.table > thead {
+  background-color: #da373a;
   border-radius: 10px;
   color: white;
 }
 
-.table>tr {
+.table > tr {
   border: 0px;
 }
 
@@ -254,7 +270,7 @@ a.event-brick-cell {
   padding: 20px;
   border-radius: 10px;
   border: 2px solid #fff;
-  border-left: 12px solid #084298;
+  border-left: 12px solid #da373a;
   margin-bottom: 10px;
   display: block;
   min-width: 100%;
@@ -264,7 +280,8 @@ a.event-brick-cell {
 a.event-brick-cell:hover {
   color: #fff;
   filter: brightness(0.8);
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%), 0 1px 8px 0 rgb(0 0 0 / 12%);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%),
+    0 1px 8px 0 rgb(0 0 0 / 12%);
 }
 
 a.event-brick-cell .date {
@@ -285,12 +302,12 @@ a.event-brick-cell .time-left {
 
 /*BEGIN - Event page */
 
-.information{
+.information {
   margin-left: 8px;
   margin-bottom: 2%;
 }
 
-.flex-container{
+.flex-container {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #384651;
@@ -298,21 +315,20 @@ a.event-brick-cell .time-left {
   margin: auto;
   margin-top: 2%;
   width: 400px;
-
 }
 
-.descriptionCont{
+.descriptionCont {
   border-style: solid;
   padding: 5%;
   border-width: 2px;
-  margin:auto;
+  margin: auto;
   margin-left: 30%;
 }
 
-.rdvField{
+.rdvField {
   border-style: solid;
   border-width: 2px;
-  margin:auto;
+  margin: auto;
   width: 43%;
 }
 
