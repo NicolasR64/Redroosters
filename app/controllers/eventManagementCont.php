@@ -131,7 +131,7 @@
 
                                                             $error = "Evènement créé";
                                                             $_SESSION["error"]=$error;
-                                                            header("Location:../views/invitation.php?idEvent=$id");
+                                                            header("Location:/app/views/invitation.php?idEvent=$id");
 
                                                         }else{
                                                             $error = "Le champs 'Date de rendez-vous' n'est pas rempli";  
