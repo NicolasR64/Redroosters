@@ -37,25 +37,26 @@ function getXhr(){
     }
   }
 
-  //TODO changer le nom des forms 
 submit.addEventListener('submit',handler = function(event){
-    let email = document.forms["log"]["inputEmail"].value;
-    let pwd = document.forms["log"]["inputPassword"].value;
+    let category = document.forms["formLeagueManagement"]["inputCategorie"].value;
+    let seasonYear = document.forms["formLeagueManagement"]["inputSeasonYear"].value;
 
     errors = 0;
 
-    if (pwd == ""){
-        alert("veuillez renseigner un mot de passe");
+    if (category == ""){
+        alert("veuillez renseigner la catégorie");
         errors++;
+        event.preventDefault();
       }
-    if (email == ""){
-        alert("veuillez renseigner un email");
+    if (seasonYear == ""){
+        alert("veuillez renseigner la saison");
         errors++;
+        event.preventDefault();
     }
-
-    event.preventDefault();
-      if(errors == 0){
-        xhr.open("GET","/app/ajax/coCheckLog.php?email="+email+"&pwd="+pwd,true);
-        xhr.send(null);
-      }
+    if(seasonYear >=2100 || seasonYear <= 1980 && seasonYear != ""){
+        alert("veuillez rentrer une année valide");
+        errors++;
+        event.preventDefault();
+    }
+   
 })
