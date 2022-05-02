@@ -1,7 +1,9 @@
 <?php
+
 if (empty($active)) {
   $active = "";
 }
+
 ?>
 
 <nav>
@@ -39,7 +41,11 @@ if (empty($active)) {
       </a>
     </li>
     <li>
-      <a href="#" class="button">
+      <a href="/profile" class="button
+      <?php if ($active == "profile") {
+        echo "active";
+      } ?>
+      ">
         <i class="fa-solid fa-user"></i>
       </a>
     </li>
