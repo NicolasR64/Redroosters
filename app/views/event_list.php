@@ -1,84 +1,120 @@
+<?php
+
+session_start();
+
+require_once("../views/includes/head.php");
+
+require_once("../controllers/eventListCont.php");
+
+?>
+
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <?php require_once("../views/includes/head.php");
-          require_once("../controllers/eventListCont.php");
-    ?>
-    <script src="/app/js/checkButtonStatus.js" async></script>
-    <title>Redroosters</title>
+
+    <?php require_once("../views/includes/head.php"); ?>
+
+    <title>Evénements | Redroosters</title>
+
 </head>
+
 <body>
 
-<?php require_once("../views/includes/header.php");?>
+    <?php
+    $active = "events";
+    require_once("../views/includes/header.php"); ?>
 
-<h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements à venir</h1>
+    <div class="container align-items-center align-middle d-grid mx-auto w-100 vh-100 text-center">
 
-<?php
-if(!isset($upcomingEvents) || $upcomingEvents == "" || $upcomingEvents == Array()){
-    echo "<div class='text-center'>Il n'y a pas d'évènements à afficher</div><br>";
-}else{
-foreach($upcomingEvents as $elem){
-    echo "<div class ='event-block align-middle mx-auto'>";
-    echo "<span class='title'>".$elem->getName()."<br></span>";
-?>
-    <div class ="text-flex-row">
-        <div class="text-flex-column-first">
-                <div class="informations">
+        <h2>Liste des évènements à venir</h2>
+
+        <?php
+        if (!isset($upcomingEvents) || $upcomingEvents == "" || $upcomingEvents == array()) {
+        ?>
+
+            <span>
+                Il n'y a pas d'évènements à afficher
+            </span>
+
+        <?php
+        } else {
+        ?>
+
+            <div class="event-brick-grid">
+
                 <?php
-                echo "<div class='dateHeure'>".$elem->getDateBegin()."</div>";
+                foreach ($upcomingEvents as $elem) {
                 ?>
-                <div class="heure">10H</div>
-                <div class="minutes">08</div>
-            </div>
-        </div>   
-        <div class="text-flex-column"> 
-            <?php
-            echo "<div class='adresse'>".$elem->getStreet().", ".$elem->getPostalCode()." ".$elem->getCity()."</div>";
-            echo "<div class='timeLeft'>Dans ".calculateDays($elem->getDateBegin())."</div><br>";
-            ?>
-        </div>
-    </div>
-</div>
-<?php
-} 
-}
-?>
-<br>
-<h1 class="h3 mb-3 font-weight-normal text-center">Liste des évènements passés</h1>
 
-<?php
-if(!isset($pastEvents) || $pastEvents == "" || $pastEvents == Array()){
-    echo "<div class='text-center'>Il n'y a pas d'évènements à afficher</div><br>";
-}else{
+                    <a href="/event/<?php echo $elem->getId(); ?>" class="event-brick-cell">
+                        <h2><?php echo $elem->getName(); ?></h2>
+                        <span class="date">Le <?php echo $elem->getDateBegin(); ?> à&nbsp;<?php echo $elem->getRdvHours(); ?></span>
+                        <span class="address">
+                            <?php echo $elem->getStreet(); ?>
+                            <br /><?php echo $elem->getPostalCode(); ?> - <?php echo $elem->getCity(); ?>
+                        </span>
+                        <span class="time-left">
+                            Dans <?php echo calculateDays($elem->getDateBegin()); ?>
+                        </span>
+                    </a>
 
-foreach($pastEvents as $elem){
-    echo "<div class ='event-block align-middle mx-auto'>";
-    echo "<span class='title'>".$elem->getName()."<br></span>";
-?>
-    <div class ="text-flex-row">
-        <div class="text-flex-column-first">
-             <br>
-                <div class="informations">
                 <?php
-                echo "<div class='dateHeure'>".$elem->getDateBegin()."</div>";
+                }
                 ?>
-                <div class="heure">10H</div>
-                <div class="minutes">08</div>
+
             </div>
-        </div>   
-        <div class="text-flex-column"> 
-            <?php
-            echo "<div class='adresse'>".$elem->getStreet().", ".$elem->getPostalCode()." ".$elem->getCity()."</div>";
-            ?>
-        </div>
+
+        <?php
+        }
+        ?>
+
+        <h2>Liste des évènements passés</h2>
+
+        <?php
+        if (!isset($pastEvents) || $pastEvents == "" || $pastEvents == array()) {
+        ?>
+            <span>
+                Il n'y a pas d'évènements à afficher
+            </span>
+
+        <?php
+        } else {
+        ?>
+
+            <div class="event-brick-grid">
+
+                <?php
+                foreach ($pastEvents as $elem) {
+                ?>
+
+                    <a href="/event/<?php echo $elem->getId(); ?>" class="event-brick-cell">
+                        <h2><?php echo $elem->getName(); ?></h2>
+                        <span class="date">Le <?php echo $elem->getDateBegin(); ?> à&nbsp;<?php echo $elem->getRdvHours(); ?></span>
+                        <span class="address">
+                            <?php echo $elem->getStreet(); ?>
+                            <br /><?php echo $elem->getPostalCode(); ?> - <?php echo $elem->getCity(); ?>
+                        </span>
+                        <span class="time-left">
+                            <?php echo "Il y a " . calculateDays($elem->getDateBegin()); ?>
+                        </span>
+                    </a>
+
+                <?php
+                }
+                ?>
+
+            </div>
+
+        <?php
+        }
+        ?>
     </div>
-</div>
-<br>
-<?php
-} 
-}
-?>
-</div>
-<?php require_once("../views/includes/footer.php");?>
+
+    <a href="event/post" rel="nofollow" class="btn-fixed" title="Ajouter un évènement"><i class="fa-solid fa-calendar-plus"></i></a>
+
+    <?php require_once("../views/includes/footer.php"); ?>
+
 </body>
+
 </html>

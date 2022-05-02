@@ -1,7 +1,8 @@
 <?php
 require_once('Model.php');
 
-class Event extends Model{
+class Event extends Model
+{
 
     private $id;
     private $method;
@@ -22,56 +23,62 @@ class Event extends Model{
 
     //Hydratation//
 
-   public function fillObject(array $data){
-       foreach($data as $key => $value){
-           $method = 'set'.ucfirst($key);
-           if(method_exists($this,$method)){
-            $this->$method($value);
-        }else{
-            echo 'Nom de champs invalide';
+    public function fillObject(array $data)
+    {
+        foreach ($data as $key => $value) {
+            $method = 'set' . ucfirst($key);
+            if (method_exists($this, $method)) {
+                $this->$method($value);
+            } else {
+                echo 'Nom de champs invalide';
+            }
         }
-     }
-   }
+    }
 
     // Get event with a specific id //
 
-    public function getEventById($id){
-           $sql = "SELECT * FROM `event` WHERE `id` = $id";
-           $data = $this->executeRequest($sql);
-           $event = new Event();
-           $event->fillObject($data[0]);
-           return $event;
+    public function getEventById($id)
+    {
+        $sql = "SELECT * FROM `event` WHERE `id` = $id";
+        $data = $this->executeRequest($sql);
+        if (!empty($data)) {
+            $event = new Event();
+            $event->fillObject($data[0]);
+        }
+        return $event;
     }
 
     // Get all events ordering by asc date //
 
-    public function getEventAsc(){
-            $tdsDate = date('Y-m-d');
-            $sql = "SELECT * FROM `event` WHERE `dateBegin` >= '$tdsDate' ORDER BY `dateBegin` ASC";
-            $arrayResult = $this->executeRequest($sql,PDO::FETCH_ASSOC);
-            $data = array();
+    public function getEventAsc()
+    {
+        $tdsDate = date('Y-m-d');
+        $sql = "SELECT * FROM `event` WHERE `dateBegin` >= '$tdsDate' ORDER BY `dateBegin` ASC";
+        $arrayResult = $this->executeRequest($sql, PDO::FETCH_ASSOC);
+        $data = array();
 
-            foreach ($arrayResult as $elem){
-                $event = new Event();
-                $event->fillObject($elem);
-                array_push($data,$event);
-            }
+        foreach ($arrayResult as $elem) {
+            $event = new Event();
+            $event->fillObject($elem);
+            array_push($data, $event);
+        }
 
-            return $data;
+        return $data;
     }
 
     // Get all events ordering by desc date //
 
-    public function getEventDesc(){
+    public function getEventDesc()
+    {
         $tdsDate = date('Y-m-d');
         $sql = "SELECT * FROM `event` WHERE `dateBegin` <= '$tdsDate' ORDER BY `dateBegin` Desc";
-        $arrayResult = $this->executeRequest($sql,PDO::FETCH_ASSOC);
+        $arrayResult = $this->executeRequest($sql, PDO::FETCH_ASSOC);
         $data = array();
 
-        foreach ($arrayResult as $elem){
+        foreach ($arrayResult as $elem) {
             $event = new Event();
             $event->fillObject($elem);
-            array_push($data,$event);
+            array_push($data, $event);
         }
 
         return $data;
@@ -79,10 +86,12 @@ class Event extends Model{
 
     //Insert function//
 
-    public function addEvent(){
-    $sql = "INSERT INTO `event` (`rdvDate`, `rdvHours`, `rdvCity`, `rdvStreet`, `rdvPostalCode`, `name`, `hours`, `street`, `city`, `postalCode`, `description`, `dateBegin`, `dateEnd`)
+    public function addEvent()
+    {
+        $sql = "INSERT INTO `event` (`rdvDate`, `rdvHours`, `rdvCity`, `rdvStreet`, `rdvPostalCode`, `name`, `hours`, `street`, `city`, `postalCode`, `description`, `dateBegin`, `dateEnd`)
      VALUES ('$this->rdvDate','$this->rdvHours','$this->rdvCity','$this->rdvStreet','$this->rdvPostalCode','$this->name','$this->hours','$this->street','$this->city','$this->postalCode','$this->description','$this->dateBegin','$this->dateEnd')";
-    $this->executeRequest($sql,false);
+        $id = $this->executeRequest($sql, false);
+        $this->id = $id;
     }
 
 
@@ -92,12 +101,11 @@ class Event extends Model{
     {
         return $this->id;
     }
-   
-  
+
+
     public function setId($id)
     {
         $this->id = $id;
-   
     }
 
 
@@ -105,110 +113,132 @@ class Event extends Model{
     {
         return $this->rdvDate;
     }
-   
-  
-    public function setRdvDate($rdvDate){
+
+
+    public function setRdvDate($rdvDate)
+    {
         $this->rdvDate = $rdvDate;
-   
     }
 
-    public function setName($name){
+    public function setName($name)
+    {
         $this->name = $name;
     }
 
-    public function getName(){
+    public function getName()
+    {
         return $this->name;
     }
 
-    public function setDateBegin($dateBegin){
+    public function setDateBegin($dateBegin)
+    {
         $this->dateBegin = $dateBegin;
     }
 
-    public function getDateBegin(){
+    public function getDateBegin()
+    {
         return $this->dateBegin;
     }
 
-    public function setDateEnd($dateEnd){
+    public function setDateEnd($dateEnd)
+    {
         $this->dateEnd = $dateEnd;
     }
 
-    public function getDateEnd(){
+    public function getDateEnd()
+    {
         return $this->dateEnd;
     }
 
-    public function setRdvHours($rdvHours){
+    public function setRdvHours($rdvHours)
+    {
         $this->rdvHours = $rdvHours;
     }
 
-    public function getRdvHours(){
+    public function getRdvHours()
+    {
         return $this->rdvHours;
     }
 
-    public function setStreet($street){
+    public function setStreet($street)
+    {
         $this->street = $street;
     }
 
-    public function getStreet(){
+    public function getStreet()
+    {
         return $this->street;
     }
 
-    public function setRdvCity($rdvCity){
+    public function setRdvCity($rdvCity)
+    {
         $this->rdvCity = $rdvCity;
     }
 
-    public function getRdvCity(){
+    public function getRdvCity()
+    {
         return $this->rdvCity;
     }
 
-    public function setCity($city){
+    public function setCity($city)
+    {
         $this->city = $city;
     }
 
-    public function getCity(){
+    public function getCity()
+    {
         return $this->city;
     }
 
-    public function setPostalCode($postalCode){
+    public function setPostalCode($postalCode)
+    {
         $this->postalCode = $postalCode;
     }
 
-    public function getPostalCode(){
+    public function getPostalCode()
+    {
         return $this->postalCode;
     }
 
-    public function setRdvStreet($rdvStreet){
+    public function setRdvStreet($rdvStreet)
+    {
         $this->rdvStreet = $rdvStreet;
     }
 
-    public function getRdvStreet(){
+    public function getRdvStreet()
+    {
         return $this->rdvStreet;
     }
 
-    public function setHours($hours){
+    public function setHours($hours)
+    {
         $this->hours = $hours;
     }
 
-    public function getHours(){
+    public function getHours()
+    {
         return $this->hours;
     }
 
 
-    public function setRdvPostalCode($rdvPostalCode){
+    public function setRdvPostalCode($rdvPostalCode)
+    {
         $this->rdvPostalCode = $rdvPostalCode;
     }
 
-    public function getRdvPostalCode(){
+    public function getRdvPostalCode()
+    {
         return $this->rdvPostalCode;
     }
 
-    
-    public function setDescription($description){
+
+    public function setDescription($description)
+    {
         $this->description = $description;
     }
 
-    public function getDescription(){
+    public function getDescription()
+    {
         return $this->description;
     }
 }
-
-?>

@@ -1,3 +1,12 @@
+<?php
+
+session_set_cookie_params(6000);
+session_start();
+
+require_once("../controllers/isDisconnect.php");
+
+?>
+
 <!DOCTYPE html>
 <?php
     require_once("../controllers/loginCont.php");

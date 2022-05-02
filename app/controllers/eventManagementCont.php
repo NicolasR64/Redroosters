@@ -127,9 +127,11 @@
                                                             $event->setHours($totalHours);
                                                             $event->addEvent();
 
+                                                            $id = $event->getId();
+
                                                             $error = "Evènement créé";
                                                             $_SESSION["error"]=$error;
-                                                            header("Location:../views/event_management.php");
+                                                            header("Location:/app/views/invitation.php?idEvent=$id");
 
                                                         }else{
                                                             $error = "Le champs 'Date de rendez-vous' n'est pas rempli";  

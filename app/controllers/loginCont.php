@@ -1,6 +1,4 @@
 <?php
-    session_set_cookie_params(6000);
-	session_start();
     require_once("../models/User.php");
 
     // Elimine les dangers éventuelles pouvant provenir des données entrée par l'utilisateur
@@ -25,7 +23,3 @@
             }
         }
     }
-
-
-
-?>
