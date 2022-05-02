@@ -34,7 +34,13 @@ require_once("../controllers/isConnect.php");
     ?>
 </head>
 <body>
-    <?php require_once("../views/includes/header.php"); ?>
+    <?php require_once("../views/includes/header.php");
+    
+    $sessionUser = unserialize($_SESSION['user']);
+    if (($user->getId() != $sessionUser->getId()) || !$sessionUser->getIsAdmin()) {
+        header('location: /profile');
+    }
+    ?>
     <main>
         <!-- Hero profile -->
         <div class="mt-4 text-center container-fluid profile-header">

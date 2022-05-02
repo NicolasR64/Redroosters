@@ -36,6 +36,7 @@ require_once("../controllers/isConnect.php");
     require_once("../views/includes/header.php");
     ?>
     <main>
+        <!-- Verifier si joueur existe et si pas alors rediriger TO DO -->
         <!-- Hero profile -->
         <div class="mt-4 text-center container-fluid profile-header">
             <!-- image de profil -->
