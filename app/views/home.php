@@ -30,39 +30,6 @@ require_once("../controllers/isConnect.php");
 
     <h1>Je suis la page home</h1>
 
-    <div class="event-brick-grid">
-
-      <a href="#" class="event-brick-cell">
-        <h2>Promenade pokemon go</h2>
-        <span class="date">2022-05-06 - 10h08</span>
-        <span class="address">
-          Une rue à chatelet, 6200 Chatelet
-        </span>
-        <span class="time-left">
-          Dans 15 jours
-        </span>
-      </a>
-      <a href="#" class="event-brick-cell">
-        <h2>Promenade pokemon go</h2>
-        <span>2022-05-06</span>
-        <span></span>
-        <span>10h08
-          Une rue à chatelet, 6200 Chatelet
-          Dans 15 jours
-        </span>
-      </a>
-      <a href="#" class="event-brick-cell">
-        <h2>Promenade pokemon go</h2>
-        <span>2022-05-06</span>
-        <span></span>
-        <span>10h08
-          Une rue à chatelet, 6200 Chatelet
-          Dans 15 jours
-        </span>
-      </a>
-
-    </div>
-
     <p>
       Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni sequi laudantium aut asperiores nulla libero temporibus, nesciunt, voluptatem repellat neque natus assumenda laborum repellendus ipsam ea iusto amet? Impedit, error!
     </p>
