@@ -20,7 +20,7 @@ require_once("../controllers/isConnect.php");
     $user = $contProfile->getUser();
     $sessionUser =  unserialize($_SESSION['user']);
     if( ($user->getId() != $sessionUser->getId()) && ($sessionUser->getIsAdmin() == 0)){
-      //TO DO
+        header('location: /profile');
     }
     if ($user->getIsPlayer() == 1) {
         //c'est un joueur
@@ -37,9 +37,7 @@ require_once("../controllers/isConnect.php");
     <?php require_once("../views/includes/header.php");
     
     $sessionUser = unserialize($_SESSION['user']);
-    if (($user->getId() != $sessionUser->getId()) || !$sessionUser->getIsAdmin()) {
-        header('location: /profile');
-    }
+
     ?>
     <main>
         <!-- Hero profile -->
