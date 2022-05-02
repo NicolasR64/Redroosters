@@ -331,9 +331,6 @@ require_once("../controllers/isConnect.php");
                         </form>
                         <!-- Script de vérification du formulaire -->
                         <script async src="app/js/checkInputUpdateProfile.js"></script>
-                        <div class=" d-flex justify-content-end mt-3">
-                            <a class="btn btn-primary" href="homePage.php">revenir en arrière</a>
-                        </div>
                     </div>
                 </div>
             </div>

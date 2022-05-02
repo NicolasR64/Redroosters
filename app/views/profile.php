@@ -31,7 +31,10 @@ require_once("../controllers/isConnect.php");
 </head>
 
 <body>
-    <?php require_once("../views/includes/header.php"); ?>
+    <?php
+    $active = "profile";
+    require_once("../views/includes/header.php");
+    ?>
     <main>
         <!-- Hero profile -->
         <div class="mt-4 text-center container-fluid profile-header">
@@ -258,14 +261,12 @@ require_once("../controllers/isConnect.php");
                             <div class="d-flex justify-content-end">
                                 <?php
                                 $sessionUser = unserialize($_SESSION['user']);
-                                if (($user->getId() == $sessionUser->getId()) || ($sessionUser->getIsAdmin())) {
-                                    echo '<a class="btn btn-danger" href="profileManagement">Modifier son profil</a>';
+                                if (($user->getId() == $sessionUser->getId())) {
+                                    echo '<a class="btn btn-danger" href="profile/edit">Modifier son profil</a>';
+                                } else if ($sessionUser->getIsAdmin()) {
+                                    echo '<a class="btn btn-danger" href="/profile/' . $_GET['id'] . '/edit">Modifier son profil</a>';
                                 }
                                 ?>
-                            </div>
-                            <!--  bouton pour revenir en arrière -->
-                            <div class="d-flex justify-content-end mt-3">
-                                <a class="btn btn-primary" href="homePage">revenir en arrière</a>
                             </div>
                         </div>
                     </div>
