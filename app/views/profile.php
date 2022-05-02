@@ -66,6 +66,23 @@ require_once("../controllers/isConnect.php");
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Informations générales</h4>
                         </div>
+                        <div class="row mt-3">
+                                <!-- bouton de modification de profil -->
+                                <div class="d-flex col-md-6 mt-1 justify-content-start">
+                                    <?php
+                                    $sessionUser = unserialize($_SESSION['user']);
+                                    if (($user->getId() == $sessionUser->getId())) {
+                                        echo '<a class="btn btn-danger" href="profile/edit">Modifier son profil</a>';
+                                    } else if ($sessionUser->getIsAdmin()) {
+                                        echo '<a class="btn btn-danger" href="/profile/' . $_GET['id'] . '/edit">Modifier son profil</a>';
+                                    }
+                                    ?>
+                                </div>
+                                <div class="d-flex col-md-6 mt-1 justify-content-end">
+                                    <a class="btn btn-primary" href="/logout">Se déconecter</a>
+                                </div>
+
+                            </div>
                         <div class="row mt-2">
                             <div class="col-md-6 mt-1">
                                 <!-- lastName -->
@@ -254,20 +271,6 @@ require_once("../controllers/isConnect.php");
                                     ';
                                 }
                                 ?>
-                        </div>
-                        <!-- bas du formulaire -->
-                        <div class="row mt-3">
-                            <!-- bouton de modification de profil -->
-                            <div class="d-flex justify-content-end">
-                                <?php
-                                $sessionUser = unserialize($_SESSION['user']);
-                                if (($user->getId() == $sessionUser->getId())) {
-                                    echo '<a class="btn btn-danger" href="profile/edit">Modifier son profil</a>';
-                                } else if ($sessionUser->getIsAdmin()) {
-                                    echo '<a class="btn btn-danger" href="/profile/' . $_GET['id'] . '/edit">Modifier son profil</a>';
-                                }
-                                ?>
-                            </div>
                         </div>
                     </div>
                 </div>
