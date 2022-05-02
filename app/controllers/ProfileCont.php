@@ -5,10 +5,8 @@ class ProfileCont {
     // FAIRE TEST
     // récupération des données de l'utilisateur
     function getUser(){
-        //vérification que l'id est présent
-        //mettre quand test fini
+        //vérification des données
         if(isset($_SESSION['user'])){
-            require_once('../models/User.php');
             $sessionUser = unserialize($_SESSION['user']);
             $user = new User();
             //récupération de l'utilisateur

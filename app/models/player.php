@@ -200,6 +200,14 @@ class Player extends model{
         $position->fillObject($data[0]);
         return $position;
     }
+
+    //update
+
+    //update le joueur
+    public function updatePlayer(){
+        $sql = "UPDATE `player` SET `seasonArrived`='$this->seasonArrived',`licenseNumber`='$this->licenseNumber',`jerseyNumber`='$this->jerseyNumber',`size`='$this->size',`isCarpooling`='$this->isCarpooling',`weight`='$this->weight',`isSick`='$this->isSick',`isBan`='$this->isBan',`handedness`='$this->handedness',`idPosition`='$this->idPosition' WHERE id='$this->id'";
+        $this->executeRequest($sql);
+    }
 }
 
 

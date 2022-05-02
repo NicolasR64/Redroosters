@@ -85,6 +85,12 @@ class Staff extends Model{
         return $function;
     }
 
+    //update le staff
+    public function updateStaff(){
+        $sql = "UPDATE `staff` SET `seasonArrived`='$this->seasonArrived',`idFunction`='$this->idFunction' WHERE id='$this->id'";
+        $this->executeRequest($sql);
+    }
+
 }
 
 ?>
