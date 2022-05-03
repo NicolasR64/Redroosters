@@ -328,7 +328,7 @@ submit.addEventListener('submit',handler = function(event){
       }
 
       //FAIRE TEST
-      //
+      //WORK
       //isSick
       let isSickError = document.getElementById("isSickError");
       if (isSick == ""){
@@ -342,7 +342,7 @@ submit.addEventListener('submit',handler = function(event){
       }
 
       //FAIRE TEST
-      //
+      //WORK
       //isBan
       let isBanError = document.getElementById("isBanError");
       if (isBan == ""){

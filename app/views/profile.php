@@ -2,6 +2,21 @@
 session_start();
 //vérifie si l'utilisateur est connnecté
 require_once("../controllers/isConnect.php");
+
+//récupération du controller
+require_once("../controllers/ProfileCont.php");
+$contProfile = new ProfileCont();
+//vérifie si le profil existe
+if(isset($_GET['id']) && !empty($_GET['id'])){
+    $exist = $contProfile->isProfilExist($_GET['id']);
+}else{
+    $exist = $contProfile->isProfilExist(unserialize($_SESSION['user'])->getId());
+}
+
+printf($exist);
+if(!$exist){
+    header("location: /profile");
+}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -10,10 +25,6 @@ require_once("../controllers/isConnect.php");
     <title>Profil | Redroosters</title>
     <?php
     require_once("../views/includes/head.php");
-
-    //récupération du controller
-    require_once("../controllers/ProfileCont.php");
-    $contProfile = new ProfileCont();
 
     //récupération du données de l'utilisateur
     $user = $contProfile->getUser();

@@ -102,5 +102,19 @@ class ProfileCont {
         $resultat = $user->findEmail($email);
         return $resultat->getMail();
     }
+
+    //FAIRE TEST
+    //vérifie si le profil existe
+    function isProfilExist($id){
+        require_once('../models/User.php');
+        $user = new User();
+        printf('heerrrre');
+        $exist = $user->getUserById($id);
+        if($exist == null){
+            return false;
+        }else{
+            return true;
+        }
+    }
 }
 
