@@ -80,7 +80,7 @@
                                                             $player->setWeight(60);
                                                             $player->setSize(170);
                                                             $player->setHandedness(0);
-                                                            $player->setLicenseNumber(0); $player->setJerseyNumber(0);
+                                                            $player->setLicenseNumber(0); $player->setJerseyNumber(1);
                                                             $player->setIdPosition(1);
                                                             $player->addPlayer();
                                                            
