@@ -354,7 +354,7 @@ if (!$isError) {
         }
     }
 
-    //header('Location: ../views/profile.php?id='.$_POST['id'].'');
+    header('Location: ../views/profile.php?id='.$_POST['id'].'');
 
 } else {
     header('Location: /profileManagement.php?id='.$_POST['id'].'&error=true');
