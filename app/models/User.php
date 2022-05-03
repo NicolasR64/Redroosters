@@ -124,6 +124,12 @@ class User extends Model{
         $this->executeRequest($sql,false);
     }
 
+    //delete a user
+    public function deleteUser($id){
+        $sql="DELETE FROM `users` WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){
