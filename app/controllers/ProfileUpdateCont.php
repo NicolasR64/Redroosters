@@ -348,9 +348,9 @@ if (!$isError) {
 
         
         if( isset($_POST['id']) && !empty($_POST['id']) ){
-            //header('location: /profile?id='.$_POST['id']);
+            header('location: /profile?id='.$_POST['id']);
         }else{
-            //header("location: /profile");
+            header("location: /profile");
         }
     }
 
