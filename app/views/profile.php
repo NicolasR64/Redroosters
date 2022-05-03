@@ -73,7 +73,7 @@ require_once("../controllers/isConnect.php");
                                     <?php
                                     $sessionUser = unserialize($_SESSION['user']);
                                     if (($user->getId() == $sessionUser->getId())) {
-                                        echo '<a class="btn btn-primary" href="profile/edit">Modifier son profil</a>';
+                                        echo '<a class="btn btn-primary" href="/profile/edit">Modifier son profil</a>';
                                     } else if ($sessionUser->getIsAdmin()) {
                                         echo '<a class="btn btn-primary" href="/profile/' . $_GET['id'] . '/edit">Modifier son profil</a>';
                                     }

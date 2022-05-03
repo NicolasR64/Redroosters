@@ -36,7 +36,7 @@ class Functions extends model{
     // FAIRE TEST
     // Récupère l'ensemble des functions existante
     public function getAllFunction(){
-        $sql = "SELECT name FROM `function`";
+        $sql = "SELECT * FROM `function`";
         $data = $this->executeRequest($sql);
         return $data;
     }

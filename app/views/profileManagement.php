@@ -156,11 +156,11 @@ require_once("../controllers/isConnect.php");
                                         foreach($resultat as $key){
                                             if($function->getName() == $key['name']){
                                                 echo '
-                                                <option  value="' . $key['name'] . '" selected>' . $key['name'] . '</option>
+                                                <option  value="' . $key['id'] . '" selected>' . $key['name'] . '</option>
                                                 ';
                                             }else{
                                                 echo '
-                                                <option  value="' . $key['name'] . '">' . $key['name'] . '</option>
+                                                <option  value="' . $key['id'] . '">' . $key['name'] . '</option>
                                                 ';
                                             }
                                         }
@@ -329,12 +329,12 @@ require_once("../controllers/isConnect.php");
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12 mt-1 text-end">
-                                    <button type="submit" class="btn btn-danger" id="submitUpdateProfile" formaction="app/controllers/ProfileUpdateCont.php?<?php isset($_GET['id']) ? print('id='.$_GET['id']) : print('id='.$sessionUser->getId()); ?>"  formmethod="POST" value="submit">Envoyer</button>
+                                    <button type="submit" class="btn btn-danger" id="submitUpdateProfile" formaction="/app/controllers/ProfileUpdateCont.php?<?php isset($_GET['id']) ? print('id='.$_GET['id']) : print('id='.$sessionUser->getId()); ?>"  formmethod="POST" value="submit">Envoyer</button>
                                 </div>
                             </div>
                         </form>
                         <!-- Script de vérification du formulaire -->
-                        <script async src="app/js/checkInputUpdateProfile.js"></script>
+                        <script async src="/app/js/checkInputUpdateProfile.js"></script>
                     </div>
                 </div>
             </div>

@@ -275,7 +275,7 @@ if ($user->getIsPlayer() == 1) {
         $functions = $contProfile->getAllFunction();
         $isFind = false;
         foreach ($functions as $key => $value) {
-            if ($value['name'] == $_POST["inputFunction"]) {
+            if ($value['id'] == $_POST["inputFunction"]) {
                 $isFind = true;
             }
         }
@@ -336,18 +336,21 @@ if (!$isError) {
         }
         
     } else {
+        require_once("../models/Staff.php");
         $staff = new Staff();
         $staff->setSeasonArrived($_POST['inputSeasonArrivedStaff']);
  
-        $staff->setIdFunction($_POST['']);
+        $staff->setIdFunction($_POST['inputFunction']);
 
-        $staff->updateStaff($id);
+        $staff->setId($_POST['id']);
+
+        $staff->updateStaff();
 
         
         if( isset($_POST['id']) && !empty($_POST['id']) ){
-            header('location: /profile?id='.$_POST['id']);
+            //header('location: /profile?id='.$_POST['id']);
         }else{
-            header("location: /profile");
+            //header("location: /profile");
         }
     }
 
