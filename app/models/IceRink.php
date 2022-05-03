@@ -115,7 +115,15 @@ class IceRink extends Model{
         $data = $this->executeRequest($sql);
         return $data;
     }
-  
+    
+    /**
+     * add ice rink data to the db 
+     */
+    public function addIceRink(){
+        $sql = "INSERT INTO ice_rink (name,city,street,postalCode)  VALUES ('$this->name','$this->city',$this->street,$this->postalCode)";
+        $id = $this->executeRequest($sql, false);
+        $this->id = $id;
+    }
 
 }
 
