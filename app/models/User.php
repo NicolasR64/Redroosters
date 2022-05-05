@@ -141,6 +141,15 @@ class User extends Model{
         $this->executeRequest($sql,false);
     }
 
+    //invert the isStaff value of a user
+    public function changeStaffState($id){
+        $user = $this->getUserById($id);
+        $state = 0;
+        if($user->getIsStaff() == 0) $state = 1;
+        $sql="UPDATE `users` SET `isStaff`='$state' WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
     //invert the isAdmin value of a user
     public function changeAdminState($id){
         $user = $this->getUserById($id);

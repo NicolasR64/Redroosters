@@ -58,7 +58,7 @@ require_once("../controllers/memberListCont.php");
                 <td>
                   <a href='<?php echo $url; ?>?changePlayerState=<?php echo $row->getId(); ?>'><?php if($row->getIsPlayer() == 0){ ?>Désigner joueur<?php } else { ?>Destituer Joueur<?php }?></a>
                   <a href='<?php echo $url; ?>?changeAdminState=<?php echo $row->getId(); ?>'><?php if($row->getIsAdmin() == 0){ ?>Désigner administrateur<?php } else { ?>Destituer administrateur<?php }?></a>
-                  <a href='<?php echo $url; ?>?delete=<?php echo $row->getId(); ?>'>Supprimer</a>
+                  <a href='<?php echo $url; ?>?changeStaffState=<?php echo $row->getId(); ?>'><?php if($row->getIsStaff() == 0){ ?>Désigner membre du personnel<?php } else { ?>Destituer membre du personnel<?php }?></a>
                   <a href='<?php echo $url; ?>?delete=<?php echo $row->getId(); ?>'>Supprimer</a>
                 </td>
               <?php } ?>

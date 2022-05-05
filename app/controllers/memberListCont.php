@@ -55,6 +55,30 @@ $url.= $_SERVER['REQUEST_URI'];
             header("Location: $url");
         }
 
+        if(isset($_GET["changeStaffState"]) && !empty($_GET["changeStaffState"]) && unserialize($_SESSION["user"])->getIsAdmin() == 1){
+            $id = $_GET["changeStaffState"];
+            $user->changeStaffState($id);
+            if(!($staff->checkStaff($id))){
+                $staff->setSeasonArrived(date("Y-m-d"));
+                $staff->setId($id);
+                $staff->setIdFunction(1);
+                $staff->addStaff();
+            }
+            if($id == unserialize($_SESSION["user"])->getId()){
+                if(unserialize($_SESSION["user"])->getIsStaff() == 1) {
+                    $copy = unserialize($_SESSION["user"]);
+                    $copy->setIsStaff(0);
+                    $_SESSION["user"]=serialize($copy);
+                } else {
+                    $copy = unserialize($_SESSION["user"]);
+                    $copy->setIsStaff(1);
+                    $_SESSION["user"]=serialize($copy);
+                }
+            }
+            $url = strtok($url, '?');
+            header("Location: $url");
+        }
+
         if(isset($_GET["changeAdminState"]) && !empty($_GET["changeAdminState"]) && unserialize($_SESSION["user"])->getIsAdmin() == 1){
             $id = $_GET["changeAdminState"];
             $nbAdmin = $user->checkNumberOfAdmin();
