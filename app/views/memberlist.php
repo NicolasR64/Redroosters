@@ -56,10 +56,8 @@ require_once("../controllers/memberListCont.php");
               <td><?php echo $row->getStaff(); ?></td>
               <?php if (unserialize($_SESSION["user"])->getIsAdmin() == 1) { ?>
                 <td>
-                  
-                    <a href='<?php echo $url; ?>?changePlayerState=<?php echo $row->getId(); ?>'><?php if($row->getIsPlayer() == 0){ ?>Désigner joueur<?php } else { ?>Destituer Joueur<?php }?></a>
-                  
-                  <a href='<?php echo $url; ?>?delete=<?php echo $row->getId(); ?>'>Supprimer</a>
+                  <a href='<?php echo $url; ?>?changePlayerState=<?php echo $row->getId(); ?>'><?php if($row->getIsPlayer() == 0){ ?>Désigner joueur<?php } else { ?>Destituer Joueur<?php }?></a>
+                  <a href='<?php echo $url; ?>?changeAdminState=<?php echo $row->getId(); ?>'><?php if($row->getIsAdmin() == 0){ ?>Désigner administrateur<?php } else { ?>Destituer administrateur<?php }?></a>
                   <a href='<?php echo $url; ?>?delete=<?php echo $row->getId(); ?>'>Supprimer</a>
                   <a href='<?php echo $url; ?>?delete=<?php echo $row->getId(); ?>'>Supprimer</a>
                 </td>

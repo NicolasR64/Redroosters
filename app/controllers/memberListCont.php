@@ -27,19 +27,45 @@ $url.= $_SERVER['REQUEST_URI'];
                 $staff = $staff->getStaffById($elem->getId());
                 $pos = $staff->getFunction($staff->getIdFunction());
                 $elem->setStaff($pos->getName());
-            } else $elem->setStaff("N/A");
+            } else $elem->setStaff("N/A"); 
         }
 
-        if(isset($_GET["delete"]) && !empty($_GET["delete"]) && unserialize($_SESSION["user"])->getId()){
+        if(isset($_GET["delete"]) && !empty($_GET["delete"]) && unserialize($_SESSION["user"])->getIsAdmin() == 1){
             $id = $_GET["delete"];
-            $user->deleteUser($id);
+            if($id != unserialize($_SESSION["user"])->getId()) $user->deleteUser($id);
             $url = strtok($url, '?');
             header("Location: $url");
         }
 
-        if(isset($_GET["changePlayerState"]) && !empty($_GET["changePlayerState"]) && unserialize($_SESSION["user"])->getId()){
+        if(isset($_GET["changePlayerState"]) && !empty($_GET["changePlayerState"]) && unserialize($_SESSION["user"])->getIsAdmin() == 1){
             $id = $_GET["changePlayerState"];
             $user->changePlayerState($id);
+            if($id == unserialize($_SESSION["user"])->getId()){
+                if(unserialize($_SESSION["user"])->getIsPlayer() == 1) {
+                    $copy = unserialize($_SESSION["user"]);
+                    $copy->setIsPlayer(0);
+                    $_SESSION["user"]=serialize($copy);
+                } else {
+                    $copy = unserialize($_SESSION["user"]);
+                    $copy->setIsPlayer(1);
+                    $_SESSION["user"]=serialize($copy);
+                }
+            }
+            $url = strtok($url, '?');
+            header("Location: $url");
+        }
+
+        if(isset($_GET["changeAdminState"]) && !empty($_GET["changeAdminState"]) && unserialize($_SESSION["user"])->getIsAdmin() == 1){
+            $id = $_GET["changeAdminState"];
+            $nbAdmin = $user->checkNumberOfAdmin();
+            if($nbAdmin > 1){
+                $user->changeAdminState($id);
+                if($id == unserialize($_SESSION["user"])->getId()) {
+                    $copy = unserialize($_SESSION["user"]);
+                    $copy->setIsAdmin(0);
+                    $_SESSION["user"]=serialize($copy);
+                }
+            } else if($id != unserialize($_SESSION["user"])->getId()) $user->changeAdminState($id);
             $url = strtok($url, '?');
             header("Location: $url");
         }
