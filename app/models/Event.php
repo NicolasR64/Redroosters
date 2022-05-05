@@ -94,7 +94,7 @@ class Event extends Model
         $this->id = $id;
     }
 
-
+    
     //Getters and setters//
 
     public function getId()

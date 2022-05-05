@@ -52,7 +52,7 @@
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
                 $mail->Subject = 'Nouvel evenement';
-                $mail->Body    = "<h1>Changement de mot de passe</h1><br><p>Bonjour! Vous avez été invité à participer à un événement!
+                $mail->Body    = "<h1>Nouvel evenement</h1><br><p>Bonjour! Vous avez été invité à participer à un événement!
                 N'oubliez pas d'aller signaler votre participation ou non sur ce <a href=$url>lien</a>.</p>";
                 $mail->AltBody = "Bonjour! Vous avez été invité à participer à un événement!
                 Pour signalez votre participation (ou non), suivez le lien suivant: $url";
