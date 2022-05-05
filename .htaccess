@@ -44,8 +44,8 @@ RewriteRule "profile$" "app/views/profile.php"
 
 RewriteRule "^profile/([0-9]+)$" "app/views/profile.php?id=$1"
 
-RewriteRule "^profile/([0-9]+)/edit$" "app/views/profileManagement.php?id=$1"
-
 RewriteRule "profile/edit$" "app/views/profileManagement.php"
+
+RewriteRule "^profile/([0-9]+)/edit$" "app/views/profileManagement.php?id=$1"
 
 RewriteRule "league$" "app/views/league.php"
