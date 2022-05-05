@@ -30,9 +30,16 @@ $url.= $_SERVER['REQUEST_URI'];
             } else $elem->setStaff("N/A");
         }
 
-        if(isset($_GET["delete"]) && !empty($_GET["delete"])){
+        if(isset($_GET["delete"]) && !empty($_GET["delete"]) && unserialize($_SESSION["user"])->getId()){
             $id = $_GET["delete"];
             $user->deleteUser($id);
+            $url = strtok($url, '?');
+            header("Location: $url");
+        }
+
+        if(isset($_GET["changePlayerState"]) && !empty($_GET["changePlayerState"]) && unserialize($_SESSION["user"])->getId()){
+            $id = $_GET["changePlayerState"];
+            $user->changePlayerState($id);
             $url = strtok($url, '?');
             header("Location: $url");
         }

@@ -132,6 +132,15 @@ class User extends Model{
         $this->executeRequest($sql,false);
     }
 
+    //invert the isPlayer value of a user
+    public function changePlayerState($id){
+        $user = $this->getUserById($id);
+        $state = 0;
+        if($user->getIsPlayer() == 0) $state = 1;
+        $sql="UPDATE `users` SET `isPlayer`='$state' WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){
