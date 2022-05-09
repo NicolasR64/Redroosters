@@ -49,3 +49,5 @@ RewriteRule "profile/edit$" "app/views/profileManagement.php"
 RewriteRule "^profile/([0-9]+)/edit$" "app/views/profileManagement.php?id=$1"
 
 RewriteRule "league$" "app/views/league.php"
+
+RewriteRule "league/post" "/app/views/league_management.php"
