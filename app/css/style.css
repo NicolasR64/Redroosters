@@ -240,13 +240,13 @@ input {
 
 /* BEGIN - league page */
 
-.table > thead {
+.table>thead {
   background-color: #da373a;
   border-radius: 10px;
   color: white;
 }
 
-.table > tr {
+.table>tr {
   border: 0px;
 }
 
@@ -297,6 +297,13 @@ a.event-brick-cell .address {
 
 a.event-brick-cell .time-left {
   display: block;
+}
+
+.buttons-brick-cell {
+  border: 2px solid #fff;
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 10px;
 }
 
 /* END - Event list page */
