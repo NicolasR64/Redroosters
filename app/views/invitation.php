@@ -43,7 +43,7 @@
                         </tbody>
                         <tfoot>
                             <tr>
-                                <td colspan="4"><input type="checkbox" id="all">Invité tous les joueurs</td>
+                                <td colspan="4"><input type="checkbox" id="all">Inviter tous les joueurs</td>
                             </tr>    
                         </tfoot>
                     </table>
