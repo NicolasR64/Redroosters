@@ -15,8 +15,12 @@ class League extends Model{
         $year=date("Y");
         $sql = "SELECT * FROM  `league` WHERE `seasonYear`=$year";
         $resultat = $this->executeRequest($sql);
-        $league = new League();
-        $league->fillObject($resultat[0]);
+        if(empty($resultat)){
+            $league = "";
+        }else{
+            $league = new League();
+            $league->fillObject($resultat[0]);
+        }
         return $league;
     }
 

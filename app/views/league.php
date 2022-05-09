@@ -16,6 +16,10 @@
     <?php
         require_once("../controllers/leagueCont.php");
         $leagueCont = new LeagueCont();
+        if(empty($leagueCont->getCurrentSeason())){
+            echo "Aucune league à afficher";
+        }else{
+
         $league = $leagueCont->getCurrentSeason();
     ?>
     <main>
@@ -197,7 +201,9 @@
         </div>
     </main>
 
-    <?php require_once("../views/includes/footer.php"); ?>
+    <?php 
+    }
+    require_once("../views/includes/footer.php"); ?>
     
 </body>
 </html>
