@@ -14,6 +14,7 @@ require_once("../controllers/changeTeamCodeCont.php");
 
     <title>Changement code d'inscription | Redroosters</title>
     <?php require_once("../views/includes/head.php"); ?>
+    <script src="/app/js/checkInputCode.js" async></script>
 
 </head>
 
