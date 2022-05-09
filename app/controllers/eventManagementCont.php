@@ -44,7 +44,6 @@ function calculateTotalTimeEvent($duration1, $duration2)
 {
 
     $day = $duration1->d;
-
     //Verification if we have 24h with the time
 
     if ($duration2 == 24 && $day > 0) {

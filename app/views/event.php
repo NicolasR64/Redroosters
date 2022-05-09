@@ -35,7 +35,7 @@
 
                   <div class="flex-container d-flex justify-content-center">
                         <i class="fa-solid fa-clock"></i>
-                        <div class="information"><?php echo $event->getHours(); ?>
+                        <div class="information"><?php echo $totalHours; ?>
                         </div>
                   </div><br>
             </div>
