@@ -75,7 +75,7 @@ if(!$exist){
                 ';
             } else{
                 echo '
-                    <p class="text-white-50">' . $function->getName().'  '.$position->getName(). '</p>
+                    <p class="text-white-50">' . $function->getName().' / '.$position->getName(). '</p>
                 ';
             }
             ?>

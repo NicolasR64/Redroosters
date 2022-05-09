@@ -75,13 +75,17 @@ if (!$exist) {
             </p>
             <?php
             // affichage poste
-            if ($user->getIsStaff()) {
+            if ($user->getIsStaff() && !$user->getIsPlayer()) {
                 echo '
                     <p class="text-white-50">' . $function->getName() . '</p>
                 ';
-            } else {
+            } else if (!$user->getIsStaff() && $user->getIsPlayer()){
                 echo '
                     <p class="text-white-50">' . $position->getName() . '</p>
+                ';
+            } else{
+                echo '
+                    <p class="text-white-50">' . $function->getName().' / '.$position->getName(). '</p>
                 ';
             }
             ?>

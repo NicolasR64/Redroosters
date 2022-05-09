@@ -27,7 +27,7 @@ if (empty($active)) {
       </a>
     </li>
     <li>
-      <a href="/chat" class="button">
+      <a href="#" class="button">
         <i class="fa-solid fa-comments"></i>
       </a>
     </li>

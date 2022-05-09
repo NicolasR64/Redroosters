@@ -24,11 +24,18 @@
     $test->setRdvPostalCode(6240);
     $test->setDescription("Ceci est un test des getters et setters");
 
-    $value = calculateInterval("2022-02-02","2022-02-04");
-    $heure = calculateHour("10:25","00:25");
+   
+   
 
     $h1 = compareDate("2022-05-03", "2022-02-03"); 
     $data = $test->getEventById("12");
     $data = $test->getEventAsc();
     $data = $test->getEventDesc();
+
+    $value = calculateInterval("2022-02-02","2023-05-04");
+    print_r($value);
+    $heure = calculateHour("10:25","00:25");
+
+    echo calculateTotalTimeEvent($value, $heure);
+
 ?>

@@ -43,21 +43,19 @@ function calculateHour($t1, $t2)
 function calculateTotalTimeEvent($duration1, $duration2)
 {
 
-    $day = $duration1->d;
-
+    $days = $duration1->days;
     //Verification if we have 24h with the time
 
-    if ($duration2 == 24 && $day > 0) {
+    if ($duration2 == 24 && $days > 0) {
         $duration2 = 0;
-        $hours = $day * 24 - $duration2;
+        $hours = $days * 24 - $duration2;
     }
     //Verification if the end hour is less or equals to 12 hours
-
     elseif ($duration2 > 13) {
         $duration2 = 24 - $duration2;
-        $hours = $day * 24 - $duration2;
+        $hours = $days * 24 - $duration2;
     } else {
-        $hours = $day * 24 + $duration2;
+        $hours = $days * 24 + $duration2;
     }
 
     return $hours;
