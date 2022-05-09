@@ -111,10 +111,12 @@ require_once("../controllers/eventListCont.php");
         ?>
     </div>
 
-    <a href="event/post" rel="nofollow" class="btn-fixed" title="Ajouter un évènement"><i class="fa-solid fa-calendar-plus"></i></a>
-
-    <?php require_once("../views/includes/footer.php"); ?>
+    <?php 
+    if($user->getIsAdmin() == 1){
+        echo "<a href=\"event/post\" rel=\"nofollow\" class=\"btn-fixed\" title=\"Ajouter un évènement\"><i class=\"fa-solid fa-calendar-plus\"></i></a>";
+    }
+    require_once("../views/includes/footer.php"); 
+    ?>
 
 </body>
-
 </html>

@@ -1,9 +1,12 @@
 <?php
     require_once("../models/Event.php");
+    require_once("../models/User.php");
 
     $event = new Event();
+    $userManager = new User();
     $upcomingEvents = $event->getEventAsc();
     $pastEvents = $event->getEventDesc(); 
+    $user = unserialize($_SESSION["user"]);
 
     function calculateDays($dateBegin){
 
