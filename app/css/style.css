@@ -260,6 +260,7 @@ input {
 
 .event-brick-grid {
   margin: auto;
+  width: 100%;
   max-width: 600px;
 }
 
