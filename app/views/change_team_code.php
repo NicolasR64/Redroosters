@@ -32,7 +32,7 @@ require_once("../controllers/changeTeamCodeCont.php");
                     <p>Sinon, veuillez rentrer un code à 8 caractères minimum et maximum 15.</p>
                     <label for="inputCode">Nouveau code</label>
                     <input type="password" id="inputCode" name="inputCode" class="form-control" autofocus="">
-                    <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="change">Continuer</button>
+                    <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" id="change" name="change" value="change">Continuer</button>
                     <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
                 </form>
             </div>
