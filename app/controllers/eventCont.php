@@ -6,18 +6,18 @@ function calculateDays($h){
 
     if ($h >= 8760) {
         $hour = round($h/8760);
-        return "Dans ".$h." année(s)";
+        return "Durée : ".$h." année(s)";
     } elseif( $h >= 730 && $h < 8760) {
         $hour = round($h/730);
-        return "Dans ".$h." mois";
+        return "Durée : ".$h." mois";
     } elseif($h >= 168 && $h < 730){
         $hour = round($h/168);
-        return "Dans ".$h. " semaine(s)";
+        return "Durée : ".$h. " semaine(s)";
     } elseif($h >= 24 && $h < 168){
         $hour = round($h/24);
-        return  "Dans ".$hour." jour(s)";
+        return  "Durée : ".$hour." jour(s)";
     }else{
-        return "Dans ".$h." heure(s)";
+        return "Durée : ".$h." heure(s)";
     }
 }
 
