@@ -28,12 +28,18 @@ if(!$exist){
 
     //récupération du données de l'utilisateur
     $user = $contProfile->getUser();
-    if ($user->getIsPlayer() == 1) {
+    if ($user->getIsPlayer() == 1 && $user->getIsStaff() == 0) {
         //c'est un joueur
         $player = $contProfile->getPlayerById($user->getId());
         $position = $player->getPosition($player->getIdPosition());
-    } else {
+    } else if($user->getIsPlayer() == 0 && $user->getIsStaff() == 1){
         //c'est un staff
+        $staff = $contProfile->getStaffById($user->getId());
+        $function = $staff->getFunction($staff->getIdFunction());
+    } else{
+        //c'est un joueur et un staff
+        $player = $contProfile->getPlayerById($user->getId());
+        $position = $player->getPosition($player->getIdPosition());
         $staff = $contProfile->getStaffById($user->getId());
         $function = $staff->getFunction($staff->getIdFunction());
     }
@@ -59,13 +65,17 @@ if(!$exist){
             </p>
             <?php
             // affichage poste
-            if ($user->getIsStaff()) {
+            if ($user->getIsStaff() && !$user->getIsPlayer()) {
                 echo '
                     <p class="text-white-50">' . $function->getName() . '</p>
                 ';
-            } else {
+            } else if (!$user->getIsStaff() && $user->getIsPlayer()){
                 echo '
                     <p class="text-white-50">' . $position->getName() . '</p>
+                ';
+            } else{
+                echo '
+                    <p class="text-white-50">' . $function->getName().'  '.$position->getName(). '</p>
                 ';
             }
             ?>
@@ -142,7 +152,7 @@ if(!$exist){
 
                                 <?php
                                 //vérification du rôle
-                                if ($user->getIsStaff()) {
+                                if ($user->getIsStaff() && !$user->getIsPlayer()) {
                                     /* C'est un staff */
 
                                     // Function
@@ -160,7 +170,7 @@ if(!$exist){
                                         <input type="text" class="form-control " readonly placeholder="Année d\'arrivée" value="' . $staff->getSeasonArrived() . '">
                                     </div>
                                     ';
-                                } else {
+                                } else if ($user->getIsPlayer() && !$user->getIsStaff()){
                                     /* c'est un player */
 
                                     // Position
@@ -281,6 +291,142 @@ if(!$exist){
                                     echo '
                                     </div>
                                     ';
+                                } else {
+                                    /* c'est un joueur et un staff */
+                                    // Position
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2">Position :</label>
+                                        <input type="text" class="form-control" readonly placeholder="Rôle" value="' . $position->getName() . '">
+                                    </div>
+                                    ';
+
+                                    // JerseyNumber
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Numéro de maillot :</label>
+                                        <input type="text" class="form-control" readonly placeholder="Numéro de maillot" value="' . $player->getJerseyNumber() . '">
+                                    </div>
+                                    ';
+
+                                    // SeasonArrived
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Année d\'arrivée :</label>
+                                        <input type="text" class="form-control " readonly placeholder="Année d\'arrivée" value="' . $player->getSeasonArrived() . '">
+                                    </div>
+                                    ';
+
+                                    // LicenseNumber
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Numéro de license :</label>
+                                        <input type="text" class="form-control" readonly placeholder="Numéro de license" value="' . $player->getLicenseNumber() . '">
+                                    </div>
+                                    ';
+
+                                    // Handedness
+                                    if ($player->getHandedness()) {
+                                        echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Main dominante :</label>
+                                        <input type="text" class="form-control" readonly placeholder="Main dominante" value="Droitié">
+                                    </div>
+                                    ';
+                                    } else {
+                                        echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Main dominante :</label>
+                                        <input type="text" class="form-control" readonly placeholder="Main dominante" value="Gauché">
+                                    </div>
+                                    ';
+                                    }
+
+                                    // Size
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Taille (cm) :</label>
+                                        <input type="text" class="form-control  " readonly placeholder="Taille en cm" value="' . $player->getSize() . ' cm">
+                                    </div>
+                                    ';
+
+                                    // Weight
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Poid (kg) :</label>
+                                        <input type="text" class="form-control " readonly placeholder="Poid en kg" value="' . $player->getWeight() . ' kg">
+                                    </div>
+                                    ';
+
+                                    // isCarpooling
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Fait du covoiturage :</label>
+                                    ';
+                                    if ($player->getIsCarpooling()) {
+                                        echo '
+                                        <input type="text" class="form-control " readonly placeholder="Covoiturage" value="oui">
+                                        ';
+                                    } else {
+                                        echo '
+                                        <input type="text" class="form-control " readonly placeholder="Covoiturage" value="non">
+                                        ';
+                                    }
+                                    echo '
+                                        </div>
+                                    ';
+
+                                    // isSick
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Santé :</label>
+                                    ';
+                                    if ($player->getIsSick()) {
+                                        echo '
+                                        <input type="text" class="form-control " readonly placeholder="Santé" value="malade/blessé">
+                                        ';
+                                    } else {
+                                        echo '
+                                        <input type="text" class="form-control " readonly placeholder="Santé" value="en pleine forme">
+                                        ';
+                                    }
+                                    echo '
+                                    </div>
+                                    ';
+
+                                    // isBan
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Suspension :</label>
+                                    ';
+                                    if ($player->getIsBan()) {
+                                        echo '
+                                        <input type="text" class="form-control " readonly placeholder="Suspension" value="oui">
+                                        ';
+                                    } else {
+                                        echo '
+                                        <input type="text" class="form-control " readonly placeholder="Suspension" value="non">
+                                        ';
+                                    }
+                                    echo '
+                                    </div>
+                                    ';  
+
+                                    // Function
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2">Fonction :</label>
+                                        <input type="text" class="form-control" readonly placeholder="Rôle" value="' . $function->getName() . '">
+                                    </div>
+                                    ';
+
+                                    // seasonArrived
+                                    echo '
+                                    <div class="col-md-12 mt-1">
+                                        <label class="labels mb-2 mt-2">Année d\'arrivée :</label>
+                                        <input type="text" class="form-control " readonly placeholder="Année d\'arrivée" value="' . $staff->getSeasonArrived() . '">
+                                    </div>
+                                    '; 
                                 }
                                 ?>
                         </div>

@@ -151,7 +151,7 @@ if (isset($_POST["inputParentMail"]) && !empty($_POST["inputParentMail"])) {
 //FAIRE TEST
 //Vérification si c'est un joueur
 $user = $contProfile->getUser();
-if ($user->getIsPlayer() == 1) {
+if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
 
     //FAIRE TEST
     //WORK
@@ -254,7 +254,7 @@ if ($user->getIsPlayer() == 1) {
             $isError = true;
         }
     }
-} else {
+} else if($user->getIsStaff() && !$user->getIsPlayer()){
 
     //FAIRE TEST
     // WORK
@@ -284,6 +284,137 @@ if ($user->getIsPlayer() == 1) {
             $isError = true;
         }
     }
+}else{
+    //FAIRE TEST
+    // WORK
+    //vérification seasonArrived
+    if (isset($_POST["inputSeasonArrivedStaff"]) && !empty($_POST["inputSeasonArrivedStaff"])) {
+        if (!isDateValid($_POST["inputSeasonArrivedStaff"])) {
+            $isError = true;
+        }
+    } else {
+        $isError = true;
+    }
+
+
+    //FAIRE TEST
+    //WORK
+    //vérification function
+    if (isset($_POST["inputFunction"]) && !empty($_POST["inputFunction"])) {
+        $functions = $contProfile->getAllFunction();
+        $isFind = false;
+        foreach ($functions as $key => $value) {
+            if ($value['id'] == $_POST["inputFunction"]) {
+                $isFind = true;
+            }
+        }
+
+        if (!$isFind) {
+            $isError = true;
+        }
+    }
+    
+    //FAIRE TEST
+    //WORK
+    //vérification seasonArrived
+    if (isset($_POST["inputSeasonArrivedPlayer"]) && !empty($_POST["inputSeasonArrivedPlayer"])) {
+        if (!isDateValid($_POST["inputSeasonArrivedPlayer"])) {
+            $isError = true;
+        }
+    } else {
+        $isError = true;
+    }
+
+    //FAIRE TEST
+    //WORK
+    //vérification position
+    if (isset($_POST["inputPosition"]) && !empty($_POST["inputPosition"])) {
+        $positions = $contProfile->getAllPositions();
+        $isFind = false;
+        foreach ($positions as $key => $value) {
+            if ($value['id'] == $_POST["inputPosition"]) {
+                $isFind = true;
+            }
+        }
+
+        if (!$isFind) {
+            $isError = true;
+        }
+    }
+
+
+
+    //FAIRE TEST
+    //WORK
+    //vérification jersey number
+    if (isset($_POST["inputJerseyNumber"]) && !empty($_POST["inputJerseyNumber"])) {
+        if ($_POST["inputJerseyNumber"] < 0 || $_POST["inputJerseyNumber"] > 99) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //WORK
+    //vérification license number
+    if (isset($_POST["inputLicenseNumber"]) && !empty($_POST["inputLicenseNumber"])) {
+        if (!(strlen($_POST["inputLicenseNumber"]) < 11)) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //WORK
+    //vérification handedness
+    if (isset($_POST["inputHandedness"]) && !empty($_POST["inputHandedness"])) {
+        if ($_POST["inputHandedness"] != 1 && $_POST["inputHandedness"] != 0) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //WORK
+    //vérification size
+    if (isset($_POST["inputSize"]) && !empty($_POST["inputSize"])) {
+        if ($_POST["inputSize"] < 100 || $_POST["inputSize"] > 250) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //WORK
+    //vérification weight
+    if (isset($_POST["inputWeight"]) && !empty($_POST["inputWeight"])) {
+        if ($_POST["inputWeight"] < 30 || $_POST["inputWeight"] > 180) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //
+    //vérification isCarpooling
+    if (isset($_POST["inputIsCarpooling"]) && !empty($_POST["inputIsCarpooling"])) {
+        if ($_POST["inputIsCarpooling"] != 1 && $_POST["inputIsCarpooling"] != 0) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //
+    //vérification isBan
+    if (isset($_POST["inputIsBan"]) && !empty($_POST["inputIsBan"])) {
+        if ($_POST["inputIsBan"] != 1 && $_POST["inputIsBan"] != 0) {
+            $isError = true;
+        }
+    }
+
+    //FAIRE TEST
+    //
+    //vérification isSick
+    if (isset($_POST["inputIsSick"]) && !empty($_POST["inputIsSick"])) {
+        if ($_POST["inputIsSick"] != 1 && $_POST["inputIsSick"] != 0) {
+            $isError = true;
+        }
+    }
 }
 
 
@@ -309,7 +440,7 @@ if (!$isError) {
     //Verifie si ça marche
     $user->updateUser();
 
-    if ($user->getIsPlayer() == 1) {
+    if ($user->getIsPlayer() == 1 && $user->getIsStaff()== 0 ) {
         require_once('../models/Player.php');
         $player = new Player();
         $player->setId($_POST['id']);
@@ -335,7 +466,43 @@ if (!$isError) {
             header("location: /profile");
         }
         
-    } else {
+    } else if ($user->getIsPlayer() == 0 && $user->getIsStaff()== 1) {
+        require_once("../models/Staff.php");
+        $staff = new Staff();
+        $staff->setSeasonArrived($_POST['inputSeasonArrivedStaff']);
+ 
+        $staff->setIdFunction($_POST['inputFunction']);
+
+        $staff->setId($_POST['id']);
+
+        $staff->updateStaff();
+
+        
+        if( isset($_POST['id']) && !empty($_POST['id']) ){
+            header('location: /profile?id='.$_POST['id']);
+        }else{
+            header("location: /profile");
+        }
+    }else{
+        require_once('../models/Player.php');
+        $player = new Player();
+        $player->setId($_POST['id']);
+        $player->setIdPosition($_POST['inputPosition']);
+        $player->setSeasonArrived($_POST['inputSeasonArrivedPlayer']);
+
+        
+        $player->setIsCarpooling($_POST['inputIsCarpooling']); 
+        $player->setIsSick($_POST['inputIsSick']); 
+        $player->setIsBan($_POST['inputIsBan']);
+
+        $player->setWeight($_POST['inputWeight']);
+        $player->setSize($_POST['inputSize']);
+        $player->setHandedness($_POST['inputHandedness']);
+        $player->setLicenseNumber($_POST['inputLicenseNumber']);
+        $player->setJerseyNumber($_POST['inputJerseyNumber']);
+
+        $player->updatePlayer();
+
         require_once("../models/Staff.php");
         $staff = new Staff();
         $staff->setSeasonArrived($_POST['inputSeasonArrivedStaff']);

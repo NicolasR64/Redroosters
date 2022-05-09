@@ -191,7 +191,8 @@ submit.addEventListener('submit',handler = function(event){
 
     
     let isStaff = document.forms['submitUpdateProfile']["isStaff"].value
-    if(isStaff == 1){
+    let isPlayer = document.forms['submitUpdateProfile']["isPlayer"].value
+    if(isStaff == 1 && isPlayer == 0){
       //l'utilisateur est un staff
       let functions = document.forms['submitUpdateProfile']["inputFunction"].value;
       let seasonArrivedStaff = document.forms['submitUpdateProfile']["inputSeasonArrivedStaff"].value;
@@ -220,7 +221,7 @@ submit.addEventListener('submit',handler = function(event){
         SeasonArrivedError.innerHTML = "";
       }
 
-    }else{
+    }else if(isStaff == 0 && isPlayer == 1){
       //l'utilisateur est un joueur
       let position = document.forms['submitUpdateProfile']["inputPosition"].value;
       let jsPlayer = document.forms['submitUpdateProfile']['inputJerseyNumber'].value;
@@ -357,7 +358,7 @@ submit.addEventListener('submit',handler = function(event){
 
       
       //FAIRE TEST
-      //
+      //work
       //isCarpooling
       let isCarpoolingError = document.getElementById("isCarpoolingError");
       if (isCarpooling == ""){
@@ -370,10 +371,185 @@ submit.addEventListener('submit',handler = function(event){
         isCarpoolingError.innerHTML = "";
       }
 
+  } else{
+          //l'utilisateur est un joueur
+          let position = document.forms['submitUpdateProfile']["inputPosition"].value;
+          let jsPlayer = document.forms['submitUpdateProfile']['inputJerseyNumber'].value;
+          let seasonArrivedPlayer = document.forms['submitUpdateProfile']["inputSeasonArrivedPlayer"].value;
+          let hddPlayer = document.forms['submitUpdateProfile']["inputHandedness"].value;
+          let lcNbr = document.forms['submitUpdateProfile']['inputLicenseNumber'].value;
+          let size = document.forms['submitUpdateProfile']['inputSize'].value;
+          let weight = document.forms['submitUpdateProfile']['inputWeight'].value;      
+          let isSick = document.form['submitUpdateProfile']['inputIsSick'].value;
+          let isBan = document.form['submitUpdateProfile']['inputIsBan'].value;
+          let isCarpooling = document.form['submitUpdateProfile']['inputIsCarpooling'].value; 
+          //l'utilisateur est un staff
+          let functions = document.forms['submitUpdateProfile']["inputFunction"].value;
+          let seasonArrivedStaff = document.forms['submitUpdateProfile']["inputSeasonArrivedStaff"].value;
+
+    
+          /* PLAYER */
+        
+          //FAIRE TEST
+          //WORK
+          //Position
+          let PositionError = document.getElementById("PositionError");
+          if (position == ""){
+            PositionError.innerHTML  = "veuillez renseigner une date d'arrivée!";
+            errors++;
+          }else{
+            PositionError.innerHTML = "";
+          }
+    
+          //FAIRE TEST
+          //WORK
+          //jersey number
+          let JerseyNumberError = document.getElementById("JerseyNumberError");
+          if (jsPlayer == ""){
+            JerseyNumberError.innerHTML  = "veuillez renseigner un numéro de maillot!";
+            errors++;
+          }else if(jsPlayer < 0 && jsPlayer > 99){
+            JerseyNumberError.innerHTML  = "veuillez renseigner un numéro de maillot valide!";
+            errors++;
+          }else{
+            JerseyNumberError.innerHTML  = "";
+          }
+    
+          //FAIRE TEST
+          //Work
+          //season d'arrivée
+          let SeasonArrivedPlayerError = document.getElementById("SeasonArrivedPlayerError");
+          if (seasonArrivedPlayer == ""){
+            SeasonArrivedError.innerHTML  = "veuillez renseigner une date d'arrivée!";
+            errors++;
+          }else{
+            SeasonArrivedError.innerHTML = "";
+          }
+    
+          //FAIRE TEST
+          //WORK
+          //handedness
+          let handednessError = document.getElementById("handednessError");
+          if (hddPlayer == ""){
+            handednessError.innerHTML = "Veuillez renseigner une valeur!";
+            errors++;
+          }else if(hddPlayer != 1 && hddPlayer != 0){
+            handednessError.innerHTML = "Veuillez renseigner une valeur valide!";
+            errors++;
+          }else{
+            handednessError.innerHTML = "";
+          }
+        
+          //FAIRE TEST
+          //WORK
+          //license number
+          let licenseNumberError = document.getElementById("licenseNumberError");
+          if (lcNbr == ""){
+            licenseNumberError.innerHTML = "veuillez renseigner un numéro de license";
+            errors++;
+          }else if(lcNbr.length > 10 || lcNbr.length < 2){
+            licenseNumberError.innerHTML = "veuillez renseigner un numéro de license valide";
+            errors++;
+          }else{
+            licenseNumberError.innerHTML = "";
+          }
+    
+          //FAIRE TEST
+          //WORK
+          //size
+          let sizeError = document.getElementById("sizeError");
+          if (size == ""){
+            sizeError.innerHTML = "veuillez renseigner une taille";
+            errors++;
+          }else if(size > 250 || size < 120){
+            sizeError.innerHTML = "veuillez renseigner une taille valide";
+            errors++;
+          }else{
+            sizeError.innerHTML = "";
+          }
+    
+          //FAIRE TEST
+          //WORK
+          //height
+          let weightError = document.getElementById("weightError");
+          if (weight == ""){
+            weightError.innerHTML = "veuillez renseigner un poid";
+            errors++;
+          }else if(weight > 250 || weight < 30){
+            weightError.innerHTML = "veuillez renseigner un poid valide";
+            errors++;
+          }else{
+            weightError.innerHTML = "";
+          }
+    
+          //FAIRE TEST
+          //WORK
+          //isSick
+          let isSickError = document.getElementById("isSickError");
+          if (isSick == ""){
+            isSickError.innerHTML = "Veuillez renseigner une valeur!";
+            errors++;
+          }else if(isSick != 1 && isSick != 0){
+            isSickError.innerHTML = "Veuillez renseigner une valeur valide!";
+            errors++;
+          }else{
+            isSickError.innerHTML = "";
+          }
+    
+          //FAIRE TEST
+          //WORK
+          //isBan
+          let isBanError = document.getElementById("isBanError");
+          if (isBan == ""){
+            isBanError.innerHTML = "Veuillez renseigner une valeur!";
+            errors++;
+          }else if(isBan != 1 && isBan != 0){
+            isBanError.innerHTML = "Veuillez renseigner une valeur valide!";
+            errors++;
+          }else{
+            isBanError.innerHTML = "";
+          }
+    
+          
+          //FAIRE TEST
+          //work
+          //isCarpooling
+          let isCarpoolingError = document.getElementById("isCarpoolingError");
+          if (isCarpooling == ""){
+            isCarpoolingError.innerHTML = "Veuillez renseigner une valeur!";
+            errors++;
+          }else if(isCarpooling != 1 && isCarpooling != 0){
+            isCarpoolingError.innerHTML = "Veuillez renseigner une valeur valide!";
+            errors++;
+          }else{
+            isCarpoolingError.innerHTML = "";
+          }
+           /* STAFF */
+    
+      //FAIRE TEST
+      //WORK
+      //Fonction staff
+      let FunctionStaffError = document.getElementById("FunctionStaffError");
+      if(functions == ""){
+        FunctionStaffError.innerHTML  = "veuillez renseigner une fonction!";
+        errors++;
+      }else{
+        FunctionStaffError.innerHTML  = "";
+      }
+
+      //FAIRE TEST
+      //Work
+      //season d'arrivée
+      let SeasonArrivedError = document.getElementById("SeasonArrivedError");
+      if (seasonArrivedStaff == ""){
+        SeasonArrivedError.innerHTML  = "veuillez renseigner une date d'arrivée!";
+        errors++;
+      }else{
+        SeasonArrivedError.innerHTML = "";
+      }
+    
   }
   
-
-    alert(errors);
     if(errors>0)event.preventDefault();
     
     /*
