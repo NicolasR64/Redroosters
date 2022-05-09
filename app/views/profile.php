@@ -101,7 +101,7 @@ if(!$exist){
                                     ?>
                                 </div>
                                 <div class="d-flex col-md-6 mt-1 justify-content-end">
-                                    <a class="btn btn-danger" href="/logout">Se déconecter</a>
+                                    <a class="btn btn-danger" href="/logout">Déconnexion</a>
                                 </div>
 
                             </div>

@@ -126,6 +126,46 @@ class User extends Model{
         $this->executeRequest($sql,false);
     }
 
+    //delete a user
+    public function deleteUser($id){
+        $sql="DELETE FROM `users` WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
+    //invert the isPlayer value of a user
+    public function changePlayerState($id){
+        $user = $this->getUserById($id);
+        $state = 0;
+        if($user->getIsPlayer() == 0) $state = 1;
+        $sql="UPDATE `users` SET `isPlayer`='$state' WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
+    //invert the isStaff value of a user
+    public function changeStaffState($id){
+        $user = $this->getUserById($id);
+        $state = 0;
+        if($user->getIsStaff() == 0) $state = 1;
+        $sql="UPDATE `users` SET `isStaff`='$state' WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
+    //invert the isAdmin value of a user
+    public function changeAdminState($id){
+        $user = $this->getUserById($id);
+        $state = 0;
+        if($user->getIsAdmin() == 0) $state = 1;
+        $sql="UPDATE `users` SET `isAdmin`='$state' WHERE id='$id'";
+        $this->executeRequest($sql,false);
+    }
+
+    //return the number of admin account currently in the database
+    public function checkNumberOfAdmin(){
+        $sql="SELECT COUNT(*) FROM `users` WHERE `isAdmin`=1";
+        $data = $this->executeRequest($sql);
+        return $data[0]["COUNT(*)"];
+    }
+
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){

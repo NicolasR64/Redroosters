@@ -62,7 +62,7 @@ class Staff extends Model{
     // ADD
 
     public function addStaff(){
-        $sql = "INSERT INTO staff (id,seasonArrived,idFonction) Values ('$this->id','$this->seasonArrived','$this->idFonction')";
+        $sql = "INSERT INTO staff (id,seasonArrived,idFunction) Values ('$this->id','$this->seasonArrived','$this->idFunction')";
         $this->executeRequest($sql,false);
     }
 
@@ -89,6 +89,17 @@ class Staff extends Model{
     public function updateStaff(){
         $sql = "UPDATE `staff` SET `seasonArrived`='$this->seasonArrived',`idFunction`='$this->idFunction' WHERE id='$this->id'";
         $this->executeRequest($sql);
+    }
+
+    //check si le staff existe
+    public function checkStaff($id){
+        $sql = "SELECT * FROM `staff` WHERE id=$id";
+        $existe = false;
+        $data = $this->executeRequest($sql);
+        if(!empty($data)){
+            $existe = true;
+        }
+        return $existe;
     }
 
 }

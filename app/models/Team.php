@@ -87,6 +87,11 @@ class Team extends Model{
         $data = $this->executeRequest($sql);
         return $data;
     }
+
+    public function changeCodeRegister($code){
+        $sql = "UPDATE `team` set `codeRegister` = '$code' WHERE id=1";
+        $this->executeRequest($sql,false);
+    }
 }
 
 
