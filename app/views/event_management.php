@@ -54,6 +54,28 @@ require_once("../controllers/eventManagementCont.php");
         <label for="inputRdvPostalCode">Code postal du rendez-vous*</label>
         <input type="number" name="inputRdvPostalCode" id="inputRdvPostalCode" class="form-control">
 
+        <label for="inputMatch">Match?</label>
+        <input type="checkbox" name="inputMatch" id="inputMatch" class="form-check" value="oui"> 
+
+        <div class="d-none" id="match">
+          <label for="inputAdversaire">Adversaire</label>
+          <select class="form-control" name="inputAdversaire" id="inputAdversaire">
+
+          </select></br>
+
+          <label for="inputLieu">Lieu de l'affrontement</label>
+          <select class="form-control" name="inputLieu" id="inputLieu">
+            
+          </select></br>
+
+          <label for="inputAmi">Rencontre amicale?</label>
+          <input type="checkbox" name="inputAmi" id="inputAmi" class="form-check" value="oui"> 
+
+          <label for="inputVisitor">Sommes-nous les visiteurs?</label>
+          <input type="checkbox" name="inputVisitor" id="inputVisitor" class="form-check" value="oui"> 
+        </div>
+
+
         <textarea for="inputDescription" name="inputDescription" id="inputDescription"></textarea>
         <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" name="form-event" id="submitButton" value="form-event">Ajouter évènement</button>
         <p class="mt-5 mb-3 text-muted">© Projet HELHa</p>
