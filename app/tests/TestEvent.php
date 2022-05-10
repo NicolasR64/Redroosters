@@ -33,9 +33,8 @@
     $data = $test->getEventDesc();
 
     $value = calculateInterval("2022-02-02","2023-05-04");
-    print_r($value);
     $heure = calculateHour("10:25","00:25");
 
-    echo calculateTotalTimeEvent($value, $heure);
+    echo checkValidDate("2022-05-03","2022-06-14","1970-10-17");
 
 ?>

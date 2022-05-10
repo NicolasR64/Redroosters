@@ -1,6 +1,7 @@
 let button = document.querySelector('#submitButton');
 let nom = document.querySelector('#inputName');
 let submit = document.querySelector('#formEventManagement');
+let match = document.querySelector('#inputMatch');
 
 
 var errors = 0;
@@ -50,6 +51,11 @@ submit.addEventListener('submit', handler = function(event){
     let rdvStreet = document.forms["formEventManagement"]["inputRdvStreet"].value;
     let rdvCity = document.forms["formEventManagement"]["inputRdvCity"].value;
     let rdvPostalCode = document.forms["formEventManagement"]["inputRdvPostalCode"].value;
+
+    let date = beginDate.split("-");
+    let date2 = endDate.split("-");
+    let date3 = rdvDate.split("-");
+    let servDate = new Date();
 
     errors = 0;
 
@@ -101,6 +107,17 @@ submit.addEventListener('submit', handler = function(event){
         alert("Veuillez renseigner un code postal pour la ville de rendez-vous");
         errors++;
     }
+    if((date[0] || date2[0] || date3[0]) < (servDate.getFullYear() - 10) || (date[0] || date2[0] || date3[0]) > (servDate.getFullYear() + 5)){
+        alert("Une des dates entrées n'est pas correcte");
+        errors++;
+    }
 
     if(errors>0)event.preventDefault();
+})
+
+match.addEventListener('click',function(event){
+    let status = match.checked;
+    if(status){
+        document.getElementById('match').classList.remove('d-none');
+    } else {document.getElementById('match').classList.add('d-none');}
 })

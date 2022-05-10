@@ -69,6 +69,19 @@ function cleanData($data)
     return $data;
 }
 
+function checkValidDate($d1, $d2, $d3)
+{
+    $date1 = explode("-", $d1);
+    $date2 = explode("-", $d2);
+    $date3 = explode("-", $d3);
+    $year = date("Y");
+
+    if (($date1[0] < ($year - 10) || $date1[0] > ($year + 5)) || ($date2[0] < ($year - 10) || $date2[0] > ($year + 5)) || ($date3[0] < ($year - 10) || $date3[0] > ($year + 5))) {
+        return 1;
+    }
+    return 0;
+}
+
 // Check if form is completed //
 if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
     if (
@@ -86,10 +99,11 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
             $_POST["inputRdvPostalCode"],
             $_POST["inputRdvDate"]
         ) && (!empty($_POST["inputName"]) && !empty($_POST["inputBeginDate"]) && !empty($_POST["inputEndDate"]) && !empty($_POST["inputRdvHours"])
-        && !empty($_POST["inputEndHour"]) && !empty($_POST["inputStreet"]) && !empty($_POST["inputCity"]) && !empty($_POST["inputPostalCode"])
-        && !empty($_POST["inputRdvStreet"])
-        && !empty($_POST["inputRdvCity"]) && !empty($_POST["inputRdvPostalCode"]) && !empty($_POST["inputRdvDate"])
-    )) {
+            && !empty($_POST["inputEndHour"]) && !empty($_POST["inputStreet"]) && !empty($_POST["inputCity"]) && !empty($_POST["inputPostalCode"])
+            && !empty($_POST["inputRdvStreet"])
+            && !empty($_POST["inputRdvCity"]) && !empty($_POST["inputRdvPostalCode"]) && !empty($_POST["inputRdvDate"])
+        )
+    ) {
 
         //Create Event object//
 
@@ -119,24 +133,28 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
 
         //Add data to the object//
 
-        $event->setName($name);
-        $event->setRdvDate($rdvDate);
-        $event->setDateBegin($beginDate);
-        $event->setDateEnd($endDate);
-        $event->setRdvHours($rdvHours);
-        $event->setStreet($street);
-        $event->setCity($city);
-        $event->setPostalCode($postalCode);
-        $event->setRdvStreet($rdvStreet);
-        $event->setRdvCity($rdvCity);
-        $event->setRdvPostalCode($rdvPostalCode);
-        $event->setDescription($description);
-        $event->setHours($totalHours);
-        $event->addEvent();
-
-        $id = $event->getId();
-
-        header("Location:/app/views/invitation.php?idEvent=$id");
+        if(checkValidDate($beginDate,$endDate,$rdvDate) == 0){
+            $event->setName($name);
+            $event->setRdvDate($rdvDate);
+            $event->setDateBegin($beginDate);
+            $event->setDateEnd($endDate);
+            $event->setRdvHours($rdvHours);
+            $event->setStreet($street);
+            $event->setCity($city);
+            $event->setPostalCode($postalCode);
+            $event->setRdvStreet($rdvStreet);
+            $event->setRdvCity($rdvCity);
+            $event->setRdvPostalCode($rdvPostalCode);
+            $event->setDescription($description);
+            $event->setHours($totalHours);
+            $event->addEvent();
+    
+            $id = $event->getId();
+    
+            header("Location:/app/views/invitation.php?idEvent=$id");
+        }else{
+            $error = "L'une des dates entrées est invalide";
+        } 
     } else {
         $error = "Impossible de créer l'évènement";
     }
