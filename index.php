@@ -4,6 +4,8 @@ session_start();
 
 require_once("app/controllers/isDisconnect.php");
 
+require_once("app/views/includes/noscript.php");
+
 ?>
 
 <!DOCTYPE html>
