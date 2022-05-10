@@ -5,7 +5,7 @@ class Event extends Model
 {
 
     private $id;
-    private $method;
+    private $isMatch;
     private $rdvDate;
     private $rdvHours;
     private $rdvCity;
@@ -240,5 +240,25 @@ class Event extends Model
     public function getDescription()
     {
         return $this->description;
+    }
+
+    /**
+     * Get the value of isMatch
+     */ 
+    public function getIsMatch()
+    {
+        return $this->isMatch;
+    }
+
+    /**
+     * Set the value of isMatch
+     *
+     * @return  self
+     */ 
+    public function setIsMatch($isMatch)
+    {
+        $this->isMatch = $isMatch;
+
+        return $this;
     }
 }

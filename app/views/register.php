@@ -15,6 +15,8 @@ require_once("../controllers/registerCont.php");
 
     <?php require_once("../views/includes/head.php"); ?>
 
+    <script src="/app/js/checkInputRegister.js" async></script>
+
     <title>Inscription | Redroosters</title>
 
 </head>

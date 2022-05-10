@@ -1,6 +1,7 @@
 let button = document.querySelector('#submitButton');
 let nom = document.querySelector('#inputName');
 let submit = document.querySelector('#formEventManagement');
+let match = document.querySelector('#inputMatch');
 
 
 var errors = 0;
@@ -112,4 +113,11 @@ submit.addEventListener('submit', handler = function(event){
     }
 
     if(errors>0)event.preventDefault();
+})
+
+match.addEventListener('click',function(event){
+    let status = match.checked;
+    if(status){
+        document.getElementById('match').classList.remove('d-none');
+    } else {document.getElementById('match').classList.add('d-none');}
 })
