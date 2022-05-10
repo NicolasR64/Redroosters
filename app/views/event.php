@@ -56,12 +56,29 @@
 
       </div>
       <div class="text-center mt-5 ">
-            <button class="btn btn-danger btn-lg btn-block" id="btn">Absent</button><br>
+                  <form id="formPrensence">
+                  <input type="hidden" name="inputIdEvent" value="<?php echo $_GET['id']?>">
+            <?php
+                  //on teste si l'utilisateur est invité à cet évènement
+                  require_once("../models/User.php");
+                  $sessionUser = unserialize($_SESSION['user']);
+                  $data = getEntryByUserIdAndEventId($sessionUser->getId(),$_GET['id']);
+                  
+                  if($data != null){
+                        $datas = $data[0];
+            ?>
+                  <button form="formPrensence" formmethod="POST" formaction="/app/controllers/PresenceCont.php" class="btn <?php $datas['isDispo'] ? print('bg-success') : print('bg-danger') ?> btn-lg btn-block" id="btn"><?php $datas['isDispo'] ? print('Présent') : print('Absent') ?></button><br>
+                  </form>
+            <?php
+                  }else{
+                        echo '<p>Tu n\'est pas convié à cet évènement </p>';
+                  }
+            ?>
       </div>
       <!-- Liste des joueurs invité -->
       <div class="container mt-2 mb-5">
             <div class="row">
-                <div class="col-md-5 border-right mx-auto rounded">
+                <div class="col-md-10 border-right mx-auto rounded">
                     <div class="p-3 py-5">
                         <div class="d-flex justify-content-between  align-items-center mb-3 ">
                             <h4 class="text-right">Présence </h4>
@@ -80,39 +97,117 @@
                               
                               if($key['isAnswer']){
                                     if($key['isDispo'] == 1){
-                                    echo'
+                                          if($key['isSelected']){
+                                                echo'
+                                                <div class="row bg-secondary border-bottom border-dark ">
+                                                      <div class="col-md-3 ">
+                                                            <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
+                                                      </div>
+                                                      <div class="col-md-3 bg-success">
+                                                            <p class="labels mb-2 mt-sm-2">Présent</p>
+                                                      </div>
+                                                      <div class="col-md-3 bg-warning">
+                                                            <p class="labels mb-2 mt-sm-2">Sélectionné</p>
+                                                      </div>
+                                                      <div class="col-md-3">
+                                                      <a class="btn btn-primary mt-1 mb-1" href="/app/controllers/PresenceCont.php?idPlayer='.$user->getId().'&idEvent='.$_GET['id'].'">Déselectionné</a>
+                                                      </div>
+                                                </div>  
+                                                '; 
+                                          } else {
+                                                echo'
+                                                <div class="row bg-secondary border-bottom border-dark ">
+                                                      <div class="col-md-3 ">
+                                                            <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
+                                                      </div>
+                                                      <div class="col-md-3 bg-success">
+                                                            <p class="labels mb-2 mt-sm-2">Présent</p>
+                                                      </div>
+                                                      <div class="col-md-3 bg-danger">
+                                                            <p class="labels mb-2 mt-sm-2">Non sélectionné</p>
+                                                      </div>
+                                                      <div class="col-md-3">
+                                                            <a class="btn btn-primary mt-1 mb-1" href="/app/controllers/PresenceCont.php?idPlayer='.$user->getId().'&idEvent='.$_GET['id'].'">Selectionné</a>
+                                                      </div>
+                                                </div>  
+                                                '; 
+                                          }
+                                    
+                                    }else{
+                                          if($key['isSelected']){
+                                                echo'
+                                                      <div class="row bg-secondary border-bottom border-dark ">
+                                                            <div class="col-md-3 ">
+                                                                  <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
+                                                            </div>
+                                                            <div class="col-md-3 bg-danger">
+                                                                  <p class="labels mb-2 mt-sm-2">Absent</p>
+                                                            </div>
+                                                            <div class="col-md-3 bg-warning">
+                                                                  <p class="labels mb-2 mt-sm-2">Sélectionné</p>
+                                                            </div>
+                                                            <div class="col-md-3">
+                                                                  <a class="btn btn-primary mt-1 mb-1" href="/app/controllers/PresenceCont.php?idPlayer='.$user->getId().'&idEvent='.$_GET['id'].'">Déselectionné</a>
+                                                            </div>
+                                                      </div>  
+                                                '; 
+                                          } else {
+                                          echo'
+                                                <div class="row bg-secondary border-bottom border-dark ">
+                                                      <div class="col-md-3 ">
+                                                            <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
+                                                      </div>
+                                                      <div class="col-md-3 bg-danger">
+                                                            <p class="labels mb-2 mt-sm-2">Absent</p>
+                                                      </div>
+                                                      <div class="col-md-3 bg-danger">
+                                                            <p class="labels mb-2 mt-sm-2">Non sélectionné</p>
+                                                      </div>
+                                                      <div class="col-md-3">
+                                                            <a class="btn btn-primary mt-1 mb-1" href="/app/controllers/PresenceCont.php?idPlayer='.$user->getId().'&idEvent='.$_GET['id'].'">Selectionné</a>
+                                                      </div>
+                                                </div>  
+                                          '; 
+                                          }
+                                    }
+                              }else{
+                                    if($key['isSelected']){
+                                          echo'
                                           <div class="row bg-secondary border-bottom border-dark ">
-                                                <div class="col-md-6 ">
+                                                <div class="col-md-3 ">
                                                       <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
                                                 </div>
-                                                <div class="col-md-6 bg-success">
-                                                      <p class="labels mb-2 mt-sm-2">Présent</p>
+                                                <div class="col-md-3">
+                                                      <p class="labels mb-2 mt-sm-2">En attente de réponse</p>
+                                                </div>
+                                                <div class="col-md-3 bg-warning">
+                                                      <p class="labels mb-2 mt-sm-2">Sélectionné</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                      <a class="btn btn-primary mt-1 mb-1" href="/app/controllers/PresenceCont.php?idPlayer='.$user->getId().'&idEvent='.$_GET['id'].'">Déselectionné</a>
                                                 </div>
                                           </div>  
                                     '; 
-                                    }else{
-                                    echo'
+                                    } else {
+                                          echo'
                                           <div class="row bg-secondary border-bottom border-dark ">
-                                                <div class="col-md-6 ">
+                                                <div class="col-md-3 ">
                                                       <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
                                                 </div>
-                                                <div class="col-md-6 bg-danger">
-                                                      <p class="labels mb-2 mt-sm-2">Absent</p>
+                                                <div class="col-md-3">
+                                                      <p class="labels mb-2 mt-sm-2">En attente de réponse</p>
+                                                </div>
+                                                <div class="col-md-3 bg-danger">
+                                                      <p class="labels mb-2 mt-sm-2">Non sélectionné</p>
+                                                </div>
+                                                <div class="col-md-3">
+                                                      <a class="btn btn-primary mt-1 mb-1" href="/app/controllers/PresenceCont.php?idPlayer='.$user->getId().'&idEvent='.$_GET['id'].'">Selectionné</a>
                                                 </div>
                                           </div>  
                                     '; 
                                     }
-                              }else{
-                              echo'
-                                    <div class="row bg-secondary border-bottom border-dark ">
-                                          <div class="col-md-6 ">
-                                                <p class="labels mb-2 mt-sm-2">'.$user->getFirstName().'</p>
-                                          </div>
-                                          <div class="col-md-6">
-                                                <p class="labels mb-2 mt-sm-2">En attente de réponse</p>
-                                          </div>
-                                    </div>  
-                              '; 
+
+                              
                               }
                         } 
                         ?>

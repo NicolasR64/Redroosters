@@ -52,11 +52,30 @@ class Participe extends Model{
         $this->executeRequest($sql,false);
     }
 
-    /* Récupération d'entrée*/
-    public function getEntryById($event){
+    /* Récupération d'entrée à partir de l'id d'un event*/
+    public function getEntryByEventId($event){
         $sql = "SELECT * FROM `participe` WHERE idEvent = $event";
         $data = $this->executeRequest($sql);
         return $data;
+    }
+
+    /* modifier une entrée à partir de l'id d'un joueur */
+    public function getEntryByUserIdAndEventId($user, $event){
+        $sql = "SELECT * FROM `participe` WHERE idUser = $user AND idEvent = $event";
+        $data = $this->executeRequest($sql);
+        return $data;
+    }
+
+    /* modifier une entrée à partir de l'id d'un joueur */
+    public function UpdateEntryByUserIdAndEventId($user, $event, $isDispo, $isAnswer){
+        $sql = "UPDATE `participe` SET `isDispo`='$isDispo',`isAnswer`='$isAnswer' WHERE idUser = $user AND idEvent = $event";
+        $data = $this->executeRequest($sql, false);
+    }
+
+    /* modifier une entrée à partir de l'id d'un joueur */
+    public function UpdateEntryByUserIdAndEventIdOther($user, $event, $isSelected){
+        $sql = "UPDATE `participe` SET isSelected='$isSelected' WHERE idUser = $user AND idEvent = $event";
+        $data = $this->executeRequest($sql, false);
     }
 }
 

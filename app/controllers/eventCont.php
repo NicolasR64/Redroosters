@@ -36,11 +36,17 @@ if (empty($event)) {
 function getListPlayerByEvent($eventId){
     require_once("../models/Participe.php");
     $participate = new Participe();
-    return $participate->getEntryById($eventId);
+    return $participate->getEntryByEventId($eventId);
 }
 
 function getUserById($id){
     require_once("../models/User.php");
     $user = new User();
     return $user->getUserById($id);
+}
+
+function getEntryByUserIdAndEventId($id, $event){
+    require_once("../models/Participe.php");
+    $participate = new Participe();
+    return $participate->getEntryByUserIdAndEventId($id, $event);
 }
