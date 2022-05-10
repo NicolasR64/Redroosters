@@ -88,7 +88,7 @@ class Staff extends Model{
     //update le staff
     public function updateStaff(){
         $sql = "UPDATE `staff` SET `seasonArrived`='$this->seasonArrived',`idFunction`='$this->idFunction' WHERE id='$this->id'";
-        $this->executeRequest($sql);
+        $this->executeRequest($sql,false);
     }
 
     //check si le staff existe
