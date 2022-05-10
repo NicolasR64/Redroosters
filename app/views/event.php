@@ -55,7 +55,7 @@
             echo $event->getRdvHours() . "<br><br>"; ?>
 
       </div>
-      <div class="text-center mt-5">
+      <div class="text-center mt-5 ">
             <button class="btn btn-danger btn-lg btn-block" id="btn">Absent</button><br>
       </div>
       <?php require_once("../views/includes/footer.php"); ?>
