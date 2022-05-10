@@ -245,11 +245,11 @@ if(!$exist){
                                     ';
                                     if ($player->getIsCarpooling()) {
                                         echo '
-                                        <input type="text" class="form-control " readonly placeholder="Covoiturage" value="oui">
+                                        <input type="text" class="form-control " readonly placeholder="Covoiturage" value="Oui">
                                         ';
                                     } else {
                                         echo '
-                                        <input type="text" class="form-control " readonly placeholder="Covoiturage" value="non">
+                                        <input type="text" class="form-control " readonly placeholder="Covoiturage" value="Non">
                                         ';
                                     }
                                     echo '
@@ -263,11 +263,11 @@ if(!$exist){
                                     ';
                                     if ($player->getIsSick()) {
                                         echo '
-                                        <input type="text" class="form-control " readonly placeholder="Santé" value="malade/blessé">
+                                        <input type="text" class="form-control " readonly placeholder="Santé" value="Malade/blessé">
                                         ';
                                     } else {
                                         echo '
-                                        <input type="text" class="form-control " readonly placeholder="Santé" value="en pleine forme">
+                                        <input type="text" class="form-control " readonly placeholder="Santé" value="En pleine forme">
                                         ';
                                     }
                                     echo '
@@ -277,15 +277,15 @@ if(!$exist){
                                     // isBan
                                     echo '
                                     <div class="col-md-12 mt-1">
-                                        <label class="labels mb-2 mt-2">Suspension :</label>
+                                        <label class="labels mb-2 mt-2">Est suspendu :</label>
                                     ';
                                     if ($player->getIsBan()) {
                                         echo '
-                                        <input type="text" class="form-control " readonly placeholder="Suspension" value="oui">
+                                        <input type="text" class="form-control " readonly placeholder="Suspension" value="Oui">
                                         ';
                                     } else {
                                         echo '
-                                        <input type="text" class="form-control " readonly placeholder="Suspension" value="non">
+                                        <input type="text" class="form-control " readonly placeholder="Suspension" value="Non">
                                         ';
                                     }
                                     echo '

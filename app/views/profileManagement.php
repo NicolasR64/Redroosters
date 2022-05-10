@@ -535,7 +535,7 @@ if (!$exist) {
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12 mt-1 text-end">
-                                    <button type="submit" class="btn btn-danger" id="submitUpdateProfile" formaction="/app/controllers/ProfileUpdateCont.php?<?php isset($_GET['id']) ? print('id=' . $_GET['id']) : print('id=' . $sessionUser->getId()); ?>" formmethod="POST" value="submit">Envoyer</button>
+                                    <button type="submit" class="btn btn-success" id="submitUpdateProfile" formaction="/app/controllers/ProfileUpdateCont.php?<?php isset($_GET['id']) ? print('id=' . $_GET['id']) : print('id=' . $sessionUser->getId()); ?>" formmethod="POST" value="submit">Envoyer</button>
                                 </div>
                             </div>
                         </form>
