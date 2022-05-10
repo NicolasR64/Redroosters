@@ -31,3 +31,16 @@ $totalHours = calculateDays($event->getHours());
 if (empty($event)) {
     header('Location: /events');
 }
+
+
+function getListPlayerByEvent($eventId){
+    require_once("../models/Participe.php");
+    $participate = new Participe();
+    return $participate->getEntryById($eventId);
+}
+
+function getUserById($id){
+    require_once("../models/User.php");
+    $user = new User();
+    return $user->getUserById($id);
+}

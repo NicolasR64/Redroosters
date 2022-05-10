@@ -51,6 +51,13 @@ class Participe extends Model{
         $sql = "INSERT INTO participe (idEvent, idUser, isDispo) VALUES ('$event','$user',0)";
         $this->executeRequest($sql,false);
     }
+
+    /* Récupération d'entrée*/
+    public function getEntryById($event){
+        $sql = "SELECT * FROM `participe` WHERE idEvent = $event";
+        $data = $this->executeRequest($sql);
+        return $data;
+    }
 }
 
 

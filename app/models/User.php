@@ -27,6 +27,7 @@ class User extends Model{
     function getUserById($id){
         $sql = "SELECT * FROM  `users` WHERE id=$id";
         $data = $this->executeRequest($sql);
+        $user = null;
         if($data != null){
             $user = new User();
             $user->fillObject($data[0]);
