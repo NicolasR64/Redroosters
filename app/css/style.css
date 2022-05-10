@@ -23,6 +23,13 @@ body {
   z-index: 600;
 }
 
+.noscript {
+  background: #da373a;
+  width: 100vw;
+  height: 100vw;
+  position: fixed;
+}
+
 /* END - All Pages */
 
 /* Nav - BEGIN */
