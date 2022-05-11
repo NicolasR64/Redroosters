@@ -1,6 +1,7 @@
 <?php
 session_start();
 require_once("../controllers/eventManagementCont.php");
+require_once("../controllers/isConnect.php");
 ?>
 <!DOCTYPE html>
 <html lang="fr">

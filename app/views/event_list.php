@@ -3,7 +3,7 @@
 session_start();
 
 require_once("../views/includes/head.php");
-
+require_once("../controllers/isConnect.php");
 require_once("../controllers/eventListCont.php");
 
 ?>
