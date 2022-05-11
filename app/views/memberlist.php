@@ -31,14 +31,14 @@ require_once("../controllers/memberListCont.php");
   <h1>Liste des membres</h1>
   <div class="container align-items-center align-middle text-center d-grid mx-auto w-100 vh-100">
 
-    <div class="event-brick-grid">
+    <div class="infos-brick-grid">
 
       <?php
       if (!empty($joueurs)) {
         foreach ($joueurs as $row) {
       ?>
 
-          <a href="/profile/<?php echo $row->getId(); ?>" class="event-brick-cell">
+          <a href="/profile/<?php echo $row->getId(); ?>" class="infos-brick-cell">
             <h2><?php echo $row->getFirstName() ?></h2>
             <span class="date"><?php echo $row->getPlayer(); ?></span>
             <span class="time-left">

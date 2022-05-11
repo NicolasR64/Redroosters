@@ -30,6 +30,54 @@ body {
   position: fixed;
 }
 
+.infos-brick-grid {
+  margin: auto;
+  width: 100%;
+  max-width: 600px;
+}
+
+a.infos-brick-cell {
+  color: #fff;
+  text-align: left;
+  text-decoration: none;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  border-left: 12px solid #da373a;
+  margin-bottom: 10px;
+  display: block;
+  min-width: 100%;
+  transition: 0.2s;
+}
+
+a.infos-brick-cell:hover {
+  color: #fff;
+  filter: brightness(0.8);
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%),
+    0 1px 8px 0 rgb(0 0 0 / 12%);
+}
+
+a.infos-brick-cell .date {
+  font-weight: 600;
+  display: block;
+}
+
+a.infos-brick-cell .address {
+  font-weight: 600;
+  display: block;
+}
+
+a.infos-brick-cell .time-left {
+  display: block;
+}
+
+.buttons-brick-cell {
+  border: 2px solid #fff;
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
 /* END - All Pages */
 
 /* Nav - BEGIN */
@@ -262,58 +310,6 @@ input {
 }
 
 /* END - league page */
-
-/* BEGIN - Event list page */
-
-.event-brick-grid {
-  margin: auto;
-  width: 100%;
-  max-width: 600px;
-}
-
-a.event-brick-cell {
-  color: #fff;
-  text-align: left;
-  text-decoration: none;
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid #fff;
-  border-left: 12px solid #da373a;
-  margin-bottom: 10px;
-  display: block;
-  min-width: 100%;
-  transition: 0.2s;
-}
-
-a.event-brick-cell:hover {
-  color: #fff;
-  filter: brightness(0.8);
-  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 14%), 0 5px 3px -2px rgb(0 0 0 / 20%),
-    0 1px 8px 0 rgb(0 0 0 / 12%);
-}
-
-a.event-brick-cell .date {
-  font-weight: 600;
-  display: block;
-}
-
-a.event-brick-cell .address {
-  font-weight: 600;
-  display: block;
-}
-
-a.event-brick-cell .time-left {
-  display: block;
-}
-
-.buttons-brick-cell {
-  border: 2px solid #fff;
-  padding: 4px;
-  border-radius: 10px;
-  margin-bottom: 10px;
-}
-
-/* END - Event list page */
 
 /*BEGIN - Event page */
 

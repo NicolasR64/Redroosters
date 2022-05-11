@@ -41,13 +41,13 @@ require_once("../controllers/eventListCont.php");
         } else {
         ?>
 
-            <div class="event-brick-grid">
+            <div class="infos-brick-grid">
 
                 <?php
                 foreach ($upcomingEvents as $elem) {
                 ?>
 
-                    <a href="/event/<?php echo $elem->getId(); ?>" class="event-brick-cell">
+                    <a href="/event/<?php echo $elem->getId(); ?>" class="infos-brick-cell">
                         <h2><?php echo $elem->getName(); ?></h2>
                         <span class="date">Le <?php echo $elem->getDateBegin(); ?> à&nbsp;<?php echo $elem->getRdvHours(); ?></span>
                         <span class="address">
