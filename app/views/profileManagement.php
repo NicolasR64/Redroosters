@@ -97,6 +97,11 @@ if (!$exist) {
                         <div class="d-flex justify-content-between align-items-center mb-3">
                             <h4 class="text-right">Mise à jours de votre profil</h4>
                         </div>
+                        <div class="row mt-3">
+                            <div class="d-flex col-md-12">
+                                    <a class="btn btn-danger" href="/change-password">Changer le mot de passe</a>
+                            </div>
+                        </div>
                         <!-- Formulaire de donées -->
                         <form id="submitUpdateProfile">
                             <div class="row mt-2">
