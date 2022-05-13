@@ -78,6 +78,18 @@ a.infos-brick-cell .time-left {
   margin-bottom: 10px;
 }
 
+.listPlayerContainer{
+  width: 100%;
+  height: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listPlayer{
+  width: 100%;
+  margin: 15px
+}
+
 /* END - All Pages */
 
 /* Nav - BEGIN */
@@ -344,3 +356,10 @@ input {
 }
 
 /* END Event page */
+
+@media screen and (min-width: 700px) {
+  .listPlayer{
+    width: 15%;
+  }
+  
+}
