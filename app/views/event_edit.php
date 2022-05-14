@@ -16,7 +16,7 @@ require_once("../controllers/isConnect.php");
     <?php require_once("../views/includes/header.php"); ?>
 
     <div class="container align-items-center align-middle text-center d-grid col-md-5 mx-auto">
-        <form method="POST" class="formEventManagement" data-bitwarden-watching="1" id="formEventManagement">
+        <form method="POST" class="formEdit" data-bitwarden-watching="1" id="formEventEdit">
             <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy" />
             <h1 class="h3 mb-3 font-weight-normal">Ajouter/Modifier évènement</h1>
 
@@ -79,7 +79,7 @@ require_once("../controllers/isConnect.php");
 
 
             <textarea for="inputDescription" name="inputDescription" id="inputDescription"><?php echo $event->getDescription() ?></textarea>
-            <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" name="form-event" id="submitButton" value="form-event">Ajouter évènement</button>
+            <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" name="form-event" id="submitButton" value="form-event">Appliquer changements</button>
         </form>
     </div>
     <?php require_once("../views/includes/footer.php"); ?>
