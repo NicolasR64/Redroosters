@@ -94,6 +94,13 @@ class Event extends Model
         $this->id = $id;
     }
 
+    //Update event//
+
+    public function updateEvent(){
+        $sql = "UPDATE `event` SET `rdvDate` = '$this->rdvDate', `rdvHours` = '$this->rdvHours', `rdvCity` = '$this->rdvCity', `rdvStreet` = '$this->rdvStreet', `rdvPostalCode` = '$this->rdvPostalCode', `name` = '$this->name', `hours` = '$this->hours', `street` = '$this->street', `city` = '$this->city', `postalCode` = '$this->postalCode' , `description` = '$this->description', `dateBegin` = '$this->dateBegin', `dateEnd` = '$this->dateEnd' WHERE `id`= '$this->id'";
+        $this->executeRequest($sql,false);
+    }
+
     
     //Getters and setters//
 
