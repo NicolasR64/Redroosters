@@ -1,6 +1,10 @@
 <?php
 
 require_once("../models/Event.php");
+require_once("../models/Matchs.php");
+require_once("../models/league.php");
+require_once("../models/Team.php");
+require_once("../models/IceRink.php");
 
 function compareDate($dateRdv, $dateBegin)
 {
@@ -81,6 +85,13 @@ function checkValidDate($d1, $d2, $d3)
     }
     return 0;
 }
+
+//Retrieval of the complete list of teams, ice rinks and leagues for the creation of a match
+$ice = new IceRink();
+$listeIceRink = $ice->getAllIceRink();
+
+$team = new Team();
+$listeTeam = $team->getAllOpponents();
 
 // Check if form is completed //
 if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {

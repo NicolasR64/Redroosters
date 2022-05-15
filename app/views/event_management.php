@@ -55,17 +55,27 @@ require_once("../controllers/isConnect.php");
         <label for="inputRdvPostalCode">Code postal du rendez-vous*</label>
         <input type="number" name="inputRdvPostalCode" id="inputRdvPostalCode" class="form-control">
 
-        <label for="inputMatch">Match?</label>
+        <label for="inputMatch">Est-ce un match?</label>
         <input type="checkbox" name="inputMatch" id="inputMatch" class="form-check" value="oui"> 
 
         <div class="d-none" id="match">
           <label for="inputAdversaire">Adversaire</label>
           <select class="form-control" name="inputAdversaire" id="inputAdversaire">
+            <?php 
+              foreach($listeTeam as $elem){
+                echo "<option value=".$elem->getId().">".$elem->getName()."</option>";
+              }
+            ?>
 
           </select></br>
 
           <label for="inputLieu">Lieu de l'affrontement</label>
           <select class="form-control" name="inputLieu" id="inputLieu">
+            <?php 
+              foreach($listeIceRink as $elem){
+                echo "<option value=".$elem->getId().">".$elem->getName()." - ". $elem->getCity() ."</option>";
+              }
+            ?>
             
           </select></br>
 

@@ -12,6 +12,7 @@ class Matchs extends Model{
     private $visitorScoreTiersTemps3;
     private $isAmical;
     private $isVisitor;
+    private $idIceRink;
     private $idLeague;
 
     //Hydratation
@@ -173,6 +174,19 @@ class Matchs extends Model{
     public function setIsVisitor($isVisitor)
     {
         $this->isVisitor = $isVisitor;
+    }
+
+    /**
+     * Get the value of id
+     */ 
+    public function getIdIceRink()
+    {
+        return $this->idIceRink;
+    }
+
+    public function setIdIceRink($idIceRink)
+    {
+        $this->id = $idIceRink;
     }
 
      /**

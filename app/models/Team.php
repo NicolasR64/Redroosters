@@ -82,6 +82,19 @@ class Team extends Model{
         return $team;
     }
 
+    //Récupération de toute les teams sauf celle des redroosters
+    public function getAllOpponents(){
+        $teamListe = array();
+        $sql = "SELECT * FROM  `team` WHERE id!=1";
+        $data = $this->executeRequest($sql);
+        foreach($data as $elem){
+            $team = new Team();
+            $team->fillObject($elem);
+            array_push($teamListe,$team);
+        }
+        return $teamListe;
+    }
+
     public function getAllTeam(){
         $sql = "SELECT * FROM `team`";
         $data = $this->executeRequest($sql);

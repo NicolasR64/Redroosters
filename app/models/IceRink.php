@@ -11,7 +11,7 @@ class IceRink extends Model{
     /**
      * Get value of ice rink id 
      */
-    public function getIdIceRink()
+    public function getId()
     {
         return $this->id;
     }
@@ -19,7 +19,7 @@ class IceRink extends Model{
     /**
      * Set value of ice rink id 
      */
-    public function setIdIceRink($id)
+    public function setId($id)
     {
         $this->id = $id;
     }
@@ -27,7 +27,7 @@ class IceRink extends Model{
     /**
      * Get the name of ice rink
      */ 
-    public function getNameIceRink()
+    public function getName()
     {
         return $this->name;
     }
@@ -35,7 +35,7 @@ class IceRink extends Model{
     /**
      * Set the name of ice rink
      */
-    public function setNameIceRink($name)
+    public function setName($name)
     {
         $this->name = $name;
     }
@@ -43,7 +43,7 @@ class IceRink extends Model{
     /**
      * Get value of the city ice rink  
      */
-    public function getCityIceRink()
+    public function getCity()
     {
         return $this->city;
     }
@@ -51,7 +51,7 @@ class IceRink extends Model{
     /**
      * Set value of city ice rink
      */
-    public function setCityIceRink($city)
+    public function setCity($city)
     {
         $this->city = $city;
     }
@@ -59,7 +59,7 @@ class IceRink extends Model{
     /**
      * Get value of street ice rink
      */
-    public function getStreetIceRink()
+    public function getStreet()
     {
         return $this->street;
     }
@@ -67,7 +67,7 @@ class IceRink extends Model{
     /**
      * Set value of street ice rink
      */
-    public function setStreetIceRink($street)
+    public function setStreet($street)
     {
         $this->street = $street;
     }
@@ -75,7 +75,7 @@ class IceRink extends Model{
     /**
      * Get value of postal code  ice rink
      */
-    public function getPostalCodeIceRink()
+    public function getPostalCode()
     {
         return $this->postalCode;
     }
@@ -83,7 +83,7 @@ class IceRink extends Model{
     /**
      * Set value of postal code ice rink
      */
-    public function setPostalCodeIceRink($postalCode)
+    public function setPostalCode($postalCode)
     {
         $this->postalCode = $postalCode;
     }
@@ -111,9 +111,15 @@ class IceRink extends Model{
     }
 
     public function getAllIceRink(){
+        $iceList = array();
         $sql = "SELECT * FROM `ice_rink`";
         $data = $this->executeRequest($sql);
-        return $data;
+        foreach($data as $elem){
+            $iceRink = new IceRink();
+            $iceRink->fillObject($elem);
+            array_push($iceList,$iceRink);
+        }
+        return $iceList;
     }
     
     /**
