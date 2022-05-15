@@ -35,6 +35,13 @@ class Matchs extends Model{
         return $data;
     }
 
+    //ajout d'un match
+    public function addMatch(){
+        $sql="INSERT INTO `match`(`id`, `homeScoreTiersTemps1`, `homeScoreTiersTemps2`, `homeScoreTiersTemps3`, `visitorScoreTiersTemps1`, `visitorScoreTiersTemps2`, `visitorScoreTiersTemps3`, `isAmical`, `isVisitor`, `idIceRink`, `idLeague`) 
+        VALUES('$this->id','$this->homeScoreTiersTemps1','$this->homeScoreTiersTemps2','$this->homeScoreTiersTemps3','$this->visitorScoreTiersTemps1','$this->visitorScoreTiersTemps2','$this->visitorScoreTiersTemps3','$this->isAmical','$this->isVisitor','$this->idIceRink','$this->idLeague')";
+        $this->executeRequest($sql,false);
+    }
+
     /**
      * Get the value of id
      */ 
@@ -186,7 +193,7 @@ class Matchs extends Model{
 
     public function setIdIceRink($idIceRink)
     {
-        $this->id = $idIceRink;
+        $this->idIceRink = $idIceRink;
     }
 
      /**

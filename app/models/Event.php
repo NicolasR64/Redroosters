@@ -88,8 +88,8 @@ class Event extends Model
 
     public function addEvent()
     {
-        $sql = "INSERT INTO `event` (`rdvDate`, `rdvHours`, `rdvCity`, `rdvStreet`, `rdvPostalCode`, `name`, `hours`, `street`, `city`, `postalCode`, `description`, `dateBegin`, `dateEnd`)
-     VALUES ('$this->rdvDate','$this->rdvHours','$this->rdvCity','$this->rdvStreet','$this->rdvPostalCode','$this->name','$this->hours','$this->street','$this->city','$this->postalCode','$this->description','$this->dateBegin','$this->dateEnd')";
+        $sql = "INSERT INTO `event` (`isMatch`,`rdvDate`, `rdvHours`, `rdvCity`, `rdvStreet`, `rdvPostalCode`, `name`, `hours`, `street`, `city`, `postalCode`, `description`, `dateBegin`, `dateEnd`)
+     VALUES ('$this->isMatch','$this->rdvDate','$this->rdvHours','$this->rdvCity','$this->rdvStreet','$this->rdvPostalCode','$this->name','$this->hours','$this->street','$this->city','$this->postalCode','$this->description','$this->dateBegin','$this->dateEnd')";
         $id = $this->executeRequest($sql, false);
         $this->id = $id;
     }

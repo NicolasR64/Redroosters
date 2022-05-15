@@ -58,6 +58,11 @@ class Play extends Model{
     {
         $this->notation = $notation;
     }
+
+    public function addEntry(){
+        $sql="INSERT INTO `play` (`idMatch`,`idTeam`,`notation`) VALUES('$this->idMatch','$this->idTeam','$this->notation')";
+        $this->executeRequest($sql, false);
+    }
 }
 
 ?>

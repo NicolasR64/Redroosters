@@ -58,7 +58,9 @@ class League extends Model{
     /**
      * Set the value of id
      */ 
-    public function setId(){}
+    public function setId($id){
+        $this->id = $id;
+    }
 
     /**
      * Get the value of seasonYear

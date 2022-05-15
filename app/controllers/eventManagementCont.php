@@ -4,6 +4,7 @@ require_once("../models/Event.php");
 require_once("../models/Matchs.php");
 require_once("../models/league.php");
 require_once("../models/Team.php");
+require_once("../models/play.php");
 require_once("../models/IceRink.php");
 
 function compareDate($dateRdv, $dateBegin)
@@ -86,7 +87,7 @@ function checkValidDate($d1, $d2, $d3)
     return 0;
 }
 
-//Retrieval of the complete list of teams, ice rinks and leagues for the creation of a match
+//Retrieval of the complete list of teams and ice rinks for the creation of a match
 $ice = new IceRink();
 $listeIceRink = $ice->getAllIceRink();
 
@@ -95,6 +96,22 @@ $listeTeam = $team->getAllOpponents();
 
 // Check if form is completed //
 if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
+    //control if it's a match
+    $good=true;
+    $match=0;
+    if(isset($_POST['inputMatch']) && !empty($_POST['inputMatch'])){
+        $match = 1;
+        $good = false;
+        if(isset($_POST['inputAdversaire'],$_POST["inputLieu"]) && !empty($_POST['inputAdversaire']) && !empty($_POST['inputLieu'])){
+            $good = true;
+            $opponent = cleanData($_POST['inputAdversaire']);
+            $iceRink = cleanData($_POST['inputLieu']);
+            if (isset($_POST['inputAmi']) && !empty($_POST['inputAmi'])) $ami = 1;
+            else $ami = 0;
+            if (isset($_POST['inputVisitor']) && !empty($_POST['inputVisitor'])) $visitor = 1;
+            else $visitor = 0;
+        }
+    }
     if (
         isset(
             $_POST["inputName"],
@@ -113,7 +130,7 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
             && !empty($_POST["inputEndHour"]) && !empty($_POST["inputStreet"]) && !empty($_POST["inputCity"]) && !empty($_POST["inputPostalCode"])
             && !empty($_POST["inputRdvStreet"])
             && !empty($_POST["inputRdvCity"]) && !empty($_POST["inputRdvPostalCode"]) && !empty($_POST["inputRdvDate"])
-        )
+        ) && $good
     ) {
 
         //Create Event object//
@@ -158,9 +175,36 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
             $event->setRdvPostalCode($rdvPostalCode);
             $event->setDescription($description);
             $event->setHours($totalHours);
+            $event->setIsMatch($match);
             $event->addEvent();
     
             $id = $event->getId();
+
+
+            if($match == 1){
+                $rencontre = new Matchs();
+                $play = new Play();
+                $rencontre->setId($event->getId());
+                $play->setIdMatch($id);
+                $play->setIdTeam($opponent);
+                $play->setNotation(0);
+                $rencontre->setIsAmical($ami);
+                $rencontre->setIsVisitor($visitor);
+                $league = new League();
+                $league = $league->getCurrentSeason();
+                $rencontre->setIdLeague($league->getId());
+                $rencontre->setIdIceRink($iceRink);
+                $rencontre->setHomeScoreTiersTemps1(0);
+                $rencontre->setHomeScoreTiersTemps2(0);
+                $rencontre->setHomeScoreTiersTemps3(0);
+                $rencontre->setVisitorScoreTiersTemps1(0);
+                $rencontre->setVisitorScoreTiersTemps2(0);
+                $rencontre->setVisitorScoreTiersTemps3(0);
+
+                $rencontre->addMatch();
+                $play->addEntry();
+
+            }
     
             header("Location:/app/views/invitation.php?idEvent=$id");
         }else{
