@@ -36,7 +36,7 @@ require_once("../controllers/isConnect.php");
             <input type="date" name="inputRdvDate" id="inputRdvDate" value="<?php echo $event->getRdvDate() ?>" class="form-control">
 
             <label for="inputEndHour">Heure de fin*</label>
-            <input type="time" name="inputEndHour" id="inputEndHour" class="form-control">
+            <input type="time" name="inputEndHour" id="inputEndHour" value="<?php echo $endhours?>" class="form-control">
 
             <label for="inputStreet">Rue de l'évènement*</label>
             <input type="text" name="inputStreet" id="inputStreet" value="<?php echo $event->getRdvStreet() ?>" class="form-control">
