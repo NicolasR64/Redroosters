@@ -4,6 +4,8 @@
 <head>
       <?php require_once("../views/includes/head.php");
       require_once("../controllers/eventCont.php");
+      require_once("../controllers/isConnect.php");
+      require_once("../models/User.php");
       ?>
       <script src="/app/js/checkButtonStatus.js" async></script>
       <title>Redroosters</title>
@@ -56,11 +58,17 @@
 
       </div>
       <div class="text-center mt-5 ">
+            <?php $sessionUser = unserialize($_SESSION['user']);
+            if ($sessionUser->getIsAdmin() == 1) { ?>
+                  <form action="/app/controllers/deleteEventCont.php" method="POST" id="formDelete">
+                        <input type="hidden" name="inputIdEvent2" value="<?php echo $_GET['id'] ?>">
+                        <button form="formDelete" class="btn btn-lg btn-block bg-danger" type="submit">Supprimer</button><br>
+                  </form><br>
+            <?php } ?>
             <form id="formPrensence">
                   <input type="hidden" name="inputIdEvent" value="<?php echo $_GET['id'] ?>">
                   <?php
                   //on teste si l'utilisateur est invité à cet évènement
-                  require_once("../models/User.php");
                   $sessionUser = unserialize($_SESSION['user']);
                   $data = getEntryByUserIdAndEventId($sessionUser->getId(), $_GET['id']);
 
@@ -214,7 +222,6 @@
             </div>
       </div>
       <?php
-      $sessionUser = unserialize($_SESSION['user']);
       if ($sessionUser->getIsAdmin() == 1) {
             echo "<a href=\"/event/edit/" . $event->getId() . "\" rel=\"nofollow\" class=\"btn-fixed\" title=\"Editer l'évènement\"><i class=\"fa-solid fa-pen-to-square\"></i></a>";
       }
