@@ -4,12 +4,12 @@ session_start();
 require_once("../models/Event.php");
 
 $eventManager = new Event();
-$test = 16;
-if (!isset($test) && empty($test)) {
+
+if (!isset($_GET['id']) && empty($_GET['id'])) {
     header("location: /events");
 }
 
-$event = $eventManager->getEventById($test);
+$event = $eventManager->getEventById($_GET['id']);
 
 $endhours = calculateEndHour($event);
 

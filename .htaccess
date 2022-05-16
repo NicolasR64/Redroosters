@@ -40,6 +40,8 @@ RewriteRule "^event/([0-9]+)$" "app/views/event.php?id=$1"
 
 RewriteRule "event/post$" "app/views/event_management.php"
 
+RewriteRule "^event/edit/([0-9]+)$" "app/views/event_edit.php?id=$1"
+
 RewriteRule "profile$" "app/views/profile.php"
 
 RewriteRule "^profile/([0-9]+)$" "app/views/profile.php?id=$1"
