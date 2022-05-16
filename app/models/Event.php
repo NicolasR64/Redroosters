@@ -101,7 +101,13 @@ class Event extends Model
         $this->executeRequest($sql,false);
     }
 
-    
+    //Delete Event//
+
+    public function deleteEvent(){
+        $sql ="DELETE FROM `event` WHERE `id`= '$this->id'";
+        $this->executeRequest($sql,false);
+    }
+
     //Getters and setters//
 
     public function getId()
