@@ -49,6 +49,57 @@ function checkValidDate($d1, $d2, $d3)
     return 0;
 }
 
+function calculateInterval($beginDate, $endDate)
+{
+
+    $begin = new DateTime($beginDate);
+    $end = new DateTime($endDate);
+
+    $interval = $begin->diff($end);
+    return $interval;
+}
+
+function calculateHour($t1, $t2)
+{
+
+    $tab = explode(":", $t1);
+    $tab2 = explode(":", $t2);
+
+    $h = $tab[0];
+    $h2 = $tab2[0];
+
+    if ($h >= $h2) {
+        $h2 = $h2 + 24;
+    }
+
+    $ht = $h2 - $h;
+
+    return $ht;
+}
+
+//The function calculates the total number of hours of the event
+
+function calculateTotalTimeEvent($duration1, $duration2)
+{
+
+    $days = $duration1->days;
+    //Verification if we have 24h with the time
+
+    if ($duration2 == 24 && $days > 0) {
+        $duration2 = 0;
+        $hours = $days * 24 - $duration2;
+    }
+    //Verification if the end hour is less or equals to 12 hours
+    elseif ($duration2 > 13) {
+        $duration2 = 24 - $duration2;
+        $hours = $days * 24 - $duration2;
+    } else {
+        $hours = $days * 24 + $duration2;
+    }
+
+    return $hours;
+}
+
 
 //Implementing changes//
 
@@ -94,6 +145,12 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
         $description = addslashes(cleanData($_POST["inputDescription"]));
         $rdvDate = cleanData($_POST["inputRdvDate"]);
 
+         //Calculation of total hours//
+
+         $duration = calculateInterval($beginDate, $endDate);
+         $durationHours = calculateHour($rdvHours, $endHours);
+         $totalHours = calculateTotalTimeEvent($duration, $durationHours);
+
         //Add data to the object//
 
         if (checkValidDate($beginDate, $endDate, $rdvDate) == 0) {
@@ -109,6 +166,7 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
             $event->setRdvStreet($rdvStreet);
             $event->setRdvCity($rdvCity);
             $event->setRdvPostalCode($rdvPostalCode);
+            $event->setHours($totalHours);
             $event->setDescription($description);
             $event->updateEvent();
 
