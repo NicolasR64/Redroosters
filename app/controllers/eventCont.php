@@ -2,22 +2,23 @@
 session_start();
 require_once("../models/Event.php");
 
-function calculateDays($h){
+function calculateDays($h)
+{
 
     if ($h >= 8760) {
-        $hour = round($h/8760);
-        return "Durée : ".$h." année(s)";
-    } elseif( $h >= 730 && $h < 8760) {
-        $hour = round($h/730);
-        return "Durée : ".$h." mois";
-    } elseif($h >= 168 && $h < 730){
-        $hour = round($h/168);
-        return "Durée : ".$h. " semaine(s)";
-    } elseif($h >= 24 && $h < 168){
-        $hour = round($h/24);
-        return  "Durée : ".$hour." jour(s)";
-    }else{
-        return "Durée : ".$h." heure(s)";
+        $hour = round($h / 8760);
+        return "Durée : " . $h . " année(s)";
+    } elseif ($h >= 730 && $h < 8760) {
+        $hour = round($h / 730);
+        return "Durée : " . $h . " mois";
+    } elseif ($h >= 168 && $h < 730) {
+        $hour = round($h / 168);
+        return "Durée : " . $h . " semaine(s)";
+    } elseif ($h >= 24 && $h < 168) {
+        $hour = round($h / 24);
+        return  "Durée : " . $hour . " jour(s)";
+    } else {
+        return "Durée : " . $h . " heure(s)";
     }
 }
 
@@ -33,19 +34,22 @@ if (empty($event)) {
 }
 
 
-function getListPlayerByEvent($eventId){
+function getListPlayerByEvent($eventId)
+{
     require_once("../models/Participe.php");
     $participate = new Participe();
     return $participate->getEntryByEventId($eventId);
 }
 
-function getUserById($id){
+function getUserById($id)
+{
     require_once("../models/User.php");
     $user = new User();
     return $user->getUserById($id);
 }
 
-function getEntryByUserIdAndEventId($id, $event){
+function getEntryByUserIdAndEventId($id, $event)
+{
     require_once("../models/Participe.php");
     $participate = new Participe();
     return $participate->getEntryByUserIdAndEventId($id, $event);
