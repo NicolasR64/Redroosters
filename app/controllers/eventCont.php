@@ -51,6 +51,13 @@ function getUserById($id)
     return $user->getUserById($id);
 }
 
+function getPlayerById($id)
+{
+    require_once("../models/Player.php");
+    $player = new Player();
+    return $player->getPlayerById($id);
+}
+
 function getEntryByUserIdAndEventId($id, $event)
 {
     require_once("../models/Participe.php");
