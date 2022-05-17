@@ -13,7 +13,8 @@ $event = $eventManager->getEventById($_GET['id']);
 
 $endhours = calculateEndHour($event);
 
-function calculateEndHour($event){
+function calculateEndHour($event)
+{
     $h1 = $event->getRdvHours();
     $h2 = $event->getHours();
 
@@ -23,7 +24,7 @@ function calculateEndHour($event){
     $endTimeM = $h1Explode[1] * 60;
     $totalEndTime = $endTimeH + $endTimeM;
 
-    $time = strftime("%T",$totalEndTime);
+    $time = strftime("%T", $totalEndTime);
 
     return $time;
 }
@@ -145,16 +146,16 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
         $description = addslashes(cleanData($_POST["inputDescription"]));
         $rdvDate = cleanData($_POST["inputRdvDate"]);
 
-         //Calculation of total hours//
+        //Calculation of total hours//
 
-         $duration = calculateInterval($beginDate, $endDate);
-         $durationHours = calculateHour($rdvHours, $endHours);
-         $totalHours = calculateTotalTimeEvent($duration, $durationHours);
+        $duration = calculateInterval($beginDate, $endDate);
+        $durationHours = calculateHour($rdvHours, $endHours);
+        $totalHours = calculateTotalTimeEvent($duration, $durationHours);
 
         //Add data to the object//
 
         if (checkValidDate($beginDate, $endDate, $rdvDate) == 0) {
-            $event->setId($test);
+            $event->setId($_GET['id']);
             $event->setName($name);
             $event->setRdvDate($rdvDate);
             $event->setDateBegin($beginDate);
