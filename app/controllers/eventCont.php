@@ -24,6 +24,9 @@ function calculateDays($h)
 
 $eventManager = new Event();
 
+if(empty($_GET['id'])){
+    header('Location: /events');
+}
 $data = intval($_GET['id']);
 $event = $eventManager->getEventById($data);
 echo $event->getHours();

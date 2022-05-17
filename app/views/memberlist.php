@@ -45,13 +45,14 @@ require_once("../controllers/memberListCont.php");
               <?php echo $row->getStaff(); ?>
             </span>
           </a>
+          <?php if(unserialize($_SESSION["user"])->getIsAdmin()){?>
           <div class="buttons-brick-cell">
             <a class="btn btn-primary mt-1 mb-1" href='<?php echo $url; ?>?changePlayerState=<?php echo $row->getId(); ?>'><?php if ($row->getIsPlayer() == 0) { ?><i class="fa-solid fa-hockey-puck"></i>&nbsp;Promouvoir joueur<?php } else { ?>&nbsp;<i class="fa-solid fa-circle-minus"></i>&nbsp;Destituer Joueur<?php } ?></a>
             <a class="btn btn-primary mt-1 mb-1" href='<?php echo $url; ?>?changeAdminState=<?php echo $row->getId(); ?>'><?php if ($row->getIsAdmin() == 0) { ?><i class="fa-solid fa-crown"></i>&nbsp;Promouvoir administrateur<?php } else { ?><i class="fa-solid fa-circle-minus"></i>&nbsp;Destituer administrateur<?php } ?></a>
             <a class="btn btn-primary mt-1 mb-1" href='<?php echo $url; ?>?changeStaffState=<?php echo $row->getId(); ?>'><?php if ($row->getIsStaff() == 0) { ?><i class="fa-solid fa-user"></i>&nbsp;Promouvoir membre du personnel<?php } else { ?><i class="fa-solid fa-circle-minus"></i>&nbsp;Destituer membre du personnel<?php } ?></a>
             <a class="btn btn-danger mt-1 mb-1" href='<?php echo $url; ?>?delete=<?php echo $row->getId(); ?>'><i class="fa-solid fa-trash"></i>&nbsp;Supprimer</a>
           </div>
-
+          <?php }?>
       <?php
         }
       }
