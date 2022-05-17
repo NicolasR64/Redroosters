@@ -81,7 +81,7 @@
                   <div class="col-md-9 border-right mx-auto rounded">
                         <div class="p-3 py-5">
                               <div class="text-center align-items-center mb-3 ">
-                                    <h4>Présence </h4>
+                                    <h4>Présence(s) </h4>
                               </div>
                               <div class="row-cols-md-12 text-center rounded overflow-hidden fs-5">
                                     <?php
@@ -94,6 +94,8 @@
                                     foreach ($data as $key) {
                                           /* recherche du joueur */
                                           $user = getUserById($key['idUser']);
+                                         /*  $player = getPlayerByid($user->getPlayer());
+                                          $position = $player->getPosition(); */
 
                                           if ($key['isAnswer']) {
                                                 if ($key['isDispo'] == 1) {
@@ -101,7 +103,7 @@
                                                             echo '
                                                 <div class="row bg-secondary border-bottom border-dark ">
                                                       <div class="col-md-3 ">
-                                                            <p class="labels mb-2 mt-sm-2">' . $user->getFirstName() . '</p>
+                                                            <p class="labels mb-2 mt-sm-2">' . $user->getFirstName() .'</p>
                                                       </div>
                                                       <div class="col-md-3 bg-success">
                                                             <p class="labels mb-2 mt-sm-2">Présent</p>

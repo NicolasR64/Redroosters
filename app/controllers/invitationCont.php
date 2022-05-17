@@ -76,17 +76,28 @@
                 $player = $player->getPlayerById($elem->getId());
                 $pos = $player->getPosition($player->getIdPosition());
                 $elem->setPlayer($pos->getName());
+                //ajout des joueurs dans le match
+                require_once('../models/joue.php');
+                $joue = new Joue();
+                $joue->setIdMatch($_GET["idEvent"]);
+                $joue->setIdPlayer($player->getId());
+                $joue->addEntry();
             } else $elem->setPlayer("N/A");
+
             if($elem->getIsStaff() == 1){
                 $staff = $staff->getStaffById($elem->getId());
                 $pos = $staff->getFunction($staff->getIdFunction());
                 $elem->setStaff($pos->getName());
+                //ajout des staffs dans le match
+                require_once('../models/joue.php');
+                $joue = new Joue();
+                $joue->setIdMatch($_GET["idEvent"]);
+                $joue->setIdPlayer($staff->getId());
+                $joue->addEntry();
+
             } else $elem->setStaff("N/A");
         }
     }
 
-
-
-
-
+    
 ?>
