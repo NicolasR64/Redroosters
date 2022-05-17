@@ -14,7 +14,6 @@ require_once("../controllers/memberListCont.php");
 <head>
 
   <?php require_once("../views/includes/head.php"); ?>
-
   <title>Liste des membres | Redroosters</title>
 
 </head>
