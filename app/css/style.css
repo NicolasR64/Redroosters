@@ -23,6 +23,12 @@ body {
   z-index: 600;
 }
 
+@media (hover: none) and (pointer: coarse) {
+  .btn-fixed {
+    bottom: 80px;
+  }
+}
+
 .noscript {
   background: #da373a;
   width: 100vw;
@@ -78,14 +84,14 @@ a.infos-brick-cell .time-left {
   margin-bottom: 10px;
 }
 
-.listPlayerContainer{
+.listPlayerContainer {
   width: 100%;
   height: auto;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-.listPlayer{
+.listPlayer {
   width: 100%;
   margin: 15px
 }
@@ -358,8 +364,8 @@ input {
 /* END Event page */
 
 @media screen and (min-width: 700px) {
-  .listPlayer{
+  .listPlayer {
     width: 15%;
   }
-  
+
 }
