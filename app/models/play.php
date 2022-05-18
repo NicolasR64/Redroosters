@@ -6,6 +6,17 @@ class Play extends Model{
     private $idMatch;
     private $notation;
 
+    //Hydratation
+    public function fillObject(array $data){
+        foreach ($data as $key => $value){
+            $method = 'set'.ucfirst($key);
+            if(method_exists($this,$method)){
+                $this->$method($value);
+            }else{
+                echo 'Nom de champs invalide';
+            }
+        }
+    }
 
     /**
      * Get the value of idTeam
@@ -62,6 +73,17 @@ class Play extends Model{
     public function addEntry(){
         $sql="INSERT INTO `play` (`idMatch`,`idTeam`,`notation`) VALUES('$this->idMatch','$this->idTeam','$this->notation')";
         $this->executeRequest($sql, false);
+    }
+
+    //Obtient un jeu grâce à son ID
+    public function getPlayById($ID){
+        $sql="SELECT * FROM `play` WHERE `idMatch` = $ID";
+        $data = $this->executeRequest($sql);
+        if (!empty($data)) {
+            $play = new Play();
+            $play->fillObject($data[0]);
+        }
+        return $play;
     }
 }
 
