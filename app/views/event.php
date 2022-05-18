@@ -225,8 +225,12 @@
             </div>
             <div class="row">
                   <div class="col-md-12 text-center">
-                        <a class="btn btn-primary" href="/app/controllers/reminderCont.php">Renvoyer un rappel</a>
-                  </div>
+                        <?php
+                        if ($data != null) {
+                        ?>
+                              <a class="btn btn-primary" href="/app/controllers/reminderCont.php?idEvent=<?php echo $_GET['id']; ?>">Renvoyer un rappel</a>
+                        <?php } ?>
+                  </div>  
             </div>
       </div>
       <?php

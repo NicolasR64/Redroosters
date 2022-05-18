@@ -5,6 +5,7 @@
 
     require_once("../../vendor/autoload.php");
     require_once("../models/Participe.php");
+    require_once("../models/User.php");
 
     // récupère l'url de la page courante
     $url="";
@@ -21,7 +22,7 @@
             $url.="/app/views/event_list.php/$idEvent"; 
             //récupérer la liste des joueurs à qui envoyer le mail
             //TO DO
-            
+            $participate = new Participe();
             $liste = $participate->getMembersWithoutResponseToInvitation($idEvent);
 
             //Create an instance; passing `true` enables exceptions
@@ -38,10 +39,10 @@
                 $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
                 //Recipients
-                $mail->setFrom('mailymaylou@gmail.com', 'RedRoosters');
-                foreach($liste as $elem){
+                $mail->setFrom('mailymaylou@gmail.com', 'RedRoosters'); 
+                foreach($liste as $elems => $elem){
                     $user = new User();
-                    $user = $user->getUserById($elem);
+                    $user = $user->getUserById($elem['idUser']);
                     $mail->addAddress($user->getMail());     //Add a recipient
                 };
                
@@ -60,7 +61,7 @@
                 echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
             }
     }
+    header('location:/event/'.$_GET['idEvent'].'');
 
-    header('location:/app/views/event_list.php/'.$idEvent.'')
     
 ?>
