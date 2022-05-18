@@ -17,7 +17,7 @@ require_once("../controllers/isConnect.php");
 
     <div class="container align-items-center align-middle text-center d-grid col-md-5 mx-auto">
         <form method="POST" class="formEdit" data-bitwarden-watching="1" id="formEventEdit">
-            <h1 class="h3 mb-3 font-weight-normal">Ajouter/Modifier évènement</h1>
+            <h1 class="h3 mb-3 font-weight-normal">Modifier évènement</h1>
 
             <label for="inputName">Nom*</label>
             <input type="text" name="inputName" id="inputName" value="<?php echo $event->getName() ?>" class="form-control" autofocus="">
