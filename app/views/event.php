@@ -8,6 +8,7 @@
       require_once("../models/User.php");
       ?>
       <script src="/app/js/checkButtonStatus.js" async></script>
+      <script src="/app/js/checkConfirmationButton.js" async></script>
       <title>Redroosters</title>
 </head>
 
@@ -62,7 +63,7 @@
             if ($sessionUser->getIsAdmin() == 1) { ?>
                   <form action="/app/controllers/deleteEventCont.php" method="POST" id="formDelete">
                         <input type="hidden" name="inputIdEvent2" value="<?php echo $_GET['id'] ?>">
-                        <button form="formDelete" class="btn btn-lg btn-block bg-danger" type="submit">Supprimer</button><br>
+                        <button form="formDelete" class="btn btn-lg btn-block bg-danger" type="submit" id="confirm-box">Supprimer</button><br>
                   </form><br>
             <?php } ?>
             <form id="formPrensence">
