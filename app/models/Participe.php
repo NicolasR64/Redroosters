@@ -65,6 +65,12 @@ class Participe extends Model{
         $data = $this->executeRequest($sql);
         return $data;
     }
+    
+    public function getMembersWithoutResponseToInvitation($idEvent){
+        $sql="SELECT `idUser` FROM `participe` WHERE idEvent=$idEvent and isAnswer=0 ";
+        $data = $this->executeRequest($sql);
+        return $data;
+    }
 
     /* modifier une entrée à partir de l'id d'un joueur */
     public function UpdateEntryByUserIdAndEventId($user, $event, $isDispo, $isAnswer){
