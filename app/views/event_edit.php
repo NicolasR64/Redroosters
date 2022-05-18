@@ -7,7 +7,6 @@ require_once("../controllers/isConnect.php");
 
 <head>
     <?php require_once("../views/includes/head.php") ?>
-    <script src="/app/js/checkInputEventManagement.js" async></script>
     <title>Redroosters</title>
 </head>
 
@@ -55,9 +54,6 @@ require_once("../controllers/isConnect.php");
             <label for="inputRdvPostalCode">Code postal du rendez-vous*</label>
             <input type="number" name="inputRdvPostalCode" id="inputRdvPostalCode" value="<?php echo $event->getRdvPostalCode() ?>" class="form-control">
 
-            <label for="inputMatch">Match?</label>
-            <input type="checkbox" name="inputMatch" id="inputMatch" class="form-check" value="oui">
-
             <div class="d-none" id="match">
                 <label for="inputAdversaire">Adversaire</label>
                 <select class="form-control" name="inputAdversaire" id="inputAdversaire">
@@ -75,6 +71,39 @@ require_once("../controllers/isConnect.php");
                 <label for="inputVisitor">Sommes-nous les visiteurs?</label>
                 <input type="checkbox" name="inputVisitor" id="inputVisitor" class="form-check" value="oui">
             </div>
+            <?php if ($event->getIsMatch() == 1) {
+                
+              
+                     echo "<label for=\"inputAdversaire\">Adversaire</label>
+                    <select class=\"form-control\" name=\"inputAdversaire\" id=\"inputAdversaire\">";
+ 
+                        foreach ($teamList as $elem) {
+                            echo "<option value=\" . $elem->getId() . \">" . $elem->getName() . "</option>";
+                        }
+
+                    echo "</select></br>";
+
+                    echo "Choix actuel : ".$oppositeTeam->getName()."<br><br>";
+
+                    echo '
+                    <label for="inputLieu">Lieu de l\'affrontement</label>
+                    <select class="form-control" name="inputLieu" id="inputLieu">
+                    ';
+                    foreach ($iceRinkList as $elem) {
+                        echo "<option value=\" . $elem->getId() . \">" . $elem->getName() . "</option>";
+                    }
+                    echo "</select></br>";
+
+                    echo "Choix actuel : ".$iceRink->getName()."<br><br>";
+
+                    echo '<label for="inputAmi">Rencontre amicale?</label>
+                    <input type="checkbox" name="inputAmi" id="inputAmi" class="form-check" value="oui" checked="(($match->getIsAmical() == 0) ? \'\' :\'checked="checked"\'>
+                    
+                    <label for="inputVisitor">Sommes-nous les visiteurs?</label>
+                    <input type="checkbox" name="inputVisitor" id="inputVisitor" class="form-check" value="oui" checked="(($match->getIsVisitor() == 0) ? \'\' :\'checked="checked"\')">
+                    ';
+            }
+            ?>
 
 
             <textarea for="inputDescription" name="inputDescription" id="inputDescription"><?php echo $event->getDescription() ?></textarea>

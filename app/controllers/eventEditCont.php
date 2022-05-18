@@ -2,14 +2,32 @@
 session_start();
 //Ajouter vérification admin//
 require_once("../models/Event.php");
+require_once("../models/Matchs.php");
+require_once("../models/play.php");
+require_once("../models/IceRink.php");
+require_once("../models/Team.php");
 
 $eventManager = new Event();
+$matchManager = new Matchs(); 
+$playManager = new Play();
+$iceRinkManager = new IceRink();
+$teamManager = new Team();
 
 if (!isset($_GET['id']) && empty($_GET['id'])) {
     header("location: /events");
 }
 
 $event = $eventManager->getEventById($_GET['id']);
+$match = $matchManager->getMatchById($event->getId());
+$play = $playManager->getPlayById($event->getId());
+
+//Get all ice-rinks + ice-rink of the match
+$iceRink = $iceRinkManager->getIceRink($match->getIdIceRink());
+$iceRinkList = $iceRinkManager->getAllIceRink();
+
+//Get all teams + the opposite team for the match
+$teamList = $teamManager->getAllOpponents();
+$oppositeTeam = $teamManager->getTeam($play->getIdTeam());
 
 $endhours = calculateEndHour($event);
 
