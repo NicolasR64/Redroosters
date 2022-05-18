@@ -42,6 +42,17 @@ class Matchs extends Model{
         $this->executeRequest($sql,false);
     }
 
+    //Obtient un match grâce à son ID
+    public function getMatchById($ID){
+        $sql="SELECT * FROM `match` WHERE `id` = $ID";
+        $data = $this->executeRequest($sql);
+        if (!empty($data)) {
+            $match = new Matchs();
+            $match->fillObject($data[0]);
+        }
+        return $match;
+    }
+
     /**
      * Get the value of id
      */ 
