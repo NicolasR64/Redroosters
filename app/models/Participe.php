@@ -67,7 +67,7 @@ class Participe extends Model{
     }
     
     public function getMembersWithoutResponseToInvitation($idEvent){
-        $sql="SELECT `idUser` FROM `participe` WHERE idEvent=$idEvent and isAnswer=0 ";
+        $sql="SELECT `idUser` FROM `participe` WHERE idEvent=$idEvent and isAnswer=0 and isSelected=1";
         $data = $this->executeRequest($sql);
         return $data;
     }
