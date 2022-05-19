@@ -62,9 +62,9 @@ require_once("../controllers/isConnect.php");
  
                         foreach ($teamList as $elem) {
                             if($elem->getId() == $oppositeTeam->getId()){
-                                echo "<option value=\" . $elem->getId() . \" selected=\"selected\">" . $elem->getName() . "</option>";
+                                echo "<option value=" . $elem->getId() . " selected=\"selected\">" . $elem->getName() . "</option>";
                             }else{
-                                echo "<option value=\" . $elem->getId() . \" >" . $elem->getName() . "</option>";
+                                echo "<option value=" . $elem->getId() . " >" . $elem->getName() . "</option>";
                             }
                         }
 
@@ -76,9 +76,9 @@ require_once("../controllers/isConnect.php");
                     ';
                     foreach ($iceRinkList as $elem) {
                         if($elem->getId() == $iceRink->getId()){
-                            echo "<option value=\" . $elem->getId() . \" selected=\"selected\">" . $elem->getName() . "</option>";
+                            echo "<option value=" . $elem->getId() . " selected=\"selected\">" . $elem->getName() . "</option>";
                         }else{
-                            echo "<option value=\" . $elem->getId() . \">" . $elem->getName() . "</option>";
+                            echo "<option value=" . $elem->getId() . ">" . $elem->getName() . "</option>";
                         }
                     }
                     echo "</select></br>";

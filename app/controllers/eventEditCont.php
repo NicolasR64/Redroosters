@@ -237,6 +237,7 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
                 $rencontre->updateMatch();
                 $play->updatePlay();
             }
+            header("Location:/events");
        
         } else {
             $_SESSION['error'] = "L'une des dates entrées est invalide";
