@@ -85,6 +85,12 @@ class Play extends Model{
         }
         return $play;
     }
+
+    //Modifie un jeu
+    public function updatePlay(){
+        $sql = "UPDATE `play` SET `idTeam` = '$this->idTeam', `notation` = '$this->notation' WHERE `idMatch`= '$this->idMatch'";
+        $this->executeRequest($sql,false);
+    }
 }
 
 ?>

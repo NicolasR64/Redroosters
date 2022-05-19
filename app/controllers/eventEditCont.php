@@ -6,9 +6,10 @@ require_once("../models/Matchs.php");
 require_once("../models/play.php");
 require_once("../models/IceRink.php");
 require_once("../models/Team.php");
+require_once("../models/League.php");
 
 $eventManager = new Event();
-$matchManager = new Matchs(); 
+$matchManager = new Matchs();
 $playManager = new Play();
 $iceRinkManager = new IceRink();
 $teamManager = new Team();
@@ -18,16 +19,24 @@ if (!isset($_GET['id']) && empty($_GET['id'])) {
 }
 
 $event = $eventManager->getEventById($_GET['id']);
-$match = $matchManager->getMatchById($event->getId());
-$play = $playManager->getPlayById($event->getId());
+$ismatch = 0;
 
-//Get all ice-rinks + ice-rink of the match
-$iceRink = $iceRinkManager->getIceRink($match->getIdIceRink());
-$iceRinkList = $iceRinkManager->getAllIceRink();
+if ($event->getIsMatch() == 1) {
 
-//Get all teams + the opposite team for the match
-$teamList = $teamManager->getAllOpponents();
-$oppositeTeam = $teamManager->getTeam($play->getIdTeam());
+    $ismatch = $event->getIsMatch();
+
+    $match = $matchManager->getMatchById($event->getId());
+    $play = $playManager->getPlayById($event->getId());
+
+    //Get all ice-rinks + ice-rink of the match
+    $iceRink = $iceRinkManager->getIceRink($match->getIdIceRink());
+    $iceRinkList = $iceRinkManager->getAllIceRink();
+
+    //Get all teams + the opposite team for the match
+    $teamList = $teamManager->getAllOpponents();
+    $oppositeTeam = $teamManager->getTeam($play->getIdTeam());
+}
+
 
 $endhours = calculateEndHour($event);
 
@@ -120,7 +129,6 @@ function calculateTotalTimeEvent($duration1, $duration2)
 }
 
 
-//Implementing changes//
 
 if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
     if (
@@ -143,6 +151,21 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
             && !empty($_POST["inputRdvCity"]) && !empty($_POST["inputRdvPostalCode"]) && !empty($_POST["inputRdvDate"])
         )
     ) {
+     
+        if ($event->getIsMatch() == 1) {
+ 
+            //control if it's a match
+            if (isset($_POST['inputAdversaire'], $_POST["inputLieu"]) && !empty($_POST['inputAdversaire']) && !empty($_POST['inputLieu'])) {
+
+                $opponent = cleanData($_POST['inputAdversaire']);
+                $iceRink = cleanData($_POST['inputLieu']);
+                if (isset($_POST['inputAmi']) && !empty($_POST['inputAmi'])) $ami = 1;
+                else $ami = 0;
+                if (isset($_POST['inputVisitor']) && !empty($_POST['inputVisitor'])) $visitor = 1;
+                else $visitor = 0;
+            } else {
+            }
+        }
 
         //Create Event object//
 
@@ -187,13 +210,38 @@ if (isset($_POST['form-event']) && !empty($_POST['form-event'])) {
             $event->setRdvPostalCode($rdvPostalCode);
             $event->setHours($totalHours);
             $event->setDescription($description);
+            $event->setIsMatch($ismatch);
             $event->updateEvent();
+            $id = $event->getId();
 
-            header("location: /events");
+            if ($ismatch == 1) {
+                $rencontre = new Matchs();
+                $play = new Play();
+                $rencontre->setId($event->getId());
+                $play->setIdMatch($id);
+                $play->setIdTeam($opponent);
+                $play->setNotation(0);
+                $rencontre->setIsAmical($ami);
+                $rencontre->setIsVisitor($visitor);
+                $league = new League();
+                $league = $league->getCurrentSeason();
+                $rencontre->setIdLeague($league->getId());
+                $rencontre->setIdIceRink($iceRink);
+                $rencontre->setHomeScoreTiersTemps1(0);
+                $rencontre->setHomeScoreTiersTemps2(0);
+                $rencontre->setHomeScoreTiersTemps3(0);
+                $rencontre->setVisitorScoreTiersTemps1(0);
+                $rencontre->setVisitorScoreTiersTemps2(0);
+                $rencontre->setVisitorScoreTiersTemps3(0);
+
+                $rencontre->updateMatch();
+                $play->updatePlay();
+            }
+       
         } else {
-            $error = "L'une des dates entrées est invalide";
+            $_SESSION['error'] = "L'une des dates entrées est invalide";
         }
     } else {
-        $error = "Impossible de modifier l'évènement";
+        $_SESSION['error'] = "Impossible de modifier l'évènement";
     }
 }
