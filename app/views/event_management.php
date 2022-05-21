@@ -23,8 +23,7 @@ require_once("../controllers/isAdmin.php");
 
   <div class="container align-items-center align-middle text-center d-grid col-md-5 mx-auto">
     <form method="POST" class="formEventManagement" data-bitwarden-watching="1" id="formEventManagement">
-      <img src="../../assets/img/logos/logo_icon_text.png" height="100px" loading="lazy" />
-      <h1 class="h3 mb-3 font-weight-normal">Ajouter/Modifier évènement</h1>
+      <h1 class="h3 mb-3 font-weight-normal">Ajouter évènement</h1>
 
       <label for="inputName">Nom*</label>
       <input type="text" name="inputName" id="inputName" class="form-control" autofocus="">

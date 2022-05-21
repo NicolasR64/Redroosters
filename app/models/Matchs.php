@@ -42,6 +42,22 @@ class Matchs extends Model{
         $this->executeRequest($sql,false);
     }
 
+    //Obtient un match grâce à son ID
+    public function getMatchById($ID){
+        $sql="SELECT * FROM `match` WHERE `id` = $ID";
+        $data = $this->executeRequest($sql);
+        if (!empty($data)) {
+            $match = new Matchs();
+            $match->fillObject($data[0]);
+        }
+        return $match;
+    }
+    //Modifie un match
+    public function updateMatch(){
+        $sql = "UPDATE `match` SET `homeScoreTiersTemps1` = '$this->homeScoreTiersTemps1', `homeScoreTiersTemps2` = '$this->homeScoreTiersTemps2', `homeScoreTiersTemps3` = '$this->homeScoreTiersTemps3', `visitorScoreTiersTemps1` = '$this->visitorScoreTiersTemps1', `visitorScoreTiersTemps2` = '$this->visitorScoreTiersTemps2', `visitorScoreTiersTemps3` = '$this->visitorScoreTiersTemps3', `isAmical` = '$this->isAmical', `isVisitor` = '$this->isVisitor', `idIceRink` = '$this->idIceRink', `idLeague` = '$this->idLeague' WHERE `id`= '$this->id'";
+        $this->executeRequest($sql,false);
+    }
+    
     /**
      * Get the value of id
      */ 

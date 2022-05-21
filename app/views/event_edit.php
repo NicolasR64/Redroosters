@@ -7,7 +7,6 @@ require_once("../controllers/isConnect.php");
 
 <head>
     <?php require_once("../views/includes/head.php") ?>
-    <script src="/app/js/checkInputEventManagement.js" async></script>
     <title>Redroosters</title>
 </head>
 
@@ -17,8 +16,8 @@ require_once("../controllers/isConnect.php");
 
     <div class="container align-items-center align-middle text-center d-grid col-md-5 mx-auto">
         <form method="POST" class="formEdit" data-bitwarden-watching="1" id="formEventEdit">
-            <h1 class="h3 mb-3 font-weight-normal">Ajouter/Modifier évènement</h1>
-
+            <h1 class="h3 mb-3 font-weight-normal">Modifier évènement</h1>
+         
             <label for="inputName">Nom*</label>
             <input type="text" name="inputName" id="inputName" value="<?php echo $event->getName() ?>" class="form-control" autofocus="">
 
@@ -54,33 +53,51 @@ require_once("../controllers/isConnect.php");
 
             <label for="inputRdvPostalCode">Code postal du rendez-vous*</label>
             <input type="number" name="inputRdvPostalCode" id="inputRdvPostalCode" value="<?php echo $event->getRdvPostalCode() ?>" class="form-control">
+            <?php
+            
+            if ($event->getIsMatch() == 1) {
+                
+                     echo "<label for=\"inputAdversaire\">Adversaire</label>
+                    <select class=\"form-control\" name=\"inputAdversaire\" id=\"inputAdversaire\">";
+ 
+                        foreach ($teamList as $elem) {
+                            if($elem->getId() == $oppositeTeam->getId()){
+                                echo "<option value=" . $elem->getId() . " selected=\"selected\">" . $elem->getName() . "</option>";
+                            }else{
+                                echo "<option value=" . $elem->getId() . " >" . $elem->getName() . "</option>";
+                            }
+                        }
 
-            <label for="inputMatch">Match?</label>
-            <input type="checkbox" name="inputMatch" id="inputMatch" class="form-check" value="oui">
+                    echo "</select></br>";
 
-            <div class="d-none" id="match">
-                <label for="inputAdversaire">Adversaire</label>
-                <select class="form-control" name="inputAdversaire" id="inputAdversaire">
+                    echo '
+                    <label for="inputLieu">Lieu de l\'affrontement</label>
+                    <select class="form-control" name="inputLieu" id="inputLieu">
+                    ';
+                    foreach ($iceRinkList as $elem) {
+                        if($elem->getId() == $iceRink->getId()){
+                            echo "<option value=" . $elem->getId() . " selected=\"selected\">" . $elem->getName() . "</option>";
+                        }else{
+                            echo "<option value=" . $elem->getId() . ">" . $elem->getName() . "</option>";
+                        }
+                    }
+                    echo "</select></br>";
 
-                </select></br>
-
-                <label for="inputLieu">Lieu de l'affrontement</label>
-                <select class="form-control" name="inputLieu" id="inputLieu">
-
-                </select></br>
-
-                <label for="inputAmi">Rencontre amicale?</label>
-                <input type="checkbox" name="inputAmi" id="inputAmi" class="form-check" value="oui">
-
-                <label for="inputVisitor">Sommes-nous les visiteurs?</label>
-                <input type="checkbox" name="inputVisitor" id="inputVisitor" class="form-check" value="oui">
-            </div>
-
-
+                    echo '<label for="inputAmi">Rencontre amicale?</label>
+                    <input type="checkbox" name="inputAmi" id="inputAmi" class="form-check" value="oui" checked="(($match->getIsAmical() == 0) ? \'\' :\'checked="checked"\'>
+                    
+                    <label for="inputVisitor">Sommes-nous les visiteurs?</label>
+                    <input type="checkbox" name="inputVisitor" id="inputVisitor" class="form-check" value="oui" checked="(($match->getIsVisitor() == 0) ? \'\' :\'"checked"\')">
+                    ';
+            }
+            ?>
             <textarea for="inputDescription" name="inputDescription" id="inputDescription"><?php echo $event->getDescription() ?></textarea>
             <button class="btn btn-lg btn-primary btn-block mt-1 mb-2 w-100" type="submit" name="form-event" id="submitButton" value="form-event">Appliquer changements</button>
         </form>
     </div>
+    <?php if(!empty( $_SESSION['error']) || isset( $_SESSION['error'])){
+        echo  $_SESSION['error'];
+    }?>
     <?php require_once("../views/includes/footer.php"); ?>
 </body>
 
