@@ -32,6 +32,7 @@ if (empty($active)) {
         echo "active";
       } ?>
       ">
+        <i class="fa-solid fa-comments"></i>
       </a>
     </li>
     <li>
