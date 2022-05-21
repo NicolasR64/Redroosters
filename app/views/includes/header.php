@@ -27,8 +27,11 @@ if (empty($active)) {
       </a>
     </li>
     <li>
-      <a href="#" class="button">
-        <i class="fa-solid fa-comments"></i>
+      <a href="chat" class="button
+      <?php if ($active == "chat") {
+        echo "active";
+      } ?>
+      ">
       </a>
     </li>
     <li>
