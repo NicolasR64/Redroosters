@@ -52,6 +52,59 @@
       </div>
       </div>
 
+      <?php if($event->getIsMatch() == 1){?>
+            <div class="d-flex flex-row justify-content-center mt-5">
+                  
+                  <div class="text-center">
+                        <div class="descriptionCont text-center mt-5 rounded-3">
+                              <h2 class="h4 mb-3 font-weight-normal">Score par tier temps</h2>
+                              <table class="text-center">
+                                    <thead>
+                                          <th><?php if($match->getIsVisitor() == 0)echo"Redroosters"; else echo $equipe->getName();?></th>
+                                          <th><?php if($match->getIsVisitor() == 1)echo"Redroosters"; else echo $equipe->getName();?></th>
+                                    </thead>
+                                    <tbody>
+                                          <tr>
+                                            <td><?php echo $match->getHomeScoreTiersTemps1();?></td>
+                                            <td><?php echo $match->getVisitorScoreTiersTemps1();?></td>    
+                                          </tr>
+                                          <tr>
+                                            <td><?php echo $match->getHomeScoreTiersTemps2();?></td>
+                                            <td><?php echo $match->getVisitorScoreTiersTemps2();?></td>    
+                                          </tr>
+                                          <tr>
+                                            <td><?php echo $match->getHomeScoreTiersTemps3();?></td>
+                                            <td><?php echo $match->getVisitorScoreTiersTemps3();?></td>    
+                                          </tr>
+                                    </tbody>
+                                    <tfoot>
+                                          <td colspan="2"><?php echo $statut; ?></td>
+                                    </tfoot>
+                              </table>
+                        </div><br>
+                  </div> 
+                  <div class="d-flex flex-column">
+
+                        <div class="flex-container d-flex justify-content-center">
+                              <div class="information"><?php if($match->getIsAmical() == 1) echo "Rencontre amicale"; else echo "Rencontre sérieuse"; ?>
+                              </div>
+                        </div>
+
+
+                        <div class="flex-container d-flex justify-content-center">
+                              <div class="information"><?php echo "League: ". $league->getCategory() . " - Année: ". $league->getSeasonYear(); ?>
+                              </div>
+                        </div>
+
+                        <div class="flex-container d-flex justify-content-center">
+                              <div class="information"><?php echo "Patinoire: ". $iceRink->getName(); ?>
+                              </div>
+                        </div><br>
+                  </div>
+            </div>
+            </div>
+      <?php } ?>
+
       <div class="rdvField text-center mt-5 rounded-3">
             <h2 class="h4 mb-3 font-weight-normal">Lieu de rendez-vous</h2>
             <?php echo $event->getRdvStreet() . ", " . $event->getRdvPostalCode() . " " . $event->getRdvCity() . "<br>";

@@ -33,6 +33,15 @@ class League extends Model{
         return $league;
     }
 
+    //get a specific league
+    function getLeagueById($id){
+        $sql = "SELECT * FROM  `league` WHERE `id`='$id'";
+        $resultat = $this->executeRequest($sql);
+        $league = new League();
+        $league->fillObject($resultat[0]);
+        return $league;
+    }
+
     // FAIRE TEST
     // Hydratation
     public function fillObject(array $data){

@@ -29,7 +29,35 @@ if(empty($_GET['id'])){
 }
 $data = intval($_GET['id']);
 $event = $eventManager->getEventById($data);
-echo $event->getHours();
+if($event->getIsMatch() == 1){
+    require_once("../models/Matchs.php");
+    require_once("../models/play.php");
+    require_once("../models/Team.php");
+    require_once("../models/IceRink.php");
+    require_once("../models/league.php");
+    $match = new Matchs();
+    $match = $match->getMatchById($event->getId());
+    $scoresTotH = $match->getHomeScoreTiersTemps1() + $match->getHomeScoreTiersTemps2() + $match->getHomeScoreTiersTemps3();
+    $scoresTotV = $match->getVisitorScoreTiersTemps1() + $match->getVisitorScoreTiersTemps2() + $match->getVisitorScoreTiersTemps3();
+    if($match->getIsVisitor() == 0){
+        if ($scoresTotH > $scoresTotV) $statut = "Victoire";
+        else if ($scoresTotH < $scoresTotV) $statut = "Défaite";
+            else $statut = "Egalité";
+    } else {
+        if ($scoresTotH < $scoresTotV) $statut = "Victoire";
+        else if ($scoresTotH > $scoresTotV) $statut = "Défaite";
+            else $statut = "Egalité";
+    }
+    $play = new Play();
+    $play = $play->getPlayById($event->getId());
+    $opponent = $play->getIdTeam();
+    $equipe = new Team();
+    $equipe = $equipe->getTeam($opponent);
+    $league = new League();
+    $league = $league->getLeagueById($match->getIdLeague());
+    $iceRink = new IceRink();
+    $iceRink = $iceRink->getIceRink($match->getIdIceRink());
+}
 $totalHours = calculateDays($event->getHours());
 
 if (empty($event)) {
