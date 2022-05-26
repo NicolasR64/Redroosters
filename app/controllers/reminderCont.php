@@ -21,7 +21,6 @@
             $idEvent = $_GET["idEvent"];
             $url.="/app/views/event_list.php/$idEvent"; 
             //récupérer la liste des joueurs à qui envoyer le mail
-            //TO DO
             $participate = new Participe();
             $liste = $participate->getMembersWithoutResponseToInvitation($idEvent);
 
