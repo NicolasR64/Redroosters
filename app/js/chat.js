@@ -12,7 +12,7 @@ window.onload = () => {
     valid.addEventListener("click", addMessage)
 
     // On charge les nouveaux messages
-    setInterval(loadMessages, 1000)
+    //setInterval(loadMessages, 1000)
 }
 
 /**

@@ -1,6 +1,6 @@
 <?php
 //connection
-require_once('/app/models/model.php');
+require_once('Model.php');
 
 class Message extends model{
     private $id;
@@ -25,6 +25,13 @@ class Message extends model{
         // On envoie
         return $messagesJson;
         }
+
+    public function addMessage($message,$user){
+        $date = date('y-m-d');
+        $time = date('h:i:s');
+        $sql = "INSERT INTO `message`(`text`, `idUser`, `date`, `hours`) VALUES ('$message', '$user', '$date', '$time')";
+        return $this->executeRequest($sql,false);
+    }
 }
 
 ?>
