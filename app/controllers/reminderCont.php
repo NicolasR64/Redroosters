@@ -19,7 +19,7 @@
 
     if(isset($_GET["idEvent"]) && !empty($_GET["idEvent"])){
             $idEvent = $_GET["idEvent"];
-            $url.="/app/views/event_list.php/$idEvent"; 
+            $url.="/event/$idEvent"; 
             //récupérer la liste des joueurs à qui envoyer le mail
             $participate = new Participe();
             $liste = $participate->getMembersWithoutResponseToInvitation($idEvent);
@@ -48,7 +48,7 @@
 
                 //Content
                 $mail->isHTML(true);                                  //Set email format to HTML
-                $mail->Subject = 'Rappel évènement';
+                $mail->Subject = 'Rappel evenement';
                 $mail->Body    = "<h1>Rappel evenement</h1><br><p>Bonjour! Nous vous rappellons votre invitation à participer à un événement!
                 N'oubliez pas d'aller signaler votre participation ou non sur ce <a href=$url>lien</a>.</p>";
                 $mail->AltBody = "Bonjour! Vous avez été invité à participer à un événement!
