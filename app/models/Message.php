@@ -1,12 +1,11 @@
 <?php
 //connection
-require_once('model.php');
+require_once('/app/models/model.php');
 
 class Message extends model{
     private $id;
     private $text;
     private $date;
-    private $hours;
     private $idUsers;
     private $idEvent;   //pas besoin pour le chat global
 

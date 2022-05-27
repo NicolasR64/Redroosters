@@ -93,7 +93,7 @@ a.infos-brick-cell .time-left {
 
 .listPlayer {
   width: 100%;
-  margin: 15px
+  margin: 15px;
 }
 
 /* END - All Pages */
@@ -313,13 +313,13 @@ input {
 
 /* BEGIN - league page */
 
-.table>thead {
+.table > thead {
   background-color: #da373a;
   border-radius: 10px;
   color: white;
 }
 
-.table>tr {
+.table > tr {
   border: 0px;
 }
 
@@ -328,6 +328,20 @@ input {
 }
 
 /* END - league page */
+
+/*BEGIN - Chat */
+
+#discussion {
+  height: 78vh;
+  box-shadow: 0 0 5px grey;
+  overflow-y: scroll;
+}
+
+.saisie {
+  height: 20vh;
+}
+
+/*BEGIN - Chat */
 
 /*BEGIN - Event page */
 
@@ -367,5 +381,4 @@ input {
   .listPlayer {
     width: 15%;
   }
-
 }
