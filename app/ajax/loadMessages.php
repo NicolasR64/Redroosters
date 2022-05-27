@@ -1,5 +1,7 @@
 <?php
 // On vérifie la méthode utilisée
+require_once('../models/Message.php');
+
 if($_SERVER['REQUEST_METHOD'] == 'GET'){
     // On est en GET
     // On vérifie si on a reçu un id
@@ -7,26 +9,12 @@ if($_SERVER['REQUEST_METHOD'] == 'GET'){
         // On récupère l'id et on le nettoie
         $lastId = (int)strip_tags($_GET['lastId']);
 
-        // On initialise le filtre
-        $filtre = ($lastId > 0) ? " WHERE `message`.`id` > $lastId" : '';
 
         // On se connecte à la base
-        require_once('../models/User.php');
+        $obj = new Message();
+        echo $obj->getMessage($lastId);
 
-        // On écrit la requête
-        $sql = 'SELECT `message`.`id`, `message`.`text`, `message`.`date`, `users`.`firstName` FROM `message` LEFT JOIN `users` ON `message`.`id` = `users`.`id`'.$filtre.' ORDER BY `message`.`id` DESC LIMIT 5;';
 
-        // On exécute la requête
-        $query = $bdd->query($sql);
-
-        // On récupère les données
-        $messages = $query->fetchAll();
-
-        // On encode en JSON
-        $messagesJson = json_encode($messages);
-
-        // On envoie
-        echo $messagesJson;
     }
 }else{
     // Mauvaise méthode

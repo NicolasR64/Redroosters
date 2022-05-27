@@ -12,7 +12,7 @@ window.onload = () => {
     valid.addEventListener("click", addMessage)
 
     // On charge les nouveaux messages
-    //setInterval(loadMessages, 1000)
+    setInterval(loadMessages, 1000)
 }
 
 /**
@@ -37,11 +37,9 @@ function loadMessages(){
                 let discussion = document.querySelector("#discussion")
 
                 for(let message of messages){
-                    // On transforme la date du message en JS
-                    let dateMessage = new Date(message.created_at)
 
                     // On ajoute le contenu avant le contenu actuel de discussion
-                    discussion.innerHTML = `<p>${message.firstName} a écrit le ${dateMessage.toLocaleString()} : ${message.text}</p>` + discussion.innerHTML /* ${message.message}*/
+                    discussion.innerHTML = `<p>${message.firstName} a écrit le ${message.date} à ${message.hours} : ${message.text}</p>` + discussion.innerHTML /* ${message.message}*/
 
                     // On met à jour le lastId
                     lastId = message.id
