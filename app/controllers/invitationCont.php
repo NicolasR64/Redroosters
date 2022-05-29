@@ -76,7 +76,7 @@
                 $player = $player->getPlayerById($elem->getId());
                 $pos = $player->getPosition($player->getIdPosition());
                 $elem->setPlayer($pos->getName());
-                //ajout des joueurs dans le match
+                //ajoute des joueurs dans le match
                 require_once('../models/joue.php');
                 $joue = new Joue();
                 $joue->setIdMatch($_GET["idEvent"]);
@@ -88,7 +88,7 @@
                 $staff = $staff->getStaffById($elem->getId());
                 $pos = $staff->getFunction($staff->getIdFunction());
                 $elem->setStaff($pos->getName());
-                //ajout des staffs dans le match
+                //ajoute des staffs dans le match
                 require_once('../models/joue.php');
                 $joue = new Joue();
                 $joue->setIdMatch($_GET["idEvent"]);

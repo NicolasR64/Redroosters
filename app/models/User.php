@@ -23,7 +23,6 @@ class User extends Model{
 
     /* SELECT */
     
-    /* FAIRE TEST */
     function getUserById($id){
         $sql = "SELECT * FROM  `users` WHERE id=$id";
         $data = $this->executeRequest($sql);
@@ -47,7 +46,6 @@ class User extends Model{
         return $joueurs;
     }
 
-    // FAIRE TEST
     //récupère un email en particulier dans la base de données 
     function findEmail($email){
         $sql = "SELECT * FROM `users` WHERE mail='$email'";

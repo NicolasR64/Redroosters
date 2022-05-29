@@ -33,7 +33,6 @@ class Functions extends model{
         $this->name = $name;
     }
 
-    // FAIRE TEST
     // Récupère l'ensemble des functions existante
     public function getAllFunction(){
         $sql = "SELECT * FROM `function`";

@@ -9,7 +9,6 @@ class League extends Model{
 
     /* SELECT */
     
-    // FAIRE TEST
     // get data about current season
     function getCurrentSeason(){
         $year=date("Y");
@@ -24,7 +23,6 @@ class League extends Model{
         return $league;
     }
 
-    // FAIRE TEST
     // get data about a specific season
     function getSeasonByYear($year){
         $sql = "SELECT * FROM  `league` WHERE `seasonYear`=$year";
@@ -42,7 +40,6 @@ class League extends Model{
         return $league;
     }
 
-    // FAIRE TEST
     // Hydratation
     public function fillObject(array $data){
         foreach ($data as $key => $value){

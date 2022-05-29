@@ -1,12 +1,12 @@
 <?php
 session_start();
-//vérifie si l'utilisateur est connnecté
+//check if user is connected
 require_once("../controllers/isConnect.php");
 
-//récupération du controller
+//fetch controller
 require_once("../controllers/ProfileCont.php");
 $contProfile = new ProfileCont();
-//vérifie si le profil existe
+//check if profil exist
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $exist = $contProfile->isProfilExist($_GET['id']);
 }else{
@@ -26,18 +26,18 @@ if(!$exist){
     <?php
     require_once("../views/includes/head.php");
 
-    //récupération du données de l'utilisateur
+    //fetch user data
     $user = $contProfile->getUser();
     if ($user->getIsPlayer() == 1 && $user->getIsStaff() == 0) {
-        //c'est un joueur
+        //player
         $player = $contProfile->getPlayerById($user->getId());
         $position = $player->getPosition($player->getIdPosition());
     } else if($user->getIsPlayer() == 0 && $user->getIsStaff() == 1){
-        //c'est un staff
+        //staff
         $staff = $contProfile->getStaffById($user->getId());
         $function = $staff->getFunction($staff->getIdFunction());
     } else{
-        //c'est un joueur et un staff
+        //player and staff
         $player = $contProfile->getPlayerById($user->getId());
         $position = $player->getPosition($player->getIdPosition());
         $staff = $contProfile->getStaffById($user->getId());
@@ -53,18 +53,16 @@ if(!$exist){
     require_once("../views/includes/header.php");
     ?>
     <main>
-        <!-- Verifier si joueur existe et si pas alors rediriger TO DO -->
         <!-- Hero profile -->
         <div class="mt-4 text-center container-fluid profile-header">
-            <!-- image de profil -->
+            <!-- profile picture -->
             <img class="rounded-circle" src="../../assets/img/avatars/default.jpg" alt="avatars de l'utilisateur" loading="lazy">
-            <!-- Affichage nom et prénom -->
             <p class="mt-2 mb-1">
                 <?php echo
                 $user->getFirstname() . ' ' . $user->getLastName(); ?>
             </p>
             <?php
-            // affichage poste
+            // show poste
             if ($user->getIsStaff() && !$user->getIsPlayer()) {
                 echo '
                     <p class="text-white-50">' . $function->getName() . '</p>
@@ -80,7 +78,7 @@ if(!$exist){
             }
             ?>
         </div>
-        <!-- Affichage données profile -->
+        <!-- show user data -->
         <div class="container rounded mt-2 mb-5">
             <div class="row">
                 <div class="col-md-5 border-right mx-auto">
@@ -89,7 +87,7 @@ if(!$exist){
                             <h4 class="text-right">Informations générales</h4>
                         </div>
                         <div class="row mt-3">
-                                <!-- bouton de modification de profil -->
+                                <!-- button to edit profile -->
                                 <div class="d-flex col-md-6 mt-1 justify-content-start">
                                     <?php
                                     $sessionUser = unserialize($_SESSION['user']);
@@ -141,7 +139,7 @@ if(!$exist){
                                 </div>
                                 <div class="col-md-12 mt-1">
                                     <!-- Phone -->
-                                    <label class="labels mb-2 mt-2">Télephone :</label>
+                                    <label class="labels mb-2 mt-2">Téléphone :</label>
                                     <input type="text" class="form-control" readonly placeholder="numéro de gsm" value="<?php echo $user->getPhone() ?>">
                                 </div>
                                 <div class="col-md-12 mt-1">
@@ -151,9 +149,9 @@ if(!$exist){
                                 </div>
 
                                 <?php
-                                //vérification du rôle
+                                //check role
                                 if ($user->getIsStaff() && !$user->getIsPlayer()) {
-                                    /* C'est un staff */
+                                    /* staff */
 
                                     // Function
                                     echo '
@@ -171,7 +169,7 @@ if(!$exist){
                                     </div>
                                     ';
                                 } else if ($user->getIsPlayer() && !$user->getIsStaff()){
-                                    /* c'est un player */
+                                    /* player */
 
                                     // Position
                                     echo '
@@ -292,7 +290,7 @@ if(!$exist){
                                     </div>
                                     ';
                                 } else {
-                                    /* c'est un joueur et un staff */
+                                    /* Player and staff */
                                     // Position
                                     echo '
                                     <div class="col-md-12 mt-1">

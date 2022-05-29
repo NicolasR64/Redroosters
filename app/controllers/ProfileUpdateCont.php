@@ -1,12 +1,11 @@
 <?php
 session_start();
-/* Check si le formulaire d'update du profile est correctement remplit */
 
 require_once("tools.php");
 require_once("ProfileCont.php");
 $contProfile = new ProfileCont();
 
-// Elimine les dangers éventuelles pouvant provenir des données entrée par l'utilisateur
+// clean data of form
 function cleanData($data)
 {
     $data = trim($data);
@@ -15,11 +14,9 @@ function cleanData($data)
     return $data;
 }
 
-//Potentiel erreur
+//to know if error
 $isError = false;
 
-//FAIRE TEST
-//WORK
 //vérification nom
 if (isset($_POST["inputFirstName"]) && !empty($_POST["inputFirstName"])) {
     if (strlen($_POST["inputFirstName"]) < 2 || strlen($_POST["inputFirstName"]) > 50) {
@@ -29,9 +26,6 @@ if (isset($_POST["inputFirstName"]) && !empty($_POST["inputFirstName"])) {
     $isError = true;
 }
 
-
-//FAIRE TEST
-//WORK
 //vérification prénom
 if (isset($_POST["inputLastName"]) && !empty($_POST["inputLastName"])) {
     if (strlen($_POST["inputLastName"]) < 2 || strlen($_POST["inputLastName"]) > 50) {
@@ -41,8 +35,6 @@ if (isset($_POST["inputLastName"]) && !empty($_POST["inputLastName"])) {
     $isError = true;
 }
 
-//FAIRE TEST
-//WORK
 //vérification surnom
 if (isset($_POST["inputNickName"]) && !empty($_POST["inputNickName"])) {
     if (strlen($_POST["inputNickName"]) < 2 || strlen($_POST["inputNickName"]) > 50) {
@@ -52,10 +44,6 @@ if (isset($_POST["inputNickName"]) && !empty($_POST["inputNickName"])) {
     $isError = true;
 }
 
-
-
-//FAIRE TEST
-//WORK
 //vérification date
 if (isset($_POST["inputDateBirth"]) && !empty($_POST["inputDateBirth"])) {
     if (!isDateValid($_POST["inputDateBirth"])) {
@@ -65,8 +53,6 @@ if (isset($_POST["inputDateBirth"]) && !empty($_POST["inputDateBirth"])) {
     $isError = true;
 }
 
-//FAIRE TEST
-//WORK
 //vérification téléphone
 if (isset($_POST["inputPhone"]) && !empty($_POST["inputPhone"])) {
     if (strlen($_POST["inputPhone"]) > 16) {
@@ -81,9 +67,6 @@ if (isset($_POST["inputPhone"]) && !empty($_POST["inputPhone"])) {
     $isError = true;
 }
 
-
-//FAIRE TEST
-//NOT WORK
 //vérification email
 if (isset($_POST["inputMail"]) && !empty($_POST["inputMail"])) {
     if (strlen($_POST["inputMail"]) > 255) {
@@ -108,9 +91,6 @@ if (isset($_POST["inputMail"]) && !empty($_POST["inputMail"])) {
     $isError = true;
 }
 
-
-//FAIRE TEST
-//WORK
 //vérification EmergencyEmail
 if (isset($_POST["inputEmergencyMail"]) && !empty($_POST["inputEmergencyMail"])) {
     if ($_POST["inputEmergencyMail"] != "Non Renseignée") {
@@ -127,9 +107,6 @@ if (isset($_POST["inputEmergencyMail"]) && !empty($_POST["inputEmergencyMail"]))
     $isError = true;
 }
 
-
-//FAIRE TEST
-//WORK 
 //vérification ParentEmail
 if (isset($_POST["inputParentMail"]) && !empty($_POST["inputParentMail"])) {
     if ($_POST["inputParentMail"] != "Non renseignée") {
@@ -148,13 +125,10 @@ if (isset($_POST["inputParentMail"]) && !empty($_POST["inputParentMail"])) {
 
 
 
-//FAIRE TEST
 //Vérification si c'est un joueur
 $user = $contProfile->getUser();
 if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
 
-    //FAIRE TEST
-    //WORK
     //vérification seasonArrived
     if (isset($_POST["inputSeasonArrivedPlayer"]) && !empty($_POST["inputSeasonArrivedPlayer"])) {
         if (!isDateValid($_POST["inputSeasonArrivedPlayer"])) {
@@ -164,8 +138,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         $isError = true;
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification position
     if (isset($_POST["inputPosition"]) && !empty($_POST["inputPosition"])) {
         $positions = $contProfile->getAllPositions();
@@ -181,10 +153,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-
-
-    //FAIRE TEST
-    //WORK
     //vérification jersey number
     if (isset($_POST["inputJerseyNumber"]) && !empty($_POST["inputJerseyNumber"])) {
         if ($_POST["inputJerseyNumber"] < 0 || $_POST["inputJerseyNumber"] > 99) {
@@ -192,8 +160,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification license number
     if (isset($_POST["inputLicenseNumber"]) && !empty($_POST["inputLicenseNumber"])) {
         if (!(strlen($_POST["inputLicenseNumber"]) < 11)) {
@@ -201,8 +167,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification handedness
     if (isset($_POST["inputHandedness"]) && !empty($_POST["inputHandedness"])) {
         if ($_POST["inputHandedness"] != 1 && $_POST["inputHandedness"] != 0) {
@@ -210,8 +174,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification size
     if (isset($_POST["inputSize"]) && !empty($_POST["inputSize"])) {
         if ($_POST["inputSize"] < 100 || $_POST["inputSize"] > 250) {
@@ -219,8 +181,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification weight
     if (isset($_POST["inputWeight"]) && !empty($_POST["inputWeight"])) {
         if ($_POST["inputWeight"] < 30 || $_POST["inputWeight"] > 180) {
@@ -228,8 +188,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //
     //vérification isCarpooling
     if (isset($_POST["inputIsCarpooling"]) && !empty($_POST["inputIsCarpooling"])) {
         if ($_POST["inputIsCarpooling"] != 1 && $_POST["inputIsCarpooling"] != 0) {
@@ -237,8 +195,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //
     //vérification isBan
     if (isset($_POST["inputIsBan"]) && !empty($_POST["inputIsBan"])) {
         if ($_POST["inputIsBan"] != 1 && $_POST["inputIsBan"] != 0) {
@@ -246,8 +202,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //
     //vérification isSick
     if (isset($_POST["inputIsSick"]) && !empty($_POST["inputIsSick"])) {
         if ($_POST["inputIsSick"] != 1 && $_POST["inputIsSick"] != 0) {
@@ -256,8 +210,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
     }
 } else if($user->getIsStaff() && !$user->getIsPlayer()){
 
-    //FAIRE TEST
-    // WORK
     //vérification seasonArrived
     if (isset($_POST["inputSeasonArrivedStaff"]) && !empty($_POST["inputSeasonArrivedStaff"])) {
         if (!isDateValid($_POST["inputSeasonArrivedStaff"])) {
@@ -267,9 +219,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         $isError = true;
     }
 
-
-    //FAIRE TEST
-    //WORK
     //vérification function
     if (isset($_POST["inputFunction"]) && !empty($_POST["inputFunction"])) {
         $functions = $contProfile->getAllFunction();
@@ -285,8 +234,7 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 }else{
-    //FAIRE TEST
-    // WORK
+
     //vérification seasonArrived
     if (isset($_POST["inputSeasonArrivedStaff"]) && !empty($_POST["inputSeasonArrivedStaff"])) {
         if (!isDateValid($_POST["inputSeasonArrivedStaff"])) {
@@ -296,9 +244,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         $isError = true;
     }
 
-
-    //FAIRE TEST
-    //WORK
     //vérification function
     if (isset($_POST["inputFunction"]) && !empty($_POST["inputFunction"])) {
         $functions = $contProfile->getAllFunction();
@@ -313,9 +258,7 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
             $isError = true;
         }
     }
-    
-    //FAIRE TEST
-    //WORK
+
     //vérification seasonArrived
     if (isset($_POST["inputSeasonArrivedPlayer"]) && !empty($_POST["inputSeasonArrivedPlayer"])) {
         if (!isDateValid($_POST["inputSeasonArrivedPlayer"])) {
@@ -325,8 +268,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         $isError = true;
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification position
     if (isset($_POST["inputPosition"]) && !empty($_POST["inputPosition"])) {
         $positions = $contProfile->getAllPositions();
@@ -342,10 +283,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-
-
-    //FAIRE TEST
-    //WORK
     //vérification jersey number
     if (isset($_POST["inputJerseyNumber"]) && !empty($_POST["inputJerseyNumber"])) {
         if ($_POST["inputJerseyNumber"] < 0 || $_POST["inputJerseyNumber"] > 99) {
@@ -353,8 +290,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification license number
     if (isset($_POST["inputLicenseNumber"]) && !empty($_POST["inputLicenseNumber"])) {
         if (!(strlen($_POST["inputLicenseNumber"]) < 11)) {
@@ -362,8 +297,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification handedness
     if (isset($_POST["inputHandedness"]) && !empty($_POST["inputHandedness"])) {
         if ($_POST["inputHandedness"] != 1 && $_POST["inputHandedness"] != 0) {
@@ -371,8 +304,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification size
     if (isset($_POST["inputSize"]) && !empty($_POST["inputSize"])) {
         if ($_POST["inputSize"] < 100 || $_POST["inputSize"] > 250) {
@@ -380,8 +311,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //WORK
     //vérification weight
     if (isset($_POST["inputWeight"]) && !empty($_POST["inputWeight"])) {
         if ($_POST["inputWeight"] < 30 || $_POST["inputWeight"] > 180) {
@@ -389,8 +318,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //
     //vérification isCarpooling
     if (isset($_POST["inputIsCarpooling"]) && !empty($_POST["inputIsCarpooling"])) {
         if ($_POST["inputIsCarpooling"] != 1 && $_POST["inputIsCarpooling"] != 0) {
@@ -398,8 +325,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //
     //vérification isBan
     if (isset($_POST["inputIsBan"]) && !empty($_POST["inputIsBan"])) {
         if ($_POST["inputIsBan"] != 1 && $_POST["inputIsBan"] != 0) {
@@ -407,8 +332,6 @@ if ($user->getIsPlayer() == 1 && !$user->getIsStaff()) {
         }
     }
 
-    //FAIRE TEST
-    //
     //vérification isSick
     if (isset($_POST["inputIsSick"]) && !empty($_POST["inputIsSick"])) {
         if ($_POST["inputIsSick"] != 1 && $_POST["inputIsSick"] != 0) {
@@ -437,7 +360,7 @@ if (!$isError) {
     $user->setEmergencyMail($_POST['inputEmergencyMail']);
     $user->setParentMail($_POST['inputParentMail']);
 
-    //Verifie si ça marche
+    //check if work
     $user->updateUser();
 
     if ($user->getIsPlayer() == 1 && $user->getIsStaff()== 0 ) {

@@ -1,13 +1,13 @@
 <?php
 session_start();
-//vérifie si l'utilisateur est connnecté
+//check if user is connected
 require_once("../controllers/isConnect.php");
 
 
-//récupération du controller
+//fetch controller
 require_once("../controllers/ProfileCont.php");
 $contProfile = new ProfileCont();
-//vérifie si le profil existe
+//check if profil exist
 if (isset($_GET['id']) && !empty($_GET['id'])) {
     $exist = $contProfile->isProfilExist($_GET['id']);
 } else {
@@ -28,11 +28,9 @@ if (!$exist) {
 
     require_once("../views/includes/head.php");
 
-    //récupération du controller
-    require_once("../controllers/ProfileCont.php");
     $contProfile = new ProfileCont();
 
-    //récupération des données de l'utilisateur
+    //fetch user data
     $user = $contProfile->getUser();
     $sessionUser =  unserialize($_SESSION['user']);
     if (($user->getId() != $sessionUser->getId()) && ($sessionUser->getIsAdmin() == 0)) {
@@ -40,15 +38,15 @@ if (!$exist) {
     }
 
     if ($user->getIsPlayer() == 1 && $user->getIsStaff() == 0) {
-        //c'est un joueur
+        //player
         $player = $contProfile->getPlayerById($user->getId());
         $position = $player->getPosition($player->getIdPosition());
     } else if ($user->getIsPlayer() == 0 && $user->getIsStaff() == 1) {
-        //c'est un staff
+        //staff
         $staff = $contProfile->getStaffById($user->getId());
         $function = $staff->getFunction($staff->getIdFunction());
     } else {
-        //c'est un joueur et un staff
+        //player and staff
         $player = $contProfile->getPlayerById($user->getId());
         $position = $player->getPosition($player->getIdPosition());
         $staff = $contProfile->getStaffById($user->getId());
@@ -66,15 +64,15 @@ if (!$exist) {
     <main>
         <!-- Hero profile -->
         <div class="mt-4 text-center container-fluid profile-header">
-            <!-- image de profil -->
+            <!-- profile picture -->
             <img class="rounded-circle" src="../../assets/img/avatars/default.jpg" alt="avatars de l'utilisateur" loading="lazy">
-            <!-- Affichage nom et prénom -->
+            <!--show lastname and firstname -->
             <p class="mt-2 mb-1">
                 <?php echo
                 $user->getFirstname() . ' ' . $user->getLastName(); ?>
             </p>
             <?php
-            // affichage poste
+            // show post
             if ($user->getIsStaff() && !$user->getIsPlayer()) {
                 echo '
                     <p class="text-white-50">' . $function->getName() . '</p>
@@ -102,7 +100,7 @@ if (!$exist) {
                                     <a class="btn btn-danger" href="/change-password">Changer le mot de passe</a>
                             </div>
                         </div>
-                        <!-- Formulaire de donées -->
+                        <!-- Form of data -->
                         <form id="submitUpdateProfile">
                             <div class="row mt-2">
                                 <!-- LastName -->
@@ -156,7 +154,7 @@ if (!$exist) {
 
                                 <!-- Phone -->
                                 <div class="col-md-12 mt-1">
-                                    <label class="labels mb-2 mt-2">Télephone :</label>
+                                    <label class="labels mb-2 mt-2">Téléphone :</label>
                                     <input type="text" class="form-control" placeholder="numéro de gsm" value="<?php echo $user->getPhone() ?>" id="inputPhone" name="inputPhone">
                                     <p id="PhoneError" class="text-danger"></p>
                                 </div>
@@ -167,7 +165,7 @@ if (!$exist) {
                                 } else {
                                     echo '<input type="hidden" name="id" value="' . $sessionUser->getId() . '">';
                                 }
-                                // isStaff, necessaire pour le js
+                                // isStaff, use for js
                                 echo '<input type="hidden" name="isStaff" value="' . $sessionUser->getIsStaff() . '">';
                                 echo '<input type="hidden" name="isPlayer" value="' . $sessionUser->getIsPlayer() . '">';
 
@@ -175,9 +173,9 @@ if (!$exist) {
                             </div>
                             <div class="row mt-3">
                                 <?php
-                                /* Vérification si staff ou player */
+                                /* check if staff or player */
                                 if ($user->getIsStaff() && !$user->getIsPlayer()) {
-                                    //l'utilisateur est un staff
+                                    //staff
 
                                     // Function
                                     echo '
@@ -212,6 +210,8 @@ if (!$exist) {
                                         </div>
                                         ';
                                 } else if ($user->getIsPlayer() && !$user->getIsStaff()) {
+                                    //player
+
                                     //Position
                                     echo '
                                         <div class="col-md-12 mt-1">
@@ -501,7 +501,7 @@ if (!$exist) {
                                         <p id="isCarpoolingError" class="text-danger"></p>
                                        </div>
                                     ';
-                                    //l'utilisateur est un staff
+                                    //staff
 
                                     // Function
                                     echo '
@@ -544,7 +544,7 @@ if (!$exist) {
                                 </div>
                             </div>
                         </form>
-                        <!-- Script de vérification du formulaire -->
+                        <!-- Script to check form -->
                         <script async src="/app/js/checkInputUpdateProfile.js"></script>
                     </div>
                 </div>

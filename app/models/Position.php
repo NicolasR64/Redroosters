@@ -44,7 +44,6 @@ class Position extends model{
         }
     }
 
-    // FAIRE TEST
     // Récupère l'ensemble des positions existante
     public function getAllPosition(){
         $sql = "SELECT * FROM `position`";
